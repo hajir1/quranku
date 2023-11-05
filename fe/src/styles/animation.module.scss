@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Heebo:wght@100;200;300;500;600;700;800&family=Julee&family=Montserrat&family=Open+Sans&family=Oswald:wght@500&family=Playpen+Sans:wght@100;200;300;500;600;700;800&family=REM:ital,wght@0,200;0,600;0,900;1,200;1,400;1,600;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Satisfy&family=Shadows+Into+Light&family=Source+Code+Pro:wght@500&display=swap");
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.1px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+@keyframes animationSearch {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes animationTrash {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes animationTafsir {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes rotateIcon {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animatedSearch {
+  animation: animationSearch 1s ease;
+  transition: 0.7s;
+}
+.animationTafsir {
+  animation: animationTafsir 1s ease;
+  transition: 0.7s;
+}
+.animatedTrash {
+  animation: animationTrash 1s ease;
+  transition: 0.7s;
+}
+
+.items {
+  transition: 0.5s ease all;
+}
+.items:hover {
+  box-shadow: 1px 1px 5px rgba(231, 225, 99, 0.8);
+}
+.opsiSurah {
+  transition: 0.2s ease all;
+}
