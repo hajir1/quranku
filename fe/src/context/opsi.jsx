@@ -14,6 +14,8 @@ const OptionProvider = ({ children }) => {
   const [valueSearchSurahById, setValueSearchSurahById] = useState("");
   const [dataSurahById, setDataSurahById] = useState("");
   const [dataBookmark, setDataBookmark] = useState([]);
+  const [opsiSetting, setOpsiSetting] = useState(false);
+  const [opsiDarkmode, setOpsiDarkmode] = useState(false);
   return (
     <OptionContext.Provider
       value={{
@@ -40,6 +42,10 @@ const OptionProvider = ({ children }) => {
         setDataSurahById,
         dataBookmark,
         setDataBookmark,
+        opsiSetting,
+        setOpsiSetting,
+        opsiDarkmode,
+        setOpsiDarkmode
       }}
     >
       {children}

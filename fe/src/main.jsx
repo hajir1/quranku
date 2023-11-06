@@ -8,7 +8,7 @@ import { RouterProvider } from "react-router-dom";
 import QueryControls from "./query/query";
 import OptionProvider from "./context/opsi";
 import DetailAlQuranPAge from "./page/detailAlQuranPage";
-import BookMarkPage from "./component/fragment/detailSurah/bookMarkPage";
+import BookMarkPage from "./page/bookMarkPage";
 const router = createBrowserRouter([
   {
     path: "/",

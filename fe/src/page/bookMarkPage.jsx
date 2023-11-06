@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../layout/navbar";
-import { ApiAlQuranSurahById } from "../../../services/service";
-import { OptionContext } from "../../../context/opsi";
 import { Icon } from "@iconify/react";
-import style from "../../../styles/animation.module.scss";
-import AlertMessageNotP from "../../alertMessage/alertNotP";
+import Navbar from "../component/layout/navbar";
+import { OptionContext } from "../context/opsi";
+import style from "../styles/animation.module.scss";
+import { ApiAlQuranSurahById } from "../services/service";
+import AlertMessageNotP from "../component/alertMessage/alertNotP";
 const BookMarkPage = () => {
   const { id, page } = useParams();
   const {
@@ -20,6 +20,7 @@ const BookMarkPage = () => {
     setDataBookmark,
     dataBookmark,
     audioRef,
+    opsiDarkmode,
     dataSurahById,
     setDataSurahById,
   } = useContext(OptionContext);
@@ -53,7 +54,7 @@ const BookMarkPage = () => {
   useEffect(() => {
     return () => {
       if (audioRef.current) {
-        setOpsiOneAudio(false)
+        setOpsiOneAudio(false);
         audioRef.current.pause();
       }
     };
@@ -82,15 +83,22 @@ const BookMarkPage = () => {
     <div className="w-full">
       <Navbar type="detailSurah" />
 
-      <div className="w-full h-screen flex flex-col ">
+      <div
+        className={`${
+          opsiDarkmode && "bg-black text-white"
+        } w-full h-screen flex flex-col `}
+      >
         <div className="mt-20">
           {alertHapusBookmark && (
             <>
               <AlertMessageNotP
                 onCloseHandler={() => setAlertHapusBookmark(false)}
-                classContaint={`${style.animationTafsir} w-52 h-16 bg-black absolute z-20 text-white p-2 m-4 opacity-80`}
+                classIcon={`text-black`}
+                classContaint={`${style.animationTafsir} ${
+                  opsiDarkmode && "bg-white z-20 opacity-100 m-0"
+                } w-52 h-16 bg-black absolute z-20 text-white p-2 m-4 opacity-80`}
               >
-                <p className="text-center w-full text-sm mt-2">
+                <p className={`${opsiDarkmode && "text-black"} text-center w-full text-sm mt-2`}>
                   berhasil di hapus
                 </p>
               </AlertMessageNotP>
@@ -105,7 +113,7 @@ const BookMarkPage = () => {
                   onClick={() => {
                     setOpsitafsir(!opsiTafsir);
                   }}
-                  className="text-white text-2xl mx-2  mt-4"
+                  className="text-white text-2xl mx-2  mt-4 cursor-pointer"
                   icon="octicon:x-12"
                 />
               </div>
@@ -149,7 +157,7 @@ const BookMarkPage = () => {
               </div>
               <p
                 onClick={() => setLihatDetail(!lihatDetail)}
-                className="text-center tracking-wider"
+                className="text-center tracking-wider cursor-pointer"
               >
                 {lihatDetail ? "" : "lihat detail"}
               </p>
@@ -165,7 +173,7 @@ const BookMarkPage = () => {
                     </p>
                   </div>
                   <Icon
-                    className="text-center w-full text-2xl"
+                    className="text-center w-full text-2xl cursor-pointer"
                     onClick={() => setLihatDetail(!lihatDetail)}
                     icon="ph:arrow-up-bold"
                   />
@@ -186,8 +194,8 @@ const BookMarkPage = () => {
             </div>
           )}
           <div
-            className={`${
-              opsiTafsir && "blur-[2px]"
+            className={`${opsiTafsir && "blur-[2px]"} ${
+              opsiDarkmode && "border-b-white"
             } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-2 relative`}
             key={dataSurahById?.number?.inQuran}
           >
@@ -202,7 +210,7 @@ const BookMarkPage = () => {
                   {opsiOneAudio ? (
                     <Icon
                       onClick={() => onStopOneAudioHandler()}
-                      className="text-2xl"
+                      className="text-2xl cursor-pointer"
                       icon="carbon:pause-outline"
                     />
                   ) : (
@@ -213,7 +221,7 @@ const BookMarkPage = () => {
                           dataSurahById.audio.alafasy
                         )
                       }
-                      className="text-2xl"
+                      className="text-2xl cursor-pointer"
                       icon="radix-icons:resume"
                     />
                   )}
@@ -222,7 +230,7 @@ const BookMarkPage = () => {
                     onClick={(e) =>
                       onTafsirHandler(e, dataSurahById.number.inSurah)
                     }
-                    className="text-2xl my-4"
+                    className="text-2xl my-4 cursor-pointer"
                     icon="ion:book-sharp"
                   />
 
@@ -230,7 +238,7 @@ const BookMarkPage = () => {
                     onClick={() => {
                       onRemoveBookmarkHandler(dataSurahById.number.inQuran);
                     }}
-                    className="text-2xl "
+                    className="text-2xl cursor-pointer"
                     icon="mdi:bookmark-off"
                   />
                 </div>
@@ -239,7 +247,7 @@ const BookMarkPage = () => {
             <div className="flex flex-col justify-between">
               <div className="flex justify-end">
                 <img
-                  className="w-2/4"
+                  className={`${opsiDarkmode && "bg-white"} w-2/4`}
                   src={dataSurahById?.image?.primary}
                   alt=""
                 />

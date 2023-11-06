@@ -6,7 +6,8 @@ import style from "../../../styles/animation.module.scss";
 import { Link } from "react-router-dom";
 const AllAlQuranApi = () => {
   const { data } = useAlQuranDataSurah();
-  const { valueSearchSurah } = useContext(OptionContext);
+  const { valueSearchSurah, opsiSetting } =
+    useContext(OptionContext);
   const [dataSurahById, setDataSurahById] = useState("");
   useEffect(() => {
     if (valueSearchSurah !== "") {
@@ -18,7 +19,11 @@ const AllAlQuranApi = () => {
     }
   }, [valueSearchSurah]);
   return (
-    <div className="flex justify-around w-[90%] flex-wrap gap-2">
+    <div
+      className={`${
+        opsiSetting && "blur-[2px]"
+       }  flex justify-around w-[90%] flex-wrap gap-2 max-[550px]:w-full`}
+    >
       {dataSurahById !== "" ? (
         <div
           className="w-[30%] border border-amber-400 flex h-20 items-center max-[550px]:w-[100%]"

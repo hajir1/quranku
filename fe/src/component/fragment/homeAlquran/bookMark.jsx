@@ -5,7 +5,8 @@ import style from "../../../styles/animation.module.scss";
 import { Link } from "react-router-dom";
 import { OptionContext } from "../../../context/opsi";
 const BookMark = () => {
-  const { dataBookmark, setDataBookmark } = useContext(OptionContext);
+  const { dataBookmark, setDataBookmark, opsiSetting, opsiDarkmode } =
+    useContext(OptionContext);
   const [alertRemoveAllItems, setAlertRemoveAllItems] = useState(false);
   const dataLokal = localStorage.getItem("bookMark");
   const data = JSON.parse(dataLokal);
@@ -38,20 +39,28 @@ const BookMark = () => {
     window.location.reload();
   };
   return (
-    <div className="mt-14 mb-6 w-full min-h-[6rem] bg-amber-500 bg-opacity-50 p-3 rounded-xl flex-wrap">
-      <div className="flex justify-start w-full border-b-[1px] h-1/3 border-b-black">
+    <div
+      className={`${opsiSetting && "blur-[2px]"} ${
+        opsiDarkmode && "bg-amber-500 text-white border border-white"
+      } mt-14 mb-6 w-full min-h-[6rem] bg-amber-600 bg-opacity-50 p-3 rounded-xl flex-wrap`}
+    >
+      <div
+        className={`${
+          opsiDarkmode && "border-b-white"
+        } flex justify-start w-full border-b-[1px] h-1/3 border-b-black`}
+      >
         <Icon className="text-2xl " icon="ic:sharp-bookmark" />
         <h1 className="tracking-wider">Bookmark</h1>
         {dataBookmark?.length > 0 && (
-          <div className={` w-full flex justify-end`}>
+          <div className={` w-full flex justify-end `}>
             <Icon
               onClick={() => setAlertRemoveAllItems(!alertRemoveAllItems)}
-              className="text-2xl mx-5 my-2"
+              className="text-2xl mx-5 my-2 cursor-pointer"
               icon="bi:trash"
             />
             {alertRemoveAllItems && (
               <AlertMessage
-                classContaint={`${style.animatedTrash} absolute w-42 p-2 rounded-lg h-20  bg-black text-white`}
+                classContaint={`${opsiDarkmode && "border border-white"} ${style.animatedTrash} absolute w-42 p-2 rounded-lg h-20  bg-black text-white z-20`}
                 onCloseHandler={() =>
                   setAlertRemoveAllItems(!alertRemoveAllItems)
                 }
@@ -82,17 +91,17 @@ const BookMark = () => {
         )}
       </div>
       <div
-        className={`${
-          dataBookmark?.length > 0
-            ? "justify-start gap-1"
-            : "justify-center gap-4 items-center"
-        } flex  w-full min-h-[3rem] flex-wrap`}
+        className={`${alertRemoveAllItems && "blur-[3px]"} 
+           ${dataBookmark?.length >= 1 && "justify-center gap-1"}
+           ${dataBookmark?.length < 1 && "justify-center gap-4 items-center"} w-full min-h-[3rem] flex-wrap items-center flex gap-2 justify-center `}
       >
         {dataBookmark?.length > 0 ? (
           dataBookmark?.map((data) => (
             <div
               key={Math.random(8237465)}
-              className="w-1/6 h-12 bg-black opacity-90 rounded-md text-white flex items-center justify-evenly mt-2"
+              className={`${
+                opsiDarkmode && "border border-white"
+              } w-1/6 h-12 bg-black opacity-90 rounded-md text-white flex items-center justify-evenly mt-2`}
             >
               <div className="w-1/4 grid place-content-center h-full ">
                 <Icon

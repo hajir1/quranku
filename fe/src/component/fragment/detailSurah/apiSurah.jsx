@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useAlQuranDataSurahDetail } from "../../../query/data";
 import Button from "../../element/Button";
 import { OptionContext } from "../../../context/opsi";
@@ -6,7 +6,9 @@ import style from "../../../styles/animation.module.scss";
 import { Icon } from "@iconify/react";
 import ApiTerjmah from "./apiTerjemah";
 import ApiRead from "./apiRead";
+import { useParams } from "react-router-dom";
 const ApiSurahDetail = () => {
+  const { id } = useParams();
   const { data } = useAlQuranDataSurahDetail();
   const {
     opsiSurah,
@@ -18,7 +20,12 @@ const ApiSurahDetail = () => {
     audioRef,
     opsiTafsir,
     setOpsiOneAudio,
+    opsiDarkmode,
   } = useContext(OptionContext);
+  useEffect(()=>{
+    onStopAudioAllHandler()
+  },[id])
+  const audioAllRef = useRef(null);
   const onStartAudioAllHandler = () => {
     setOpsiOneAudio(false);
     setOpsiAllAudio(true);
@@ -28,7 +35,11 @@ const ApiSurahDetail = () => {
   };
 
   return (
-    <div className={`${``} w-full flex justify-center mt-20`}>
+    <div
+      className={`${
+        opsiDarkmode && "text-white"
+      } w-full flex justify-center mt-20`}
+    >
       <div className=" flex justify-center flex-col w-[90%]">
         <div className={`${opsiTafsir && "blur-[3px]"} w-full`}>
           <h1 className="text-center text-[2rem] font-bold">{data?.name}</h1>
@@ -49,12 +60,18 @@ const ApiSurahDetail = () => {
             opsiTafsir && "blur-[3px]"
           } flex justify-between items-center mt-10`}
         >
-          <div className="w-2/5 h-12 p-1 border border-black flex ">
+          <div
+            className={`${
+              opsiDarkmode && "border-b-white"
+            } w-2/5 h-12 p-1 border border-black flex`}
+          >
             <Button
               buttonClick={() => setOpsiSurah(true)}
               buttonClass={`${opsiSurah && "border border-b-black"} ${
                 style.opsiSurah
-              } w-1/2 h-full mx-4 outline-none text-black`}
+              } ${
+                opsiDarkmode && "border-b-white"
+              } w-1/2 h-full mx-4 outline-none `}
             >
               Terjemahkan
             </Button>
@@ -62,6 +79,8 @@ const ApiSurahDetail = () => {
               buttonClick={() => setOpsiSurah(false)}
               buttonClass={`${!opsiSurah && "border border-b-black"}  ${
                 style.opsiSurah
+              } ${
+                opsiDarkmode && "border-b-white"
               }  w-1/2 h-full mx-4 outline-none`}
             >
               baca
@@ -71,7 +90,9 @@ const ApiSurahDetail = () => {
             {opsiAllAudio ? (
               <div
                 onClick={onStopAudioAllHandler}
-                className="flex justify-around items-center border border-black w-2/6 h-full"
+                className={`${
+                  opsiDarkmode && "border-white"
+                } flex justify-around items-center border border-black w-2/6 h-full`}
               >
                 <Icon className="text-2xl" icon="carbon:pause-outline" />
 
@@ -80,7 +101,9 @@ const ApiSurahDetail = () => {
             ) : (
               <div
                 onClick={onStartAudioAllHandler}
-                className="flex justify-around items-center border border-black w-2/6 h-full"
+                className={`${
+                  opsiDarkmode && "border-white"
+                } flex justify-around items-center border border-black w-2/6 h-full`}
               >
                 <Icon className="text-2xl" icon="radix-icons:resume" />
                 <p className="text-[1.2rem] font-bold">Putar Audio</p>
@@ -88,7 +111,7 @@ const ApiSurahDetail = () => {
             )}
           </div>
         </div>
-        {opsiSurah ? <ApiTerjmah /> : <ApiRead/>}
+        {opsiSurah ? <ApiTerjmah /> : <ApiRead />}
       </div>
       {opsiAllAudio && (
         <div className="w-full fixed bottom-0">
@@ -97,11 +120,11 @@ const ApiSurahDetail = () => {
             onEnded={() => {
               setOpsiAllAudio(false);
             }}
+            ref={audioAllRef}
             controls
             autoPlay
-          >
-            <source src={data?.audio} />
-          </audio>
+            src={data?.audio}
+          ></audio>
         </div>
       )}
       {opsiOneAudio && (
@@ -110,7 +133,7 @@ const ApiSurahDetail = () => {
             ref={audioRef}
             id={`audio-${audioOne.id}`}
             className="w-full rounded-none"
-            onEnded={()=>setOpsiOneAudio(false)}
+            onEnded={() => setOpsiOneAudio(false)}
             src={audioOne.audioUrl}
             controls
             autoPlay

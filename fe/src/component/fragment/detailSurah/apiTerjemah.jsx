@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAlQuranDataSurahDetail } from "../../../query/data";
 import { OptionContext } from "../../../context/opsi";
 import { Icon } from "@iconify/react";
@@ -8,9 +8,11 @@ import {
 } from "../../../services/service";
 import { useParams } from "react-router-dom";
 import style from "../../../styles/animation.module.scss";
+import AlertMessageNotP from "../../alertMessage/alertNotP";
 const ApiTerjemah = () => {
   const { data } = useAlQuranDataSurahDetail();
   const [dataSurahByIdSearch, setDataSurahByIdSearch] = useState("");
+  const [alertBookmark, setAlertBookmark] = useState(false);
   const [lihatDetail, setLihatDetail] = useState(false);
   const { id: idSurah } = useParams();
   const {
@@ -28,10 +30,13 @@ const ApiTerjemah = () => {
     setOpsiBookmark,
     dataSurahById,
     setDataSurahById,
+    opsiDarkmode,
   } = useContext(OptionContext);
+
   useEffect(() => {
     localStorage.setItem("bookMark", JSON.stringify({ data: opsiBookmark }));
   }, [dataSurahById, opsiBookmark]);
+
   useEffect(() => {
     if (valueSearchSurahById === "") {
       setDataSurahByIdSearch("");
@@ -50,6 +55,9 @@ const ApiTerjemah = () => {
     }
   }, [audioOne.id]);
   useEffect(() => {}, [dataSurahByIdSearch]);
+  useEffect(() => {
+    console.log(alertBookmark);
+  }, [alertBookmark]);
   const onStopOneAudioHandler = () => {
     setOpsiOneAudio(false);
   };
@@ -87,6 +95,8 @@ const ApiTerjemah = () => {
         numberQuran: numberQuran,
       },
     ]);
+    setAlertBookmark(true);
+    console.log(alertBookmark);
   };
 
   return (
@@ -100,7 +110,7 @@ const ApiTerjemah = () => {
               onClick={() => {
                 setOpsitafsir(!opsiTafsir);
               }}
-              className="text-white text-2xl mx-2  mt-4"
+              className="text-white text-2xl mx-2  mt-4 cursor-pointer"
               icon="octicon:x-12"
             />
           </div>
@@ -144,7 +154,7 @@ const ApiTerjemah = () => {
           </div>
           <p
             onClick={() => setLihatDetail(!lihatDetail)}
-            className="text-center tracking-wider"
+            className="text-center tracking-wider cursor-pointer"
           >
             {lihatDetail ? "" : "lihat detail"}
           </p>
@@ -158,8 +168,14 @@ const ApiTerjemah = () => {
                 </p>
               </div>
               <Icon
-                className="text-center w-full text-2xl"
-                onClick={() => setLihatDetail(!lihatDetail)}
+                className="text-center w-full text-2xl cursor-pointer"
+                onClick={() => {
+                  setLihatDetail(!lihatDetail),
+                    window.scrollTo({
+                      top: 400,
+                      behavior: "smooth",
+                    });
+                }}
                 icon="ph:arrow-up-bold"
               />
             </div>
@@ -172,8 +188,8 @@ const ApiTerjemah = () => {
       </div>
       {dataSurahByIdSearch ? (
         <div
-          className={`${
-            opsiTafsir && "blur-[2px]"
+          className={`${opsiTafsir && "blur-[2px]"} ${
+            opsiDarkmode && "border-b-white"
           } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-2 relative`}
           key={dataSurahByIdSearch?.number?.inQuran}
         >
@@ -212,6 +228,7 @@ const ApiTerjemah = () => {
                   className="text-2xl my-4"
                   icon="ion:book-sharp"
                 />
+
                 <Icon
                   onClick={(e) =>
                     onBookMarkHandler(
@@ -221,7 +238,7 @@ const ApiTerjemah = () => {
                     )
                   }
                   className="text-2xl "
-                  icon="ic:sharp-bookmark"
+                  icon="fluent:bookmark-add-24-filled"
                 />
               </div>
             </div>
@@ -245,8 +262,8 @@ const ApiTerjemah = () => {
       ) : (
         data?.ayahs?.map((item) => (
           <div
-            className={`${
-              opsiTafsir && "blur-[2px]"
+            className={`${opsiTafsir && "blur-[2px]"} ${
+              opsiDarkmode && "border-b-white"
             } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-2 relative`}
             key={item?.number?.inQuran}
           >
@@ -282,6 +299,7 @@ const ApiTerjemah = () => {
                     className="text-2xl my-4 cursor-pointer"
                     icon="ion:book-sharp"
                   />
+
                   <Icon
                     onClick={(e) =>
                       onBookMarkHandler(
@@ -291,14 +309,18 @@ const ApiTerjemah = () => {
                       )
                     }
                     className="text-2xl cursor-cell "
-                    icon="ic:sharp-bookmark"
+                    icon="fluent:bookmark-add-24-filled"
                   />
                 </div>
               </div>
             </div>
             <div className="flex flex-col justify-between">
-              <div className="flex justify-end">
-                <img className="w-2/4" src={item?.image?.primary} alt="" />
+              <div className={` flex justify-end`}>
+                <img
+                  className={`${opsiDarkmode && "bg-white"} w-2/4`}
+                  src={item?.image?.primary}
+                  alt=""
+                />
               </div>
               <div className="w-4/5 mx-14  mt-4 min-h-[8rem] flex items-end">
                 <p className="tracking-wider">
