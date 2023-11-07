@@ -36,13 +36,14 @@ const BookMark = () => {
         JSON.stringify({ data: updatedDataBookmark })
       );
     }
-    window.location.reload();
+    window.location.reload()
   };
   return (
     <div
       className={`${opsiSetting && "blur-[2px]"} ${
         opsiDarkmode && "bg-amber-500 text-white border border-white"
-      } mt-14 mb-6 w-full min-h-[6rem] bg-amber-600 bg-opacity-50 p-3 rounded-xl flex-wrap`}
+      } mt-14 mb-6 w-full min-h-[6rem] bg-amber-600 bg-opacity-50 p-3 rounded-xl flex-wrap 
+      min-[1400px]:w-[80%]`}
     >
       <div
         className={`${
@@ -60,7 +61,9 @@ const BookMark = () => {
             />
             {alertRemoveAllItems && (
               <AlertMessage
-                classContaint={`${opsiDarkmode && "border border-white"} ${style.animatedTrash} absolute w-42 p-2 rounded-lg h-20  bg-black text-white z-20`}
+                classContaint={`${opsiDarkmode && "border border-white"} ${
+                  style.animatedTrash
+                } absolute w-42 p-2 rounded-lg h-20  bg-black text-white z-20`}
                 onCloseHandler={() =>
                   setAlertRemoveAllItems(!alertRemoveAllItems)
                 }
@@ -93,7 +96,9 @@ const BookMark = () => {
       <div
         className={`${alertRemoveAllItems && "blur-[3px]"} 
            ${dataBookmark?.length >= 1 && "justify-center gap-1"}
-           ${dataBookmark?.length < 1 && "justify-center gap-4 items-center"} w-full min-h-[3rem] flex-wrap items-center flex gap-2 justify-center `}
+           ${
+             dataBookmark?.length < 1 && "justify-center gap-4 items-center"
+           } w-full min-h-[3rem] max-h-[10rem] overflow-y-scroll flex-wrap items-center flex gap-2 justify-center  max-[1000px]:gap-0`}
       >
         {dataBookmark?.length > 0 ? (
           dataBookmark?.map((data) => (
@@ -101,7 +106,7 @@ const BookMark = () => {
               key={Math.random(8237465)}
               className={`${
                 opsiDarkmode && "border border-white"
-              } w-1/6 h-12 bg-black opacity-90 rounded-md text-white flex items-center justify-evenly mt-2`}
+              } m-1 w-1/6 h-12 bg-black opacity-90 rounded-md text-white flex items-center justify-evenly max-[750px]:w-[47%] max-[1100px]:w-[30%] min-[400px]:m-1 min-[1000px]:h-16 min-[900px]:mt-1`}
             >
               <div className="w-1/4 grid place-content-center h-full ">
                 <Icon
@@ -122,8 +127,8 @@ const BookMark = () => {
           ))
         ) : (
           <>
-            <p className="tracking-wider">klik icon</p>
-            <Icon className="text-2xl " icon="ic:sharp-bookmark" />
+            <p className="tracking-wider ">klik icon</p>
+            <Icon className="text-2xl max-[550px]:mx-2" icon="ic:sharp-bookmark" />
             <p className="tracking-wider">untuk menambahkan</p>
           </>
         )}

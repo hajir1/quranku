@@ -16,10 +16,14 @@ const OptionProvider = ({ children }) => {
   const [dataBookmark, setDataBookmark] = useState([]);
   const [opsiSetting, setOpsiSetting] = useState(false);
   const [opsiDarkmode, setOpsiDarkmode] = useState(false);
+  const [dataSurahByIdSearch, setDataSurahByIdSearch] = useState("");
+
   return (
     <OptionContext.Provider
       value={{
         searchAlert,
+        dataSurahByIdSearch,
+        setDataSurahByIdSearch,
         setSearchAlert,
         valueSearchSurah,
         setValueSearchSurah,
@@ -45,7 +49,7 @@ const OptionProvider = ({ children }) => {
         opsiSetting,
         setOpsiSetting,
         opsiDarkmode,
-        setOpsiDarkmode
+        setOpsiDarkmode,
       }}
     >
       {children}

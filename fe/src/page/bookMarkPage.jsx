@@ -93,12 +93,16 @@ const BookMarkPage = () => {
             <>
               <AlertMessageNotP
                 onCloseHandler={() => setAlertHapusBookmark(false)}
-                classIcon={`text-black`}
+                classIcon={`${opsiDarkmode ? "text-black" : "text-white"} `}
                 classContaint={`${style.animationTafsir} ${
-                  opsiDarkmode && "bg-white z-20 opacity-100 m-0"
+                  opsiDarkmode && "bg-white z-20 opacity-95 m-0 z-20"
                 } w-52 h-16 bg-black absolute z-20 text-white p-2 m-4 opacity-80`}
               >
-                <p className={`${opsiDarkmode && "text-black"} text-center w-full text-sm mt-2`}>
+                <p
+                  className={`${
+                    opsiDarkmode && "text-black"
+                  } text-center w-full text-sm mt-2`}
+                >
                   berhasil di hapus
                 </p>
               </AlertMessageNotP>
@@ -117,18 +121,21 @@ const BookMarkPage = () => {
                   icon="octicon:x-12"
                 />
               </div>
-              <div className="flex items-center flex-col p-10">
-                <div className="flex items-center w-full">
-                  <div className="w-[3%] mr-16">
+              <div className="flex items-center flex-col p-10 max-[650px]:p-3">
+                <div className="flex items-center w-full max-[650px]:flex-col ">
+                  <div className="w-[3%] mr-16 max-[650px]:w-full max-[650px]:flex max-[650px]:justify-center max-[650px]:my-4 max-[650px]:mr-0 ">
                     <div className="w-10 h-10 border mx-4 rotate-45 border-amber-400 grid place-content-center">
                       <div className="-rotate-45">
                         <p>{dataSurahById?.number?.inSurah}</p>
                       </div>
                     </div>
                   </div>
-                  <h1 className="w-full text-white text-center text-3xl tracking-wider">
+                  <h1 className="w-full text-white text-center text-3xl tracking-wider max-[650px]:hidden">
                     {dataSurahById?.arab}
                   </h1>
+                  <p className="w-full text-white text-center text-2xl tracking-wider max-[650px]:tracking-normal min-[650px]:hidden">
+                    {dataSurahById?.arab}
+                  </p>
                 </div>
                 <p className="text-white text-center text-[0.8rem] mt-4 tracking-wide">
                   <span className="font-bold">
@@ -137,19 +144,19 @@ const BookMarkPage = () => {
                   {dataSurahById?.translation}
                 </p>
               </div>
-              <div className="w-full p-10">
+              <div className="w-full p-10 max-[650px]:p-2">
                 <h1 className="tracking-widest font-bold">Tafsir Quraish :</h1>
                 <p className="text-sm tracking-wide mt-4">
                   {dataSurahById?.tafsir?.quraish}
                 </p>
               </div>
-              <div className="w-full p-10">
+              <div className="w-full p-10 max-[650px]:p-2">
                 <h1 className="tracking-widest font-bold">Tafsir Jalalyn :</h1>
                 <p className="text-sm tracking-wide mt-4">
                   {dataSurahById?.tafsir?.jalalayn}
                 </p>
               </div>
-              <div className="w-full p-10">
+              <div className="w-full p-10 max-[650px]:p-2">
                 <h1 className="tracking-widest font-bold">Tafsir Kemenag :</h1>
                 <p className="text-sm tracking-wide mt-4">
                   {dataSurahById?.tafsir?.kemenag?.short}
@@ -164,7 +171,7 @@ const BookMarkPage = () => {
               {lihatDetail && (
                 <div className="w-full">
                   {" "}
-                  <div className="w-full p-10  my-4">
+                  <div className="w-full p-10  my-4 max-[650px]:p-2">
                     <h1 className="tracking-widest font-bold">
                       Tafsir detail :
                     </h1>
@@ -196,17 +203,17 @@ const BookMarkPage = () => {
           <div
             className={`${opsiTafsir && "blur-[2px]"} ${
               opsiDarkmode && "border-b-white"
-            } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-2 relative`}
+            } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-4 relative`}
             key={dataSurahById?.number?.inQuran}
           >
-            <div className="absolute top-0 w-16 h-full">
-              <div className="flex flex-col items-center h-auto w-full ">
+            <div className="absolute top-0 h-full max-[800px]:h-16 max-[800px]:-top-10 max-[800px]:right-0">
+              <div className="flex flex-col items-center w-full max-[800px]:flex-row">
                 <div className="border border-amber-400 w-10 h-10 grid place-content-center rotate-45 m-4">
                   <div className="-rotate-45">
                     <p className="">{dataSurahById?.number?.inSurah}</p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center justify-end h-full">
+                <div className="flex flex-col items-center justify-end h-full max-[800px]:flex-row">
                   {opsiOneAudio ? (
                     <Icon
                       onClick={() => onStopOneAudioHandler()}
@@ -230,7 +237,7 @@ const BookMarkPage = () => {
                     onClick={(e) =>
                       onTafsirHandler(e, dataSurahById.number.inSurah)
                     }
-                    className="text-2xl my-4 cursor-pointer"
+                    className="text-2xl my-4 cursor-pointer max-[800px]:mx-2"
                     icon="ion:book-sharp"
                   />
 
@@ -247,12 +254,14 @@ const BookMarkPage = () => {
             <div className="flex flex-col justify-between">
               <div className="flex justify-end">
                 <img
-                  className={`${opsiDarkmode && "bg-white"} w-2/4`}
+                  className={`${
+                    opsiDarkmode && "bg-white"
+                  } w-2/4 max-[800px]:w-full`}
                   src={dataSurahById?.image?.primary}
                   alt=""
                 />
               </div>
-              <div className="w-4/5 mx-14  mt-4 min-h-[8rem] flex items-end">
+              <div className="w-4/5 mx-14  mt-4 min-h-[8rem] flex items-end max-[550px]:items-start max-[550px]:mx-0 max-[550px]:w-full">
                 <p className="tracking-wider">
                   <span className="font-bold">artinya : </span>
                   {dataSurahById?.translation}

@@ -18,7 +18,7 @@ const Settings = ({ type }) => {
   };
   return (
     <div
-      className={`${style.animatedTrash} absolute text-white right-0 w-1/4 bg-black min-h-screen z-10 max-[550px]:w-4/5`}
+      className={`${style.animatedTrash} absolute text-white right-0 w-1/4 bg-black min-h-screen z-10 max-[700px]:w-4/5 max-[1000px]:w-3/5 max-[1400px]:w-2/5`}
     >
       {type === "home" && (
         <div>
@@ -35,19 +35,21 @@ const Settings = ({ type }) => {
             <div className="flex justify-center w-full gap-2 mt-4">
               <div
                 onClick={onDarkmodeHandler}
-                className={`${!opsiDarkmode && "bg-amber-700 "} ${style.opsiSurah} w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
+                className={`${!opsiDarkmode && "bg-amber-700 "} ${
+                  style.opsiSurah
+                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
               >
                 <Icon className="2xl" icon="ic:sharp-brightness-4" />
-                <h1 className="">Mode Terang</h1>
+                <h1 className="max-[450px]:text-sm">Mode Terang</h1>
               </div>
               <div
                 onClick={onNotDarkmodeHandler}
-                className={`${
-                  opsiDarkmode && "bg-amber-700"
-                } ${style.opsiSurah} cursor-pointer w-1/2 border border-white p-2 flex items-center justify-evenly`}
+                className={`${opsiDarkmode && "bg-amber-700"} ${
+                  style.opsiSurah
+                } cursor-pointer w-1/2 border border-white p-2 flex items-center justify-evenly`}
               >
                 <Icon icon="mdi:brightness-3" />
-                <h1>Mode Gelap</h1>
+                <h1 className="max-[450px]:text-sm">Mode Gelap</h1>
               </div>
             </div>
           </div>
@@ -68,19 +70,21 @@ const Settings = ({ type }) => {
             <div className="flex justify-center w-full gap-2 mt-4">
               <div
                 onClick={onDarkmodeHandler}
-                className={`${!opsiDarkmode && "bg-amber-700"} ${style.opsiSurah} w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
+                className={`${!opsiDarkmode && "bg-amber-700"} ${
+                  style.opsiSurah
+                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
               >
                 <Icon className="2xl" icon="ic:sharp-brightness-4" />
-                <h1 className="">Mode Terang</h1>
+                <h1 className="max-[450px]:text-sm">Mode Terang</h1>
               </div>
               <div
                 onClick={onNotDarkmodeHandler}
-                className={`${
-                  opsiDarkmode && "bg-amber-700"
-                } ${style.opsiSurah} w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
+                className={`${opsiDarkmode && "bg-amber-700"} ${
+                  style.opsiSurah
+                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
               >
                 <Icon icon="mdi:brightness-3" />
-                <h1>Mode Gelap</h1>
+                <h1 className="max-[450px]:text-sm">Mode Gelap</h1>
               </div>
             </div>
           </div>

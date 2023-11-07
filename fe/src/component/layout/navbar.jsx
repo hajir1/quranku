@@ -32,7 +32,7 @@ const Navbar = ({ type }) => {
     };
   }, []);
   const onSearchHandler = (e) => {
-    setSearchAlert(true);
+    setSearchAlert(!searchAlert);
   };
   const onCloseSearchHandler = () => {
     setSearchAlert(false);
@@ -51,10 +51,12 @@ const Navbar = ({ type }) => {
       {type === "home" && (
         <div className="relative h-full">
           {opsiSetting && <Settings type="home" />}
-          <div className={`${opsiSetting && "blur-[2px]"} flex max-[550px]:p-1`}>
+          <div
+            className={`${opsiSetting && "blur-[2px]"} flex max-[550px]:p-1`}
+          >
             {searchAlert && (
               <div
-                className={`${style.animatedSearch} fixed right-0 w-1/4 max-[550px]:w-4/5`}
+                className={`${style.animatedSearch} fixed right-0 w-1/4 max-[750px]:w-4/5 max-[1100px]:w-1/2`}
               >
                 <form className={`flex items-center bg-black p-1`} action="">
                   <Input
@@ -74,11 +76,15 @@ const Navbar = ({ type }) => {
                 </form>
               </div>
             )}
-            <div className="h-12 w-1/4 flex justify-start items-center max-[550px]:w-1/2">
-              <img className="h-full mx-4 max-[550px]:m-2" src={`/iconQuran.png`} alt="" />
+            <div className="h-12 w-1/4 flex justify-start items-center max-[800px]:w-1/2">
+              <img
+                className="h-full mx-4 max-[550px]:m-2"
+                src={`/iconQuran.png`}
+                alt=""
+              />
               <p className="text-white tracking-wide mx-4">al-Quran</p>
             </div>
-            <div className="flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[550px]:w-1/2">
+            <div className="flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2">
               <Icon onClick={onSettingHandler} icon="uiw:setting" />
               <Icon icon="fluent:info-12-filled" />
               <Icon
@@ -96,7 +102,7 @@ const Navbar = ({ type }) => {
           <div className="flex max-[550px]:p-1 ">
             {searchAlert && (
               <div
-                className={`${style.animatedSearch} fixed right-0  p-1 h-full w-1/4 max-[550px]:w-4/5`}
+                className={`${style.animatedSearch} fixed right-0  p-1 h-full w-1/4 max-[750px]:w-2/5`}
               >
                 <form className={`flex items-center bg-black`} action="">
                   <Input
@@ -116,14 +122,18 @@ const Navbar = ({ type }) => {
                 </form>
               </div>
             )}
-            <div className="h-12 w-1/4 flex justify-start items-center max-[550px]:w-1/2 ">
-              <img className="h-full mx-4 max-[550px]:m-2" src={`/iconQuran.png`} alt="" />
+            <div className="h-12 w-1/4 flex justify-start items-center max-[800px]:w-1/2 ">
+              <img
+                className="h-full mx-4 max-[550px]:m-2"
+                src={`/iconQuran.png`}
+                alt=""
+              />
               <p className="text-white tracking-wide mx-4">al-Quran</p>
             </div>
             <div
               className={`${
                 !opsiSurah && "mx-16"
-              } flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[550px]:w-1/2`}
+              } flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2`}
             >
               <Icon
                 onClick={onSettingHandler}
@@ -133,7 +143,9 @@ const Navbar = ({ type }) => {
               <Icon className="cursor-pointer" icon="fluent:info-12-filled" />
               <Icon
                 onClick={onSearchHandler}
-                className={`${!opsiSurah && "hidden"} mr-10 cursor-pointer max-[550px]:mr-2`}
+                className={`${
+                  !opsiSurah && "hidden"
+                } mr-10 cursor-pointer max-[550px]:mr-2`}
                 icon="material-symbols:search"
               />
             </div>
