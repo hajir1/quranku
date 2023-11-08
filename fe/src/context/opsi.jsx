@@ -8,6 +8,8 @@ const OptionProvider = ({ children }) => {
   const [opsiAllAudio, setOpsiAllAudio] = useState(false);
   const [opsiOneAudio, setOpsiOneAudio] = useState(false);
   const audioRef = useRef(null);
+  const ukuranFontRef = useRef(null);
+  const settingModalRef = useRef(null);
   const [audioOne, setAudioOne] = useState({ id: null, audioUrl: "" });
   const [opsiTafsir, setOpsitafsir] = useState(false);
   const [opsiBookmark, setOpsiBookmark] = useState([]);
@@ -17,7 +19,9 @@ const OptionProvider = ({ children }) => {
   const [opsiSetting, setOpsiSetting] = useState(false);
   const [opsiDarkmode, setOpsiDarkmode] = useState(false);
   const [dataSurahByIdSearch, setDataSurahByIdSearch] = useState("");
-
+  const [opsiHome, setOpsiHome] = useState(false);
+  const [countFont, setCountFont] = useState(3);
+  const [valueAudio, setValueAudio] = useState("alafasy");
   return (
     <OptionContext.Provider
       value={{
@@ -36,6 +40,7 @@ const OptionProvider = ({ children }) => {
         audioOne,
         setAudioOne,
         audioRef,
+        ukuranFontRef,
         opsiTafsir,
         setOpsitafsir,
         opsiBookmark,
@@ -50,6 +55,13 @@ const OptionProvider = ({ children }) => {
         setOpsiSetting,
         opsiDarkmode,
         setOpsiDarkmode,
+        opsiHome,
+        setOpsiHome,
+        countFont,
+        settingModalRef,
+        setCountFont,
+        valueAudio,
+        setValueAudio,
       }}
     >
       {children}

@@ -1,0 +1,11 @@
+@keyframes iconSetting {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.iconSetting {
+ animation: iconSetting 3s infinite;
+}

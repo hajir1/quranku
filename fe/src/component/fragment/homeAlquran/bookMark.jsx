@@ -5,7 +5,7 @@ import style from "../../../styles/animation.module.scss";
 import { Link } from "react-router-dom";
 import { OptionContext } from "../../../context/opsi";
 const BookMark = () => {
-  const { dataBookmark, setDataBookmark, opsiSetting, opsiDarkmode } =
+  const { dataBookmark, setDataBookmark, opsiSetting, opsiDarkmode ,opsiHome} =
     useContext(OptionContext);
   const [alertRemoveAllItems, setAlertRemoveAllItems] = useState(false);
   const dataLokal = localStorage.getItem("bookMark");
@@ -14,23 +14,19 @@ const BookMark = () => {
     setDataBookmark(data?.data);
   }, []);
   const onRemoveBookmarkHandler = (id) => {
-    const count = dataBookmark.filter((item) => item.numberQuran === id).length;
+    const count = data?.data?.filter((item) => item.numberQuran === id).length;
     if (count > 1) {
-      const indexToRemove = dataBookmark.findIndex(
+      const indexToRemove = data?.data?.findIndex(
         (item) => item.numberQuran === id
       );
       if (indexToRemove >= 0) {
-        dataBookmark.splice(indexToRemove, 1);
-        localStorage.setItem(
-          "bookMark",
-          JSON.stringify({ data: dataBookmark })
-        );
+        data?.data?.splice(indexToRemove, 1);
+        localStorage.setItem("bookMark", JSON.stringify({ data: data?.data }));
       }
     } else {
-      const updatedDataBookmark = dataBookmark.filter(
+      const updatedDataBookmark = data?.data?.filter(
         (item) => item.numberQuran !== id
       );
-      setDataBookmark(updatedDataBookmark);
       localStorage.setItem(
         "bookMark",
         JSON.stringify({ data: updatedDataBookmark })
@@ -40,9 +36,9 @@ const BookMark = () => {
   };
   return (
     <div
-      className={`${opsiSetting && "blur-[2px]"} ${
+      className={`${opsiSetting && "blur-[2px]"} ${opsiHome && "blur-[2px]"} ${
         opsiDarkmode && "bg-amber-500 text-white border border-white"
-      } mt-14 mb-6 w-full min-h-[6rem] bg-amber-600 bg-opacity-50 p-3 rounded-xl flex-wrap 
+      } mt-20 mb-6 w-full min-h-[6rem] bg-amber-600 bg-opacity-50 p-3 rounded-xl flex-wrap 
       min-[1400px]:w-[80%]`}
     >
       <div
@@ -128,7 +124,10 @@ const BookMark = () => {
         ) : (
           <>
             <p className="tracking-wider ">klik icon</p>
-            <Icon className="text-2xl max-[550px]:mx-2" icon="ic:sharp-bookmark" />
+            <Icon
+              className="text-2xl max-[550px]:mx-2"
+              icon="ic:sharp-bookmark"
+            />
             <p className="tracking-wider">untuk menambahkan</p>
           </>
         )}

@@ -8,6 +8,9 @@ import { ApiAlQuranSurahById } from "../services/service";
 import AlertMessageNotP from "../component/alertMessage/alertNotP";
 const BookMarkPage = () => {
   const { id, page } = useParams();
+  useEffect(() => {
+    window.document.title = "bookMark al-Quran";
+  });
   const {
     setOpsiAllAudio,
     audioOne,
@@ -23,31 +26,19 @@ const BookMarkPage = () => {
     opsiDarkmode,
     dataSurahById,
     setDataSurahById,
+    countFont,
   } = useContext(OptionContext);
   const [lihatDetail, setLihatDetail] = useState(false);
   const [alertHapusBookmark, setAlertHapusBookmark] = useState(false);
+  const dataLokal = localStorage.getItem("bookMark");
+  const data = JSON.parse(dataLokal);
   useEffect(() => {
     ApiAlQuranSurahById(id, page, (data) => {
       setDataSurahById(data);
     });
   }, []);
   useEffect(() => {}, [dataSurahById]);
-  const onTafsirHandler = (e, idAyah) => {
-    e.preventDefault();
-    setOpsitafsir(true);
-    ApiAlQuranSurahById(id, idAyah, (data) => {
-      setDataSurahById(data);
-    });
-    window.scrollTo({
-      top: 350,
-      behavior: "smooth",
-    });
 
-    setSearchAlert(false);
-  };
-
-  const dataLokal = localStorage.getItem("bookMark");
-  const data = JSON.parse(dataLokal);
   useEffect(() => {
     setDataBookmark(data?.data);
   }, []);
@@ -62,7 +53,19 @@ const BookMarkPage = () => {
   const onStopOneAudioHandler = () => {
     setOpsiOneAudio(false);
   };
+  const onTafsirHandler = (e, idAyah) => {
+    e.preventDefault();
+    setOpsitafsir(true);
+    ApiAlQuranSurahById(id, idAyah, (data) => {
+      setDataSurahById(data);
+    });
+    window.scrollTo({
+      top: 350,
+      behavior: "smooth",
+    });
 
+    setSearchAlert(false);
+  };
   const onStartOneAudioHandler = (id, audioUrl) => {
     setOpsiAllAudio(false);
     setAudioOne({ id, audioUrl });
@@ -81,7 +84,7 @@ const BookMarkPage = () => {
   };
   return (
     <div className="w-full">
-      <Navbar type="detailSurah" />
+      <Navbar type="bookMark" />
 
       <div
         className={`${
@@ -207,7 +210,7 @@ const BookMarkPage = () => {
             key={dataSurahById?.number?.inQuran}
           >
             <div className="absolute top-0 h-full max-[800px]:h-16 max-[800px]:-top-10 max-[800px]:right-0">
-              <div className="flex flex-col items-center w-full max-[800px]:flex-row">
+              <div className="flex flex-col items-center w-full max-[800px]:flex-row-reverse">
                 <div className="border border-amber-400 w-10 h-10 grid place-content-center rotate-45 m-4">
                   <div className="-rotate-45">
                     <p className="">{dataSurahById?.number?.inSurah}</p>
@@ -254,18 +257,56 @@ const BookMarkPage = () => {
             <div className="flex flex-col justify-between">
               <div className="flex justify-end">
                 <img
-                  className={`${
+                  className={`${opsiDarkmode && "bg-white"} ${
                     opsiDarkmode && "bg-white"
-                  } w-2/4 max-[800px]:w-full`}
+                  } ${countFont === 1 && "w-[35%]  max-[800px]:w-[80%]"} ${
+                    countFont === 2 && "w-2/5 max-[800px]:w-[85%]"
+                  } ${countFont === 3 && "w-[45%] max-[800px]:w-[90%]"} ${
+                    countFont === 4 && "w-[50%] max-[800px]:w-[95%]"
+                  } ${countFont === 5 && "w-[60%] max-[800px]:w-full"}`}
                   src={dataSurahById?.image?.primary}
                   alt=""
                 />
               </div>
               <div className="w-4/5 mx-14  mt-4 min-h-[8rem] flex items-end max-[550px]:items-start max-[550px]:mx-0 max-[550px]:w-full">
-                <p className="tracking-wider">
-                  <span className="font-bold">artinya : </span>
-                  {dataSurahById?.translation}
-                </p>
+                <div className={`tracking-wider`}>
+                  <p
+                    className={`${
+                      countFont === 1 &&
+                      "text-[0.8rem] max-[650px]:text-[0.7rem]"
+                    } ${
+                      countFont === 2 &&
+                      "text-[0.9rem] max-[650px]:text-[0.8rem]"
+                    } ${
+                      countFont === 3 && "text-[1rem] max-[650px]:text-[0.9rem]"
+                    } ${
+                      countFont === 4 && "text-[1.1rem] max-[650px]:text-[1rem]"
+                    } ${
+                      countFont === 5 &&
+                      "text-[1.2rem] max-[650px]:text-[1.1rem]"
+                    } font-bold`}
+                  >
+                    artinya :{" "}
+                  </p>
+                  <p
+                    className={`${
+                      countFont === 1 &&
+                      "text-[0.8rem] max-[650px]:text-[0.7rem]"
+                    } ${
+                      countFont === 2 &&
+                      "text-[0.9rem] max-[650px]:text-[0.8rem]"
+                    } ${
+                      countFont === 3 && "text-[1rem] max-[650px]:text-[0.9rem]"
+                    } ${
+                      countFont === 4 && "text-[1.1rem] max-[650px]:text-[1rem]"
+                    } ${
+                      countFont === 5 &&
+                      "text-[1.2rem] max-[650px]:text-[1.1rem]"
+                    }`}
+                  >
+                    {dataSurahById?.translation}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ const HomeAlquran = () => {
   const {opsiDarkmode} = useContext(OptionContext)
   return (
     <div className="w-full">
-      <Navbar type="home" />
+      <Navbar type="homeQuran" />
         <div className={`${opsiDarkmode && "bg-black text-white"} flex flex-col items-center min-h-screen p-2`}>
         <BookMark />
           {error ? (

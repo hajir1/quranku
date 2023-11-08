@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useAlQuranDataSurahDetail } from "../../../query/data";
 import { OptionContext } from "../../../context/opsi";
 import { Icon } from "@iconify/react";
@@ -30,14 +30,12 @@ const ApiTerjemah = () => {
     setDataSurahById,
     setSearchAlert,
     opsiDarkmode,
+    opsiSetting,
     dataSurahByIdSearch,
     setDataSurahByIdSearch,
+    countFont,valueAudio
   } = useContext(OptionContext);
-
-  useEffect(() => {
-    localStorage.setItem("bookMark", JSON.stringify({ data: opsiBookmark }));
-  }, [dataSurahById, opsiBookmark]);
-
+  const tafsirModalRef = useRef(null);
   useEffect(() => {
     if (valueSearchSurahById === "") {
       setDataSurahByIdSearch("");
@@ -56,7 +54,33 @@ const ApiTerjemah = () => {
     }
   }, [audioOne.id]);
   useEffect(() => {}, [dataSurahByIdSearch]);
-  useEffect(() => {}, [alertBookmark]);
+  useEffect(() => {
+    localStorage.setItem("bookMark", JSON.stringify({ data: opsiBookmark }));
+  }, [alertBookmark]);
+  useEffect(() => {
+    setOpsitafsir(false);
+  }, [idSurah]);
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (
+        tafsirModalRef.current &&
+        !tafsirModalRef.current.contains(event.target)
+      ) {
+        setOpsitafsir(false);
+        window.location.reload();
+      }
+    }
+
+    if (opsiTafsir) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [opsiTafsir]);
   const onStopOneAudioHandler = () => {
     setOpsiOneAudio(false);
   };
@@ -76,7 +100,7 @@ const ApiTerjemah = () => {
       setDataSurahById(data);
     });
     window.scrollTo({
-      top: 550,
+      top: 350,
       behavior: "smooth",
     });
     setSearchAlert(false);
@@ -92,6 +116,7 @@ const ApiTerjemah = () => {
         numberQuran: numberQuran,
       },
     ]);
+
     setAlertBookmark(true);
   };
 
@@ -99,6 +124,7 @@ const ApiTerjemah = () => {
     <div className="w-full mt-4 min-h-screen">
       {opsiTafsir && (
         <div
+          ref={tafsirModalRef}
           className={`${style.animationTafsir} w-full min-h-screen bg-slate-800 text-white`}
         >
           <div className="p-2">
@@ -181,15 +207,30 @@ const ApiTerjemah = () => {
           )}
         </div>
       )}
-      <div className={`${opsiTafsir && "blur-[2px]"} w-full mt-4`}>
-        <h1 className="text-center text-3xl"> {data?.bismillah?.arab}</h1>
-        <p className="text-center max-[550px]:text-sm mt-2">
+      <div
+        className={`${opsiTafsir && "blur-[2px]"} ${
+          opsiSetting && "blur-[2px]"
+        } w-full mt-4`}
+      >
+        <h1
+          className={`${countFont === 1 && "text-[1.2rem]"} ${
+            countFont === 2 && "text-[1.4rem]"
+          } ${countFont === 3 && "text-[1.6rem]"} ${
+            countFont === 4 && "text-[1.8rem]"
+          } ${countFont === 5 && "text-[2rem]"} text-center`}
+        >
+          {" "}
+          {data?.bismillah?.arab}
+        </h1>
+        <p className={`text-center max-[550px]:text-sm mt-2`}>
           {data?.bismillah?.translation}
         </p>
       </div>
       {dataSurahByIdSearch ? (
         <div
           className={`${opsiTafsir && "blur-[2px]"} ${
+            opsiSetting && "blur-[2px]"
+          } ${
             opsiDarkmode && "border-b-white"
           } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-2 relative`}
           key={dataSurahByIdSearch?.number?.inQuran}
@@ -288,7 +329,13 @@ const ApiTerjemah = () => {
           <div className="flex flex-col justify-between">
             <div className="flex justify-end">
               <img
-                className="w-2/4 max-[550px]:w-full"
+                className={`${
+                  countFont === 1 && "w-[35%]  max-[800px]:w-[80%]"
+                } ${countFont === 2 && "w-2/5 max-[800px]:w-[85%]"} ${
+                  countFont === 3 && "w-[45%] max-[800px]:w-[90%]"
+                } ${countFont === 4 && "w-[50%] max-[800px]:w-[95%]"} ${
+                  countFont === 5 && "w-[60%] max-[800px]:w-full"
+                }`}
                 src={dataSurahByIdSearch?.image?.primary}
                 alt=""
               />
@@ -296,7 +343,13 @@ const ApiTerjemah = () => {
             <div className="w-4/5 mx-14  mt-4 min-h-[8rem] flex items-end max-[800px]:items-start max-[550px]:mx-0">
               <div className="">
                 <p className="font-bold">artinya : </p>
-                <p className="max-[600px]:text-sm">
+                <p
+                  className={`${countFont === 1 && "text-xs"} ${
+                    countFont === 2 && "text-[0.8rem]"
+                  } ${countFont === 3 && "text-[0.9rem]"} ${
+                    countFont === 4 && "text-[1rem]"
+                  } ${countFont === 5 && "text-[1.1rem]"}`}
+                >
                   {dataSurahByIdSearch?.translation}
                 </p>
               </div>
@@ -306,7 +359,9 @@ const ApiTerjemah = () => {
       ) : (
         data?.ayahs?.map((item) => (
           <div
-            className={`${opsiTafsir && "blur-[2px]"} ${
+            className={`${opsiTafsir && "blur-[2px]"}  ${
+              opsiSetting && "blur-[2px]"
+            } ${
               opsiDarkmode && "border-b-white"
             } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-2 relative`}
             key={item?.number?.inQuran}
@@ -395,17 +450,29 @@ const ApiTerjemah = () => {
             <div className="flex flex-col justify-between">
               <div className={` flex justify-end`}>
                 <img
-                  className={`${
-                    opsiDarkmode && "bg-white"
-                  } w-2/4 max-[800px]:w-full`}
+                  className={`${opsiDarkmode && "bg-white"} ${
+                    countFont === 1 && "w-[35%]  max-[800px]:w-[80%]"
+                  } ${countFont === 2 && "w-2/5 max-[800px]:w-[85%]"} ${
+                    countFont === 3 && "w-[45%] max-[800px]:w-[90%]"
+                  } ${countFont === 4 && "w-[50%] max-[800px]:w-[95%]"} ${
+                    countFont === 5 && "w-[60%] max-[800px]:w-full"
+                  } my-1`}
                   src={item?.image?.primary}
                   alt=""
                 />
               </div>
-              <div className="w-4/5 mx-14  mt-4 min-h-[8rem] flex items-end max-[800px]:items-start max-[550px]:mx-0">
+              <div className="w-4/5 mx-14  mt-4 min-h-[8rem] flex items-end max-[800px]:items-start max-[600px]:mx-0 max-[600px]:w-full">
                 <div className="">
                   <p className="font-bold">artinya : </p>
-                  <p className="max-[600px]:text-sm">{item?.translation}</p>
+                  <p
+                    className={`${countFont === 1 && "text-[0.8rem] max-[650px]:text-[0.7rem]"} ${
+                      countFont === 2 && "text-[0.9rem] max-[650px]:text-[0.8rem]"
+                    } ${countFont === 3 && "text-[1rem] max-[650px]:text-[0.9rem]"} ${
+                      countFont === 4 && "text-[1.1rem] max-[650px]:text-[1rem]"
+                    } ${countFont === 5 && "text-[1.2rem] max-[650px]:text-[1.1rem]"}`}
+                  >
+                    {item?.translation}
+                  </p>
                 </div>
               </div>
             </div>

@@ -10,6 +10,10 @@ h6 {
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.1px;
 }
+details{
+  direction: rtl;
+  text-align: right;
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -37,6 +41,22 @@ h6 {
     transform: translateY(0);
   }
 }
+@keyframes iconSurah {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes notIconSurah {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
 @keyframes rotateIcon {
   from {
     transform: rotate(0);
@@ -48,6 +68,15 @@ h6 {
 
 .animatedSearch {
   animation: animationSearch 1s ease;
+  transition: 0.7s;
+}
+
+.iconSurah {
+  animation: iconSurah 1s ease;
+  transition: 0.7s;
+}
+.notIconSurah {
+  animation: notIconSurah 1s ease;
   transition: 0.7s;
 }
 .animationTafsir {
