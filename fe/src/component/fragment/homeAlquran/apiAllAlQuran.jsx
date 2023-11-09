@@ -6,7 +6,7 @@ import style from "../../../styles/animation.module.scss";
 import { Link } from "react-router-dom";
 const AllAlQuranApi = () => {
   const { data } = useAlQuranDataSurah();
-  const { valueSearchSurah, opsiSetting,opsiHome } = useContext(OptionContext);
+  const { valueSearchSurah, opsiSetting, opsiHome } = useContext(OptionContext);
   const [dataSurahById, setDataSurahById] = useState("");
   useEffect(() => {
     if (valueSearchSurah !== "") {
@@ -17,17 +17,21 @@ const AllAlQuranApi = () => {
       setDataSurahById("");
     }
   }, [valueSearchSurah]);
+  useEffect(() => {
+    if (dataSurahById === "ERR_BAD_REQUEST") {
+      setDataSurahById("");
+    }
+  }, [dataSurahById]);
   return (
     <div
-      className={`${
-        opsiSetting && "blur-[2px]"
-      } ${
+      className={`${opsiSetting && "blur-[2px]"} ${
         opsiHome && "blur-[2px]"
       }  flex justify-around w-[90%] flex-wrap gap-2 max-[10520px]:w-full max-[1050px]:gap-0`}
     >
       {dataSurahById !== "" ? (
-        <div
-        className={`${style.items} w-[30%] outline-none border rounded-md border-amber-400 flex h-20 items-center max-[650px]:w-[100%] max-[1050px]:w-[47%] mt-2`}
+        <Link
+          to={`/surah/${dataSurahById.number}`}
+          className={`${style.items} w-[30%] outline-none border rounded-md border-amber-400 flex h-20 items-center max-[650px]:w-[100%] max-[1050px]:w-[47%] mt-2`}
           key={dataSurahById.number}
         >
           <div className="border border-amber-400 rotate-45 w-10 h-10 ml-4">
@@ -47,7 +51,7 @@ const AllAlQuranApi = () => {
             </p>
             <p className="text-sm">{dataSurahById.numberOfAyahs} ayat</p>
           </div>
-        </div>
+        </Link>
       ) : (
         data?.data?.map((data) => (
           <Link

@@ -63,6 +63,7 @@ const Navbar = ({ type }) => {
     setValueSearchSurahById("");
   };
   const onSettingHandler = (e) => {
+    setOpsiHome(false)
     setOpsiSetting(true);
   };
   const onOpsiHomeHandler = (e) => {
@@ -80,7 +81,7 @@ const Navbar = ({ type }) => {
           {opsiSetting && <Settings type="homeQuran" />}
           {opsiHome && (
             <div
-              className={`${style.iconSurah} my-2 absolute text-white bg-black w-[20%] h-96 z-30 p-4`}
+              className={`${style.iconSurah} my-2 absolute text-white bg-black w-1/5 h-96 z-30 p-4 max-[650px]:w-3/4`}
             >
               <div className="flex justify-end border-b-[1px] my-2">
                 <Icon

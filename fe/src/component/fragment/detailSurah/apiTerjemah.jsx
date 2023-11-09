@@ -8,7 +8,6 @@ import {
 } from "../../../services/service";
 import { useParams } from "react-router-dom";
 import style from "../../../styles/animation.module.scss";
-import AlertMessageNotP from "../../alertMessage/alertNotP";
 const ApiTerjemah = () => {
   const { data } = useAlQuranDataSurahDetail();
   const [alertBookmark, setAlertBookmark] = useState(false);
@@ -33,7 +32,8 @@ const ApiTerjemah = () => {
     opsiSetting,
     dataSurahByIdSearch,
     setDataSurahByIdSearch,
-    countFont,valueAudio
+    countFont,
+    valueAudio,
   } = useContext(OptionContext);
   const tafsirModalRef = useRef(null);
   useEffect(() => {
@@ -52,8 +52,12 @@ const ApiTerjemah = () => {
         audioRef.current.play();
       }
     }
-  }, [audioOne.id]);
-  useEffect(() => {}, [dataSurahByIdSearch]);
+  }, [audioOne.id, valueAudio]);
+  useEffect(() => {
+    if (dataSurahById === "ERR_BAD_REQUEST") {
+      setDataSurahByIdSearch("");
+    }
+  }, [dataSurahByIdSearch]);
   useEffect(() => {
     localStorage.setItem("bookMark", JSON.stringify({ data: opsiBookmark }));
   }, [alertBookmark]);
@@ -252,12 +256,26 @@ const ApiTerjemah = () => {
                   />
                 ) : (
                   <Icon
-                    onClick={() =>
+                    onClick={() => {
+                      let audio = null;
+                      if (valueAudio === "alafasy") {
+                        audio = dataSurahByIdSearch.audio.alafasy;
+                      } else if (valueAudio === "ahmedajamy") {
+                        audio = dataSurahByIdSearch.audio.ahmedajamy;
+                      } else if (valueAudio === "husarymujawwad") {
+                        audio = dataSurahByIdSearch.audio.husarymujawwad;
+                      } else if (valueAudio === "minshawi") {
+                        audio = dataSurahByIdSearch.audio.minshawi;
+                      } else if (valueAudio === "muhammadayyoub") {
+                        audio = dataSurahByIdSearch.audio.muhammadayyoub;
+                      } else if (valueAudio === "muhammadjibreel") {
+                        audio = dataSurahByIdSearch.audio.muhammadjibreel;
+                      }
                       onStartOneAudioHandler(
                         dataSurahByIdSearch.number.inSurah,
-                        dataSurahByIdSearch.audio.alafasy
-                      )
-                    }
+                        audio
+                      );
+                    }}
                     className="text-2xl"
                     icon="radix-icons:resume"
                   />
@@ -295,12 +313,26 @@ const ApiTerjemah = () => {
               />
             ) : (
               <Icon
-                onClick={() =>
+                onClick={() => {
+                  let audio = null;
+                  if (valueAudio === "alafasy") {
+                    audio = dataSurahByIdSearch.audio.alafasy;
+                  } else if (valueAudio === "ahmedajamy") {
+                    audio = dataSurahByIdSearch.audio.ahmedajamy;
+                  } else if (valueAudio === "husarymujawwad") {
+                    audio = dataSurahByIdSearch.audio.husarymujawwad;
+                  } else if (valueAudio === "minshawi") {
+                    audio = dataSurahByIdSearch.audio.minshawi;
+                  } else if (valueAudio === "muhammadayyoub") {
+                    audio = dataSurahByIdSearch.audio.muhammadayyoub;
+                  } else if (valueAudio === "muhammadjibreel") {
+                    audio = dataSurahByIdSearch.audio.muhammadjibreel;
+                  }
                   onStartOneAudioHandler(
                     dataSurahByIdSearch.number.inSurah,
-                    dataSurahByIdSearch.audio.alafasy
-                  )
-                }
+                    audio
+                  );
+                }}
                 className="text-2xl cursor-pointer"
                 icon="radix-icons:resume"
               />
@@ -382,12 +414,23 @@ const ApiTerjemah = () => {
                     />
                   ) : (
                     <Icon
-                      onClick={() =>
-                        onStartOneAudioHandler(
-                          item.number.inSurah,
-                          item.audio.alafasy
-                        )
-                      }
+                      onClick={() => {
+                        let audio = null;
+                        if (valueAudio === "alafasy") {
+                          audio = item.audio.alafasy;
+                        } else if (valueAudio === "ahmedajamy") {
+                          audio = item.audio.ahmedajamy;
+                        } else if (valueAudio === "husarymujawwad") {
+                          audio = item.audio.husarymujawwad;
+                        } else if (valueAudio === "minshawi") {
+                          audio = item.audio.minshawi;
+                        } else if (valueAudio === "muhammadayyoub") {
+                          audio = item.audio.muhammadayyoub;
+                        } else if (valueAudio === "muhammadjibreel") {
+                          audio = item.audio.muhammadjibreel;
+                        }
+                        onStartOneAudioHandler(item.number.inSurah, audio);
+                      }}
                       className="text-2xl cursor-pointer"
                       icon="radix-icons:resume"
                     />
@@ -422,12 +465,23 @@ const ApiTerjemah = () => {
                 />
               ) : (
                 <Icon
-                  onClick={() =>
-                    onStartOneAudioHandler(
-                      item.number.inSurah,
-                      item.audio.alafasy
-                    )
-                  }
+                  onClick={() => {
+                    let audio = null;
+                    if (valueAudio === "alafasy") {
+                      audio = item.audio.alafasy;
+                    } else if (valueAudio === "ahmedajamy") {
+                      audio = item.audio.ahmedajamy;
+                    } else if (valueAudio === "husarymujawwad") {
+                      audio = item.audio.husarymujawwad;
+                    } else if (valueAudio === "minshawi") {
+                      audio = item.audio.minshawi;
+                    } else if (valueAudio === "muhammadayyoub") {
+                      audio = item.audio.muhammadayyoub;
+                    } else if (valueAudio === "muhammadjibreel") {
+                      audio = item.audio.muhammadjibreel;
+                    }
+                    onStartOneAudioHandler(item.number.inSurah, audio);
+                  }}
                   className="text-2xl cursor-pointer"
                   icon="radix-icons:resume"
                 />
@@ -465,11 +519,20 @@ const ApiTerjemah = () => {
                 <div className="">
                   <p className="font-bold">artinya : </p>
                   <p
-                    className={`${countFont === 1 && "text-[0.8rem] max-[650px]:text-[0.7rem]"} ${
-                      countFont === 2 && "text-[0.9rem] max-[650px]:text-[0.8rem]"
-                    } ${countFont === 3 && "text-[1rem] max-[650px]:text-[0.9rem]"} ${
+                    className={`${
+                      countFont === 1 &&
+                      "text-[0.8rem] max-[650px]:text-[0.7rem]"
+                    } ${
+                      countFont === 2 &&
+                      "text-[0.9rem] max-[650px]:text-[0.8rem]"
+                    } ${
+                      countFont === 3 && "text-[1rem] max-[650px]:text-[0.9rem]"
+                    } ${
                       countFont === 4 && "text-[1.1rem] max-[650px]:text-[1rem]"
-                    } ${countFont === 5 && "text-[1.2rem] max-[650px]:text-[1.1rem]"}`}
+                    } ${
+                      countFont === 5 &&
+                      "text-[1.2rem] max-[650px]:text-[1.1rem]"
+                    }`}
                   >
                     {item?.translation}
                   </p>

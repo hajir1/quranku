@@ -9,3 +9,17 @@
 .iconSetting {
  animation: iconSetting 3s infinite;
 }
+
+
+@keyframes sekeleton {
+  0%{
+    background-color: white;
+  }
+  100%{
+    background-color: #b5bdb7;
+  }
+}
+
+.sekeleton{
+  animation: sekeleton 1s infinite;
+}

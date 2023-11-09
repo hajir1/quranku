@@ -5,7 +5,7 @@ import Navbar from "../component/layout/navbar";
 import { OptionContext } from "../context/opsi";
 import style from "../styles/animation.module.scss";
 import { ApiAlQuranSurahById } from "../services/service";
-import AlertMessageNotP from "../component/alertMessage/alertNotP";
+import AlertMessageNotP from "../component/message/alertMessage/alertNotP";
 const BookMarkPage = () => {
   const { id, page } = useParams();
   useEffect(() => {
@@ -26,7 +26,7 @@ const BookMarkPage = () => {
     opsiDarkmode,
     dataSurahById,
     setDataSurahById,
-    countFont,
+    countFont,valueAudio
   } = useContext(OptionContext);
   const [lihatDetail, setLihatDetail] = useState(false);
   const [alertHapusBookmark, setAlertHapusBookmark] = useState(false);
@@ -225,12 +225,26 @@ const BookMarkPage = () => {
                     />
                   ) : (
                     <Icon
-                      onClick={() =>
+                      onClick={() => {
+                        let audio = null;
+                        if (valueAudio === "alafasy") {
+                          audio = dataSurahById?.audio.alafasy;
+                        } else if (valueAudio === "ahmedajamy") {
+                          audio = dataSurahById?.audio.ahmedajamy;
+                        } else if (valueAudio === "husarymujawwad") {
+                          audio = dataSurahById?.audio.husarymujawwad;
+                        } else if (valueAudio === "minshawi") {
+                          audio = dataSurahById?.audio.minshawi;
+                        } else if (valueAudio === "muhammadayyoub") {
+                          audio = dataSurahById?.audio.muhammadayyoub;
+                        } else if (valueAudio === "muhammadjibreel") {
+                          audio = dataSurahById?.audio.muhammadjibreel;
+                        }
                         onStartOneAudioHandler(
-                          dataSurahById.number.inSurah,
-                          dataSurahById.audio.alafasy
-                        )
-                      }
+                          dataSurahById?.number.inSurah,
+                          audio
+                        );
+                      }}
                       className="text-2xl cursor-pointer"
                       icon="radix-icons:resume"
                     />

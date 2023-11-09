@@ -1,11 +1,11 @@
 import { Icon } from "@iconify/react";
 import { useContext, useEffect, useState } from "react";
-import AlertMessage from "../../alertMessage/alert";
+import AlertMessage from "../../message/alertMessage/alert";
 import style from "../../../styles/animation.module.scss";
 import { Link } from "react-router-dom";
 import { OptionContext } from "../../../context/opsi";
 const BookMark = () => {
-  const { dataBookmark, setDataBookmark, opsiSetting, opsiDarkmode ,opsiHome} =
+  const { dataBookmark, setDataBookmark, opsiSetting, opsiDarkmode, opsiHome } =
     useContext(OptionContext);
   const [alertRemoveAllItems, setAlertRemoveAllItems] = useState(false);
   const dataLokal = localStorage.getItem("bookMark");
@@ -32,7 +32,7 @@ const BookMark = () => {
         JSON.stringify({ data: updatedDataBookmark })
       );
     }
-    window.location.reload()
+    window.location.reload();
   };
   return (
     <div

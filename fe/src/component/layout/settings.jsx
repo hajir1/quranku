@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { OptionContext } from "../../context/opsi";
 import { Icon } from "@iconify/react";
 import style from "../../styles/animation.module.scss";
 import sekeleton from "../../styles/sekeleton.module.scss";
 import Button from "../element/Button";
+import AlertMessageNotP from "../message/alertMessage/alertNotP";
 const Settings = ({ type }) => {
   const {
     opsiSetting,
@@ -17,6 +18,7 @@ const Settings = ({ type }) => {
     valueAudio,
     setValueAudio,
   } = useContext(OptionContext);
+  const [alertSetting, setAlertSetting] = useState(false);
   useEffect(() => {
     if (countFont.current === 1) {
       ukuranGambarRef.current.style.width = "70%";
@@ -126,7 +128,7 @@ const Settings = ({ type }) => {
               </div>
             </div>
           </div>
-          <div className="p-4 text-white">
+          <div className="p-4 text-white border-b-[1px]">
             <div>
               <h1 className="tracking-widest">Ukuran Font al-Qur'an</h1>
               <div className="flex justify-center my-4">
@@ -167,10 +169,20 @@ const Settings = ({ type }) => {
           </div>
           <div className="p-4 text-white">
             <div className=" flex justify-between">
+              {alertSetting && (
+                <AlertMessageNotP
+                  classContaint={`w-2/4 p-2 h-20 bg-white absolute right-0 text-black`}
+                  onCloseHandler={() => setAlertSetting(false)}
+                >
+                  <p className="text-xs text-center">hanya tersedia untuk ayat</p>
+                </AlertMessageNotP>
+              )}
               <h1 className="tracking-widest">Audio</h1>
-              <div className={`w-2`}>
+              <div className={`w-2`} onClick={() => setAlertSetting(true)}>
                 <div
-                  className={`${sekeleton.iconSetting} w-3 h-3 absolute right-3 rounded-full bg-red-700`}
+                  className={`${sekeleton.iconSetting} ${
+                    alertSetting && "hidden"
+                  } w-3 h-3 absolute right-3 rounded-full bg-red-700`}
                 ></div>
                 <Icon
                   className="cursor-pointer text-2xl"
@@ -182,16 +194,16 @@ const Settings = ({ type }) => {
               <select
                 value={valueAudio}
                 name=""
-                onChange={(e)=>setValueAudio(e.target.value)}
+                onChange={(e) => setValueAudio(e.target.value)}
                 id=""
                 className="bg-black p-2 border border-white"
               >
                 <option value="alafasy">Alafasy</option>
                 <option value="ahmedajamy">Ahmedajamy</option>
-                <option value="husarymujawwad">Husarymujawwad</option>
+                <option value="husarymujawwad">Husary Mujawwad</option>
                 <option value="minshawi">Minshawi</option>
-                <option value="muhammadayyoub">Muhammadayyoub</option>
-                <option value="muhammadjibreel">Muhammadjibreel</option>
+                <option value="muhammadayyoub">Muhammad Ayyoub</option>
+                <option value="muhammadjibreel">Muhammad Jibreel</option>
               </select>
             </div>
           </div>
