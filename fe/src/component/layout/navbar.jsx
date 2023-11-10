@@ -113,7 +113,7 @@ const Navbar = ({ type, typeHome }) => {
           {opsiHome && (
             <div
               ref={opsiHomeRef}
-              className={`${style.iconSurah} my-2 absolute text-white bg-black w-1/5 h-96 z-30 p-4 max-[650px]:w-3/4 max-[900px]:w-2/4`}
+              className={`${style.iconSurah} absolute text-white bg-black w-1/5 h-96 z-30 p-4 max-[650px]:w-3/4 max-[900px]:w-2/4`}
             >
               <div className="flex p-2 justify-between items-center my-4 border-b-[1px]">
                 {typeHome === "Quran" && (
@@ -124,6 +124,9 @@ const Navbar = ({ type, typeHome }) => {
                 )}
                 {typeHome === "doa" && (
                   <img className="w-10 h-10" src="/icondoa.png" alt="" />
+                )}
+                {typeHome === "sholat" && (
+                  <img className="w-10 h-10" src="/iconSholat.png" alt="" />
                 )}
                 <Icon
                   onClick={() => setOpsiHome(!opsiHome)}
@@ -142,6 +145,9 @@ const Navbar = ({ type, typeHome }) => {
                     </Link>
                     <Link to={"/doa"} className="my-1 p-2">
                       doa doa
+                    </Link>
+                    <Link to={"/sholat"} className="my-1 p-2">
+                      jadwal sholat
                     </Link>
                   </div>
                 )}
@@ -162,6 +168,12 @@ const Navbar = ({ type, typeHome }) => {
                     >
                       doa doa
                     </Link>
+                    <Link
+                      to={"/sholat"}
+                      className="my-1 p-2"
+                    >
+                      jadwal sholat
+                    </Link>
                   </div>
                 )}
                 {typeHome === "doa" && (
@@ -176,10 +188,41 @@ const Navbar = ({ type, typeHome }) => {
                       Asmaul Husna
                     </Link>
                     <Link
-                      to={"/asmaulhusna"}
+                      to={"/doa"}
                       className="border-b-[1px] my-1 p-2"
                     >
                       doa doa
+                    </Link>
+                    <Link
+                      to={"/sholat"}
+                      className="my-1 p-2"
+                    >
+                      jadwal sholat
+                    </Link>
+                  </div>
+                )}
+                {typeHome === "sholat" && (
+                  <div className="flex flex-col">
+                    <Link to={"/"} className=" my-1 p-2">
+                      Al-Qur'an
+                    </Link>
+                    <Link
+                      to={"/asmaulhusna"}
+                      className="my-1 p-2"
+                    >
+                      Asmaul Husna
+                    </Link>
+                    <Link
+                      to={"/doa"}
+                      className=" my-1 p-2"
+                    >
+                      doa doa
+                    </Link>
+                    <Link
+                      to={"/sholat"}
+                      className="border-b-[1px] my-1 p-2"
+                    >
+                      jadwal sholat
                     </Link>
                   </div>
                 )}
@@ -258,6 +301,14 @@ const Navbar = ({ type, typeHome }) => {
                   alt=""
                 />
               )}
+              {typeHome === "sholat" && (
+                <img
+                  onClick={onOpsiHomeHandler}
+                  className="h-4/5 mx-4 max-[550px]:m-2"
+                  src={`/iconSholat.png`}
+                  alt=""
+                />
+              )}
               {typeHome === "Quran" && (
                 <p className="text-white tracking-wide mx-4">al-Quran</p>
               )}
@@ -267,10 +318,13 @@ const Navbar = ({ type, typeHome }) => {
               {typeHome === "doa" && (
                 <p className="text-white tracking-wide mx-4">doa doa</p>
               )}
+              {typeHome === "sholat" && (
+                <p className="text-white tracking-wide mx-4">jadwal sholat</p>
+              )}
             </div>
             <div className="flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2">
               <Icon onClick={onSettingHandler} icon="uiw:setting" />
-              <Icon icon="fluent:info-12-filled" />
+              <Link to={"/informasi"}><Icon icon="fluent:info-12-filled" /></Link>
               <Icon
                 onClick={onSearchHandler}
                 className="mr-10 max-[550px]:mr-2"

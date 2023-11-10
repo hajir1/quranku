@@ -11,7 +11,14 @@ import DetailAlQuranPAge from "./page/detailAlQuranPage";
 import BookMarkPage from "./page/bookMarkPage";
 import AsmaulHusnaPage from "./page/asmaulHusnaPage";
 import DoaPage from "./page/doaDoaPage";
+import JadwalSholatPage from "./page/jadwalsholatPage";
+import Page404 from "./page/404";
+import Information from "./page/Information";
 const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <Page404 />,
+  },
   {
     path: "/",
     element: <Home />,
@@ -31,6 +38,14 @@ const router = createBrowserRouter([
   {
     path: "/doa",
     element: <DoaPage />,
+  },
+  {
+    path: "/sholat",
+    element: <JadwalSholatPage />,
+  },
+  {
+    path: "/informasi",
+    element: <Information />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

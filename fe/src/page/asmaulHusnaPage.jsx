@@ -7,7 +7,7 @@ import { OptionContext } from "../context/opsi";
 
 import style from "../styles/animation.module.scss";
 import { getAsmaulHusnaSearch } from "../services/service";
-import AsmaulHusnaLoading from "../component/message/loadingMessage/asmaulhusna";
+import LoadingItems from "../component/message/loadingMessage/laodingitems";
 const AsmaulHusnaPage = () => {
   const { data, isLoading, error } = useAllAsmaulHusna();
   const { valueSearchAsmaulHusna, opsiSetting, opsiDarkmode } =
@@ -41,7 +41,7 @@ const AsmaulHusnaPage = () => {
         {error ? (
           <Error408 />
         ) : isLoading ? (
-          <AsmaulHusnaLoading />
+          < LoadingItems/>
         ) : (
           data && (
             <div

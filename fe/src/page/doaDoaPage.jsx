@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "../component/layout/navbar";
-// import { useAllDataDoaDoa } from "../query/data";
+import {  useAllDoaDoa } from "../query/data";
 import Error408 from "../component/message/errorMessage/error408";
 import ApiAllDoa from "../component/fragment/doadoa/apiAllDoa";
 import NavbarLoading from "../component/message/loadingMessage/navbarLoading";
+import { OptionContext } from "../context/opsi";
+import LoadingItems from "../component/message/loadingMessage/laodingitems";
 
 const DoaPage = () => {
-//   const { data, error, isLoading } = useAllDataDoaDoa();
+  const { data, error, isLoading } = useAllDoaDoa();
+  const {opsiDarkmode} =useContext(OptionContext)
   useEffect(() => {
     window.document.title = "home doa-doa";
     const linkElement = document.querySelector("link[rel*='icon']");
@@ -14,14 +17,14 @@ const DoaPage = () => {
   },[]);
   return (
     <div className="w-full">
-      {/* {isLoading ? (
+      {isLoading ? (
         <NavbarLoading />
       ) : (
-        data && <Navbar typeHome="asmaulhusna" type="home" />
+        data && <Navbar typeHome="doa" type="home" />
       )}
-      <div className="flex flex-col">
-        {error ? <Error408 /> : isLoading ? "" : data && <ApiAllDoa />}
-      </div> */}
+      <div className={`${opsiDarkmode && "bg-black text-white"} flex flex-col`}>
+        {error ? <Error408 /> : isLoading ? <LoadingItems/> : data && <ApiAllDoa />}
+      </div>
     </div>
   );
 };

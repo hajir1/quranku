@@ -48,3 +48,10 @@ export const getAsmaulHusnaSearch = (id, callback) => {
     .then((res) => callback(res))
     .catch((err) => callback(err));
 };
+export const getAllDoaDoa = async () => {
+  const response = await fetch(`${API_BASE_URL}/doa`);
+  if (!response.status === true) {
+    throw new Error("gagal mengambil data");
+  }
+  return response.json();
+};

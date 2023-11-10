@@ -24,6 +24,10 @@ const endpoints = [
     path: `${config.BASE_URL}/random`,
     description: "get random ayah: /random",
   },
+  {
+    path: `${config.BASE_URL}/doa`,
+    description: "get all doa doa",
+  },
 ];
 
 export const HomeController = (req, res) => {

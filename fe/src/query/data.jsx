@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import {
   getAllAsmaulHusna,
+  getAllDoaDoa,
   getAlQuranSurah,
   getAlQuranSurahDetail,
 } from "../services/service";
@@ -24,3 +25,7 @@ export const useAllAsmaulHusna = () => {
   return { data, error, isLoading };
 };
 
+export const useAllDoaDoa = () => {
+  const { data, isLoading, error } = useQuery("dataDoaDoa", getAllDoaDoa);
+  return { data, isLoading, error };
+};
