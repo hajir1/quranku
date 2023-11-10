@@ -12,8 +12,8 @@ const Information = () => {
         <p>
           website ini dibangun dengan technology expressJs , reactJs ,
           tailwindCss dan Sass ,dan react-query sebagai state management ,ini
-          adalah website open sources , saya menyadari begitu banyak fitur fitur
-          yang belum tersedia di website ini , mohon maaf dan terima kasih.
+          adalah website open source , saya menyadari begitu banyak fitur fitur
+          yang belum tersedia di website ini,mohon maaf dan terima kasih.
         </p>
       </div>
     </div>
