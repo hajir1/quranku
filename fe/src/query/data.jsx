@@ -1,9 +1,7 @@
-// hooks/useAlQuranData.js
 import { useQuery } from "react-query";
 import {
   getAllAsmaulHusna,
   getAlQuranSurah,
-  getAllDataDoa,
   getAlQuranSurahDetail,
 } from "../services/service";
 import { useParams } from "react-router-dom";
@@ -25,7 +23,4 @@ export const useAllAsmaulHusna = () => {
   });
   return { data, error, isLoading };
 };
-// export const useAllDataDoaDoa = () => {
-//   const { data, isLoading, error } = useQuery("dataDoaDoa", getAllDataDoa);
-//   return { data, isLoading, error };
-// };
+
