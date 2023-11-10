@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import Navbar from "../component/layout/navbar";
 import { OptionContext } from "../context/opsi";
 import style from "../styles/animation.module.scss";
-import { ApiAlQuranSurahById } from "../services/service";
+import { getAlQuranSurahById } from "../services/service";
 import AlertMessageNotP from "../component/message/alertMessage/alertNotP";
 const BookMarkPage = () => {
   const { id, page } = useParams();
@@ -33,7 +33,7 @@ const BookMarkPage = () => {
   const dataLokal = localStorage.getItem("bookMark");
   const data = JSON.parse(dataLokal);
   useEffect(() => {
-    ApiAlQuranSurahById(id, page, (data) => {
+    getAlQuranSurahById(id, page, (data) => {
       setDataSurahById(data);
     });
   }, []);
@@ -95,7 +95,7 @@ const BookMarkPage = () => {
           {alertHapusBookmark && (
             <>
               <AlertMessageNotP
-                onCloseHandler={() => setAlertHapusBookmark(false)}
+                onCloseHandler={() =>{ setAlertHapusBookmark(false),window.location.href="/"}}
                 classIcon={`${opsiDarkmode ? "text-black" : "text-white"} `}
                 classContaint={`${style.animationTafsir} ${
                   opsiDarkmode && "bg-white z-20 opacity-95 m-0 z-20"

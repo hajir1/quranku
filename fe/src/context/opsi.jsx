@@ -22,6 +22,7 @@ const OptionProvider = ({ children }) => {
   const [opsiHome, setOpsiHome] = useState(false);
   const [countFont, setCountFont] = useState(3);
   const [valueAudio, setValueAudio] = useState("alafasy");
+  const [valueSearchAsmaulHusna, setValueSearchAsmaulHusna] = useState("");
   return (
     <OptionContext.Provider
       value={{
@@ -62,6 +63,8 @@ const OptionProvider = ({ children }) => {
         setCountFont,
         valueAudio,
         setValueAudio,
+        valueSearchAsmaulHusna,
+        setValueSearchAsmaulHusna,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AllAlQuranApi from "../component/fragment/homeAlquran/apiAllAlQuran";
 import BookMark from "../component/fragment/homeAlquran/bookMark";
 import Navbar from "../component/layout/navbar";
@@ -11,19 +11,28 @@ import AllQuranSurahLoading from "../component/message/loadingMessage/allsurahLo
 const HomeAlquran = () => {
   const { data, isLoading, error } = useAlQuranDataSurah();
   const { opsiDarkmode } = useContext(OptionContext);
+  useEffect(() => {
+    const linkElement = document.querySelector("link[rel*='icon']");
+    linkElement.href = "/iconQuran.png";
+    window.document.title = "home al-Quran";
+  },[]);
   return (
     <div className="w-full">
-      {isLoading ? <NavbarLoading /> : data && <Navbar type="homeQuran" />}
+      {isLoading ? (
+        <NavbarLoading />
+      ) : (
+        data && <Navbar typeHome="Quran" type="home" />
+      )}
       <div
         className={`${
           opsiDarkmode && "bg-black text-white"
         } flex flex-col items-center min-h-screen p-2`}
       >
-        {isLoading ? <BookMarkLoading/> : data && <BookMark />}
+        {isLoading ? <BookMarkLoading /> : data && <BookMark />}
         {error ? (
           <Error408 />
         ) : isLoading ? (
-          <AllQuranSurahLoading/>
+          <AllQuranSurahLoading />
         ) : (
           data && <AllAlQuranApi />
         )}

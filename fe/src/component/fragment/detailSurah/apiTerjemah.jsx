@@ -3,8 +3,8 @@ import { useAlQuranDataSurahDetail } from "../../../query/data";
 import { OptionContext } from "../../../context/opsi";
 import { Icon } from "@iconify/react";
 import {
-  ApiAlQuranSurahById,
-  ApiAlQuranSurahByIdSearch,
+  getAlQuranSurahByIdSearch,
+  getAlQuranSurahById,
 } from "../../../services/service";
 import { useParams } from "react-router-dom";
 import style from "../../../styles/animation.module.scss";
@@ -40,7 +40,7 @@ const ApiTerjemah = () => {
     if (valueSearchSurahById === "") {
       setDataSurahByIdSearch("");
     } else {
-      ApiAlQuranSurahByIdSearch(idSurah, valueSearchSurahById, (data) => {
+      getAlQuranSurahByIdSearch(idSurah, valueSearchSurahById, (data) => {
         setDataSurahByIdSearch(data);
       });
     }
@@ -100,7 +100,7 @@ const ApiTerjemah = () => {
 
   const onTafsirHandler = (e, idAyah) => {
     setOpsitafsir(!opsiTafsir);
-    ApiAlQuranSurahById(idSurah, idAyah, (data) => {
+    getAlQuranSurahById(idSurah, idAyah, (data) => {
       setDataSurahById(data);
     });
     window.scrollTo({
@@ -361,13 +361,13 @@ const ApiTerjemah = () => {
           <div className="flex flex-col justify-between">
             <div className="flex justify-end">
               <img
-                className={`${
+                className={` ${
                   countFont === 1 && "w-[35%]  max-[800px]:w-[80%]"
                 } ${countFont === 2 && "w-2/5 max-[800px]:w-[85%]"} ${
                   countFont === 3 && "w-[45%] max-[800px]:w-[90%]"
                 } ${countFont === 4 && "w-[50%] max-[800px]:w-[95%]"} ${
                   countFont === 5 && "w-[60%] max-[800px]:w-full"
-                }`}
+                } bg-white mt-2`}
                 src={dataSurahByIdSearch?.image?.primary}
                 alt=""
               />

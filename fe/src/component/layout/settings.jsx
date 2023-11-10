@@ -174,7 +174,9 @@ const Settings = ({ type }) => {
                   classContaint={`w-2/4 p-2 h-20 bg-white absolute right-0 text-black`}
                   onCloseHandler={() => setAlertSetting(false)}
                 >
-                  <p className="text-xs text-center">hanya tersedia untuk ayat</p>
+                  <p className="text-xs text-center">
+                    hanya tersedia untuk ayat
+                  </p>
                 </AlertMessageNotP>
               )}
               <h1 className="tracking-widest">Audio</h1>

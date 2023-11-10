@@ -9,6 +9,8 @@ import QueryControls from "./query/query";
 import OptionProvider from "./context/opsi";
 import DetailAlQuranPAge from "./page/detailAlQuranPage";
 import BookMarkPage from "./page/bookMarkPage";
+import AsmaulHusnaPage from "./page/asmaulHusnaPage";
+import DoaPage from "./page/doaDoaPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: "/surah/:id/:page",
     element: <BookMarkPage />,
+  },
+  {
+    path: "/asmaulhusna",
+    element: <AsmaulHusnaPage />,
+  },
+  {
+    path: "/doa",
+    element: <DoaPage />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

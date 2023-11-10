@@ -31,7 +31,6 @@ const ApiSurahDetail = () => {
     setOpsiSetting,
     dataSurahByIdSearch,
     countFont,
-    valueAudio,
   } = useContext(OptionContext);
   const audioAllRef = useRef(null);
   useEffect(() => {
@@ -227,7 +226,7 @@ const ApiSurahDetail = () => {
               baca
             </Button>
           </div>
-          <div className="w-3/5 h-12 flex justify-end items-center max-[800px]:w-2/5 ">
+          <div className={`${dataSurahByIdSearch !== "" && "hidden"} w-3/5 h-12 flex justify-end items-center max-[800px]:w-2/5`}>
             {opsiAllAudio ? (
               <div
                 onClick={onStopAudioAllHandler}

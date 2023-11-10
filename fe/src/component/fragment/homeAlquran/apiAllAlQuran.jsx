@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useAlQuranDataSurah } from "../../../query/data";
 import { OptionContext } from "../../../context/opsi";
-import { ApiAlQuranSurahSearch } from "../../../services/service";
+import {  getAlQuranSurahSearch } from "../../../services/service";
 import style from "../../../styles/animation.module.scss";
 import { Link } from "react-router-dom";
 const AllAlQuranApi = () => {
@@ -10,7 +10,7 @@ const AllAlQuranApi = () => {
   const [dataSurahById, setDataSurahById] = useState("");
   useEffect(() => {
     if (valueSearchSurah !== "") {
-      ApiAlQuranSurahSearch(valueSearchSurah, (dataApi) => {
+      getAlQuranSurahSearch(valueSearchSurah, (dataApi) => {
         setDataSurahById(dataApi);
       });
     } else {
