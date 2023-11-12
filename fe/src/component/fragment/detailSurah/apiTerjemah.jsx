@@ -247,116 +247,148 @@ const ApiTerjemah = () => {
                 </div>
               </div>
               <div className="flex flex-col items-center justify-end h-full  max-[800px]:hidden">
-                {opsiOneAudio &&
-                audioOne.id === dataSurahByIdSearch.number.inSurah ? (
+                <div className={`${style.tooltipOpsiHome}`}>
+                  {opsiOneAudio &&
+                  audioOne.id === dataSurahByIdSearch.number.inSurah ? (
+                    <Icon
+                      onClick={() => onStopOneAudioHandler()}
+                      className="text-2xl"
+                      icon="carbon:pause-outline"
+                    />
+                  ) : (
+                    <Icon
+                      onClick={() => {
+                        let audio = null;
+                        if (valueAudio === "alafasy") {
+                          audio = dataSurahByIdSearch.audio.alafasy;
+                        } else if (valueAudio === "ahmedajamy") {
+                          audio = dataSurahByIdSearch.audio.ahmedajamy;
+                        } else if (valueAudio === "husarymujawwad") {
+                          audio = dataSurahByIdSearch.audio.husarymujawwad;
+                        } else if (valueAudio === "minshawi") {
+                          audio = dataSurahByIdSearch.audio.minshawi;
+                        } else if (valueAudio === "muhammadayyoub") {
+                          audio = dataSurahByIdSearch.audio.muhammadayyoub;
+                        } else if (valueAudio === "muhammadjibreel") {
+                          audio = dataSurahByIdSearch.audio.muhammadjibreel;
+                        }
+                        onStartOneAudioHandler(
+                          dataSurahByIdSearch.number.inSurah,
+                          audio
+                        );
+                      }}
+                      className="text-2xl"
+                      icon="radix-icons:resume"
+                    />
+                  )}
+                  <p
+                    className={`${style.tooltipAlertleft} bg-black text-white`}
+                  >
+                    putar audio
+                  </p>
+                </div>
+
+                <div className={`${style.tooltipOpsiHome}`}>
                   <Icon
-                    onClick={() => onStopOneAudioHandler()}
-                    className="text-2xl"
-                    icon="carbon:pause-outline"
-                  />
-                ) : (
-                  <Icon
-                    onClick={() => {
-                      let audio = null;
-                      if (valueAudio === "alafasy") {
-                        audio = dataSurahByIdSearch.audio.alafasy;
-                      } else if (valueAudio === "ahmedajamy") {
-                        audio = dataSurahByIdSearch.audio.ahmedajamy;
-                      } else if (valueAudio === "husarymujawwad") {
-                        audio = dataSurahByIdSearch.audio.husarymujawwad;
-                      } else if (valueAudio === "minshawi") {
-                        audio = dataSurahByIdSearch.audio.minshawi;
-                      } else if (valueAudio === "muhammadayyoub") {
-                        audio = dataSurahByIdSearch.audio.muhammadayyoub;
-                      } else if (valueAudio === "muhammadjibreel") {
-                        audio = dataSurahByIdSearch.audio.muhammadjibreel;
-                      }
-                      onStartOneAudioHandler(
-                        dataSurahByIdSearch.number.inSurah,
-                        audio
-                      );
+                    onClick={(e) => {
+                      onTafsirHandler(e, dataSurahByIdSearch.number.inSurah);
                     }}
-                    className="text-2xl"
-                    icon="radix-icons:resume"
+                    className="text-2xl my-4 cursor-pointer"
+                    icon="ion:book-sharp"
                   />
-                )}
+                  <p
+                    className={`${style.tooltipAlertleft} bg-black text-white`}
+                  >
+                    lihat tafsir
+                  </p>
+                </div>
 
-                <Icon
-                  onClick={(e) => {
-                    onTafsirHandler(e, dataSurahByIdSearch.number.inSurah);
-                  }}
-                  className="text-2xl my-2"
-                  icon="ion:book-sharp"
-                />
-
-                <Icon
-                  onClick={(e) =>
-                    onBookMarkHandler(
-                      e,
-                      dataSurahByIdSearch.number.inSurah,
-                      dataSurahByIdSearch.number.inQuran
-                    )
-                  }
-                  className="text-2xl "
-                  icon="fluent:bookmark-add-24-filled"
-                />
+                <div className={`${style.tooltipOpsiHome}`}>
+                  <Icon
+                    onClick={(e) =>
+                      onBookMarkHandler(
+                        e,
+                        dataSurahByIdSearch.number.inSurah,
+                        dataSurahByIdSearch.number.inQuran
+                      )
+                    }
+                    className="text-2xl "
+                    icon="fluent:bookmark-add-24-filled"
+                  />
+                  <p
+                    className={`${style.tooltipAlertleft} bg-black text-white`}
+                  >
+                    tambahkan ke bookmark
+                  </p>
+                </div>
               </div>
             </div>
           </div>
           <div className="flex items-center justify-center gap-2 h-full min-[800px]:hidden ">
-            {opsiOneAudio &&
-            audioOne.id === dataSurahByIdSearch.number.inSurah ? (
+            <div className={`${style.tooltipSettings}`}>
+              {opsiOneAudio &&
+              audioOne.id === dataSurahByIdSearch.number.inSurah ? (
+                <Icon
+                  onClick={() => onStopOneAudioHandler()}
+                  className="text-2xl"
+                  icon="carbon:pause-outline"
+                />
+              ) : (
+                <Icon
+                  onClick={() => {
+                    let audio = null;
+                    if (valueAudio === "alafasy") {
+                      audio = dataSurahByIdSearch.audio.alafasy;
+                    } else if (valueAudio === "ahmedajamy") {
+                      audio = dataSurahByIdSearch.audio.ahmedajamy;
+                    } else if (valueAudio === "husarymujawwad") {
+                      audio = dataSurahByIdSearch.audio.husarymujawwad;
+                    } else if (valueAudio === "minshawi") {
+                      audio = dataSurahByIdSearch.audio.minshawi;
+                    } else if (valueAudio === "muhammadayyoub") {
+                      audio = dataSurahByIdSearch.audio.muhammadayyoub;
+                    } else if (valueAudio === "muhammadjibreel") {
+                      audio = dataSurahByIdSearch.audio.muhammadjibreel;
+                    }
+                    onStartOneAudioHandler(
+                      dataSurahByIdSearch.number.inSurah,
+                      audio
+                    );
+                  }}
+                  className="text-2xl cursor-pointer"
+                  icon="radix-icons:resume"
+                />
+              )}
+              <p className={`${style.tooltipAlertright} z-10`}>putar audio</p>
+            </div>
+
+            <div className={`${style.tooltipSettings}`}>
               <Icon
-                onClick={() => onStopOneAudioHandler()}
-                className="text-2xl"
-                icon="carbon:pause-outline"
-              />
-            ) : (
-              <Icon
-                onClick={() => {
-                  let audio = null;
-                  if (valueAudio === "alafasy") {
-                    audio = dataSurahByIdSearch.audio.alafasy;
-                  } else if (valueAudio === "ahmedajamy") {
-                    audio = dataSurahByIdSearch.audio.ahmedajamy;
-                  } else if (valueAudio === "husarymujawwad") {
-                    audio = dataSurahByIdSearch.audio.husarymujawwad;
-                  } else if (valueAudio === "minshawi") {
-                    audio = dataSurahByIdSearch.audio.minshawi;
-                  } else if (valueAudio === "muhammadayyoub") {
-                    audio = dataSurahByIdSearch.audio.muhammadayyoub;
-                  } else if (valueAudio === "muhammadjibreel") {
-                    audio = dataSurahByIdSearch.audio.muhammadjibreel;
-                  }
-                  onStartOneAudioHandler(
-                    dataSurahByIdSearch.number.inSurah,
-                    audio
-                  );
+                onClick={(e) => {
+                  onTafsirHandler(e, dataSurahByIdSearch.number.inSurah);
                 }}
-                className="text-2xl cursor-pointer"
-                icon="radix-icons:resume"
+                className="text-2xl my-4 cursor-pointer "
+                icon="ion:book-sharp"
               />
-            )}
+              <p className={`${style.tooltipAlertright} z-10 `}>lihat tafsir</p>
+            </div>
 
-            <Icon
-              onClick={(e) => {
-                onTafsirHandler(e, dataSurahByIdSearch.number.inSurah);
-              }}
-              className="text-2xl my-4 cursor-pointer "
-              icon="ion:book-sharp"
-            />
-
-            <Icon
-              onClick={(e) =>
-                onBookMarkHandler(
-                  e,
-                  dataSurahByIdSearch.number.inSurah,
-                  dataSurahByIdSearch.number.inQuran
-                )
-              }
-              className="text-2xl cursor-cell "
-              icon="fluent:bookmark-add-24-filled"
-            />
+            <div className={`${style.tooltipSettings}`}>
+              <Icon
+                onClick={(e) =>
+                  onBookMarkHandler(
+                    e,
+                    dataSurahByIdSearch.number.inSurah,
+                    dataSurahByIdSearch.number.inQuran
+                  )
+                }
+                className="text-2xl cursor-cell "
+                icon="fluent:bookmark-add-24-filled"
+              />
+              <p className={`${style.tooltipAlertright} z-10`}>
+                tambahkan Ke BookMark
+              </p>
+            </div>
           </div>
           <div className="flex flex-col justify-between">
             <div className="flex justify-end">
@@ -407,12 +439,100 @@ const ApiTerjemah = () => {
                 </div>
                 <div className="flex flex-col items-center justify-end h-full max-[800px]:hidden">
                   {opsiOneAudio && audioOne.id === item.number.inSurah ? (
+                    <div className={`${style.tooltipOpsiHome}`}>
+                      <Icon
+                        onClick={() => onStopOneAudioHandler()}
+                        className="text-2xl"
+                        icon="carbon:pause-outline"
+                      />
+                      <p
+                        className={`${style.tooltipAlertleft} bg-black text-white`}
+                      >
+                        hentikan audio
+                      </p>
+                    </div>
+                  ) : (
+                    <div className={`${style.tooltipOpsiHome}`}>
+                      <Icon
+                        onClick={() => {
+                          let audio = null;
+                          if (valueAudio === "alafasy") {
+                            audio = item.audio.alafasy;
+                          } else if (valueAudio === "ahmedajamy") {
+                            audio = item.audio.ahmedajamy;
+                          } else if (valueAudio === "husarymujawwad") {
+                            audio = item.audio.husarymujawwad;
+                          } else if (valueAudio === "minshawi") {
+                            audio = item.audio.minshawi;
+                          } else if (valueAudio === "muhammadayyoub") {
+                            audio = item.audio.muhammadayyoub;
+                          } else if (valueAudio === "muhammadjibreel") {
+                            audio = item.audio.muhammadjibreel;
+                          }
+                          onStartOneAudioHandler(item.number.inSurah, audio);
+                        }}
+                        className="text-2xl cursor-pointer"
+                        icon="radix-icons:resume"
+                      />
+                      <p
+                        className={`${style.tooltipAlertleft} bg-black text-white`}
+                      >
+                        putar audio per ayat
+                      </p>
+                    </div>
+                  )}
+
+                  <div className={`${style.tooltipOpsiHome}`}>
+                    <Icon
+                      onClick={(e) => onTafsirHandler(e, item.number.inSurah)}
+                      className="text-2xl my-4 cursor-pointer"
+                      icon="ion:book-sharp"
+                    />
+                    <p
+                      className={`${style.tooltipAlertleft} bg-black text-white -my-4 z-10`}
+                    >
+                      tafsir per ayat
+                    </p>
+                  </div>
+
+                  <div className={`${style.tooltipOpsiHome}`}>
+                    <Icon
+                      onClick={(e) =>
+                        onBookMarkHandler(
+                          e,
+                          item.number.inSurah,
+                          item.number.inQuran
+                        )
+                      }
+                      className="text-2xl cursor-pointer"
+                      icon="fluent:bookmark-add-24-filled"
+                    />
+                    <p
+                      className={`${style.tooltipAlertleft} bg-black text-white`}
+                    >
+                      tambahkan ke BookMark
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-2  my-4 h-full min-[800px]:hidden">
+              <div className={`${style.tooltipSettings}`}>
+                {opsiOneAudio && audioOne.id === item.number.inSurah ? (
+                  <div className={`${style.tooltipOpsiHome}`}>
                     <Icon
                       onClick={() => onStopOneAudioHandler()}
                       className="text-2xl"
                       icon="carbon:pause-outline"
                     />
-                  ) : (
+                    <p
+                      className={`${style.tooltipAlertleft} bg-black text-white`}
+                    >
+                      hentikan audio
+                    </p>
+                  </div>
+                ) : (
+                  <div className={`${style.tooltipOpsiHome}`}>
                     <Icon
                       onClick={() => {
                         let audio = null;
@@ -434,72 +554,41 @@ const ApiTerjemah = () => {
                       className="text-2xl cursor-pointer"
                       icon="radix-icons:resume"
                     />
-                  )}
-
-                  <Icon
-                    onClick={(e) => onTafsirHandler(e, item.number.inSurah)}
-                    className="text-2xl my-4 cursor-pointer"
-                    icon="ion:book-sharp"
-                  />
-
-                  <Icon
-                    onClick={(e) =>
-                      onBookMarkHandler(
-                        e,
-                        item.number.inSurah,
-                        item.number.inQuran
-                      )
-                    }
-                    className="text-2xl cursor-cell "
-                    icon="fluent:bookmark-add-24-filled"
-                  />
-                </div>
+                    <p
+                      className={`${style.tooltipAlertleft} bg-black text-white`}
+                    >
+                      putar audio
+                    </p>
+                  </div>
+                )}
               </div>
-            </div>
-            <div className="flex items-center justify-center gap-2 h-full min-[800px]:hidden">
-              {opsiOneAudio && audioOne.id === item.number.inSurah ? (
+              <div className={`${style.tooltipOpsiHome}`}>
                 <Icon
-                  onClick={() => onStopOneAudioHandler()}
-                  className="text-2xl"
-                  icon="carbon:pause-outline"
-                />
-              ) : (
-                <Icon
-                  onClick={() => {
-                    let audio = null;
-                    if (valueAudio === "alafasy") {
-                      audio = item.audio.alafasy;
-                    } else if (valueAudio === "ahmedajamy") {
-                      audio = item.audio.ahmedajamy;
-                    } else if (valueAudio === "husarymujawwad") {
-                      audio = item.audio.husarymujawwad;
-                    } else if (valueAudio === "minshawi") {
-                      audio = item.audio.minshawi;
-                    } else if (valueAudio === "muhammadayyoub") {
-                      audio = item.audio.muhammadayyoub;
-                    } else if (valueAudio === "muhammadjibreel") {
-                      audio = item.audio.muhammadjibreel;
-                    }
-                    onStartOneAudioHandler(item.number.inSurah, audio);
-                  }}
+                  onClick={(e) => onTafsirHandler(e, item.number.inSurah)}
                   className="text-2xl cursor-pointer"
-                  icon="radix-icons:resume"
+                  icon="ion:book-sharp"
                 />
-              )}
+                <p className={`${style.tooltipAlertleft} bg-black text-white`}>
+                  tafsir per ayat
+                </p>
+              </div>
 
-              <Icon
-                onClick={(e) => onTafsirHandler(e, item.number.inSurah)}
-                className="text-2xl my-4 cursor-pointer"
-                icon="ion:book-sharp"
-              />
-
-              <Icon
-                onClick={(e) =>
-                  onBookMarkHandler(e, item.number.inSurah, item.number.inQuran)
-                }
-                className="text-2xl cursor-cell "
-                icon="fluent:bookmark-add-24-filled"
-              />
+              <div className={`${style.tooltipOpsiHome}`}>
+                <Icon
+                  onClick={(e) =>
+                    onBookMarkHandler(
+                      e,
+                      item.number.inSurah,
+                      item.number.inQuran
+                    )
+                  }
+                  className="text-2xl cursor-pointer "
+                  icon="fluent:bookmark-add-24-filled"
+                />
+                <p className={`${style.tooltipAlertleft} bg-black text-white`}>
+                  tambahkan ke bookMark
+                </p>
+              </div>
             </div>
             <div className="flex flex-col justify-between">
               <div className={` flex justify-end`}>

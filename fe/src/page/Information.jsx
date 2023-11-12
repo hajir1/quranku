@@ -13,7 +13,7 @@ const Information = () => {
           <b>pendahuluan : </b>sebelumnya saya ucapkan terima kasih banyak
           kepada{" "}
           <a href="https://github.com/farizdotid/DAFTAR-API-LOKAL-INDONESIA">
-            <u>fariz dotid</u>
+            <u>mas farizDotid</u>
           </a>{" "}
           yang telah menyediakan daftar daftar data api dan saya ucapkan terima
           kasih kepada{" "}
@@ -36,11 +36,13 @@ const Information = () => {
         </p>
         <p className="text-center">
           kunjungi lebih lanjut tentang{" "}
-          <a className="text-blue-700" href="http://">
-            <u>
-              <i><a href="https://hajir1.github.io/portofolio" target="_blank">developer</a></i>
-            </u>
-          </a>
+          <u>
+            <i>
+              <a href="https://hajir1.github.io/portofolio" target="_blank">
+                developer
+              </a>
+            </i>
+          </u>
         </p>
       </div>
     </div>

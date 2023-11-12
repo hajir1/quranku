@@ -55,13 +55,16 @@ const AsmaulHusnaPage = () => {
               <div className="w-full flex flex-row-reverse flex-wrap justify-center gap-2">
                 {dataAsmaulHusnaSearch !== "" ? (
                   <div
-                    className={`${style.items} w-[28%] min-h-28 border border-amber-400 p-2 flex justify-center max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+                    className={`${style.items} w-[28%] min-h-28 border border-amber-400 cursor-pointer p-2 flex justify-center items-center max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
                   >
-                    <div className="w-12 h-12 border border-amber-400 rotate-45 m-2">
-                      <div className="-rotate-45 w-full h-full grid place-content-center">
-                        <p className="">{dataAsmaulHusnaSearch?.urutan}</p>
+                     <div className="relative ml-4">
+                        <div
+                          className={`${style.number} border border-amber-400 rotate-45 w-10 h-10 rounded-md`}
+                        ></div>
+                        <div className="absolute top-1/4 -translate-x-1/2 left-1/2">
+                          <h1 className="">{dataAsmaulHusnaSearch?.urutan}</h1>
+                        </div>
                       </div>
-                    </div>
                     <div className="flex flex-col w-3/5 justify-center items-center p-1">
                       <p className="text-center font-bold">
                         {dataAsmaulHusnaSearch?.latin}
@@ -80,11 +83,14 @@ const AsmaulHusnaPage = () => {
                   data.map((item) => (
                     <div
                       key={item.urutan}
-                      className={`${style.items} w-[28%] min-h-28 border border-amber-400 p-2 flex justify-center max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+                      className={`${style.items} w-[28%] cursor-pointer min-h-28 border border-amber-400 p-2 flex justify-center items-center max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
                     >
-                      <div className="w-12 h-12 border border-amber-400 rotate-45 m-2">
-                        <div className="-rotate-45 w-full h-full grid place-content-center">
-                          <p className="">{item.urutan}</p>
+                      <div className="relative ml-4">
+                        <div
+                          className={`${style.number} border border-amber-400 rotate-45 w-10 h-10 rounded-md`}
+                        ></div>
+                        <div className="absolute top-1/4 -translate-x-1/2 left-1/2">
+                          <h1 className="">{item?.urutan}</h1>
                         </div>
                       </div>
                       <div className="flex flex-col w-3/5 justify-center items-center p-1">

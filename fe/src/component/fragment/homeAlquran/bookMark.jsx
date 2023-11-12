@@ -46,15 +46,17 @@ const BookMark = () => {
           opsiDarkmode && "border-b-white"
         } flex justify-start w-full border-b-[1px] h-1/3 border-b-black`}
       >
-        <Icon className="text-2xl " icon="ic:sharp-bookmark" />
-        <h1 className="tracking-wider">Bookmark</h1>
+        <Icon className={`${alertRemoveAllItems && "blur-[3px]"} text-2xl`} icon="ic:sharp-bookmark" />
+        <h1 className={`${alertRemoveAllItems && "blur-[3px]"} tracking-wider`}>Bookmark</h1>
         {dataBookmark?.length > 0 && (
-          <div className={` w-full flex justify-end `}>
-            <Icon
-              onClick={() => setAlertRemoveAllItems(!alertRemoveAllItems)}
-              className="text-2xl mx-5 my-2 cursor-pointer"
-              icon="bi:trash"
-            />
+          <div className={`w-full flex justify-end`}>
+            <div className={`${style.tooltipmiddle}`}>
+              <Icon
+                onClick={() => setAlertRemoveAllItems(!alertRemoveAllItems)}
+                className="text-2xl mb-3 cursor-pointer"
+                icon="bi:trash"
+              />
+            </div>
             {alertRemoveAllItems && (
               <AlertMessage
                 classContaint={`${opsiDarkmode && "border border-white"} ${
@@ -105,11 +107,14 @@ const BookMark = () => {
               } m-1 w-1/6 h-12 bg-black opacity-90 rounded-md text-white flex items-center justify-evenly max-[750px]:w-[47%] max-[1100px]:w-[30%] min-[400px]:m-1 min-[1000px]:h-16 min-[900px]:mt-1`}
             >
               <div className="w-1/4 grid place-content-center h-full ">
+                <div className={`${style.tooltipCenter}`}>
                 <Icon
                   onClick={() => onRemoveBookmarkHandler(data.numberQuran)}
-                  className="text-white text-2xl"
+                  className="text-white text-2xl cursor-pointer"
                   icon="octicon:x-12"
                 />
+                <p className={`${style.tooltipAlertcenter}`}>hapus bookMark</p>
+                </div>
               </div>
               <Link
                 to={`/surah/${data.id}/${data.numberSurah}`}

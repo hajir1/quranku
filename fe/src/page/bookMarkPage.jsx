@@ -26,7 +26,8 @@ const BookMarkPage = () => {
     opsiDarkmode,
     dataSurahById,
     setDataSurahById,
-    countFont,valueAudio
+    countFont,
+    valueAudio,
   } = useContext(OptionContext);
   const [lihatDetail, setLihatDetail] = useState(false);
   const [alertHapusBookmark, setAlertHapusBookmark] = useState(false);
@@ -56,7 +57,7 @@ const BookMarkPage = () => {
   const onTafsirHandler = (e, idAyah) => {
     e.preventDefault();
     setOpsitafsir(true);
-    ApiAlQuranSurahById(id, idAyah, (data) => {
+    getAlQuranSurahById(id, idAyah, (data) => {
       setDataSurahById(data);
     });
     window.scrollTo({
@@ -95,11 +96,13 @@ const BookMarkPage = () => {
           {alertHapusBookmark && (
             <>
               <AlertMessageNotP
-                onCloseHandler={() =>{ setAlertHapusBookmark(false),window.location.href="/"}}
+                onCloseHandler={() => {
+                  setAlertHapusBookmark(false), (window.location.href = "/");
+                }}
                 classIcon={`${opsiDarkmode ? "text-black" : "text-white"} `}
                 classContaint={`${style.animationTafsir} ${
                   opsiDarkmode && "bg-white z-20 opacity-95 m-0 z-20"
-                } w-52 h-16 bg-black absolute z-20 text-white p-2 m-4 opacity-80`}
+                } w-52 h-16 bg-black absolute z-20 text-white p-2 m-4 opacity-90 cursor-pointer`}
               >
                 <p
                   className={`${
@@ -209,7 +212,7 @@ const BookMarkPage = () => {
             } w-full h-auto min-h-[16rem] mt-2 border-b-[1px] border-b-black p-4 relative`}
             key={dataSurahById?.number?.inQuran}
           >
-            <div className="absolute top-0 h-full max-[800px]:h-16 max-[800px]:-top-10 max-[800px]:right-0">
+            <div className="absolute top-0 h-full my-3 max-[800px]:h-16 max-[800px]:-top-10 max-[800px]:right-0">
               <div className="flex flex-col items-center w-full max-[800px]:flex-row-reverse">
                 <div className="border border-amber-400 w-10 h-10 grid place-content-center rotate-45 m-4">
                   <div className="-rotate-45">
@@ -218,53 +221,82 @@ const BookMarkPage = () => {
                 </div>
                 <div className="flex flex-col items-center justify-end h-full max-[800px]:flex-row">
                   {opsiOneAudio ? (
-                    <Icon
-                      onClick={() => onStopOneAudioHandler()}
-                      className="text-2xl cursor-pointer"
-                      icon="carbon:pause-outline"
-                    />
+                    <div className={style.tooltipOpsiHome}>
+                      <Icon
+                        onClick={() => onStopOneAudioHandler()}
+                        className="text-2xl cursor-pointer"
+                        icon="carbon:pause-outline"
+                      />
+                      <p
+                        className={`${style.tooltipAlertleft} bg-black text-white z-10`}
+                      >
+                        hentikan audio
+                      </p>
+                    </div>
                   ) : (
-                    <Icon
-                      onClick={() => {
-                        let audio = null;
-                        if (valueAudio === "alafasy") {
-                          audio = dataSurahById?.audio.alafasy;
-                        } else if (valueAudio === "ahmedajamy") {
-                          audio = dataSurahById?.audio.ahmedajamy;
-                        } else if (valueAudio === "husarymujawwad") {
-                          audio = dataSurahById?.audio.husarymujawwad;
-                        } else if (valueAudio === "minshawi") {
-                          audio = dataSurahById?.audio.minshawi;
-                        } else if (valueAudio === "muhammadayyoub") {
-                          audio = dataSurahById?.audio.muhammadayyoub;
-                        } else if (valueAudio === "muhammadjibreel") {
-                          audio = dataSurahById?.audio.muhammadjibreel;
-                        }
-                        onStartOneAudioHandler(
-                          dataSurahById?.number.inSurah,
-                          audio
-                        );
-                      }}
-                      className="text-2xl cursor-pointer"
-                      icon="radix-icons:resume"
-                    />
+                    <div className={`${style.tooltipOpsiHome}`}>
+                      <Icon
+                        onClick={() => {
+                          let audio = null;
+                          if (valueAudio === "alafasy") {
+                            audio = dataSurahById?.audio.alafasy;
+                          } else if (valueAudio === "ahmedajamy") {
+                            audio = dataSurahById?.audio.ahmedajamy;
+                          } else if (valueAudio === "husarymujawwad") {
+                            audio = dataSurahById?.audio.husarymujawwad;
+                          } else if (valueAudio === "minshawi") {
+                            audio = dataSurahById?.audio.minshawi;
+                          } else if (valueAudio === "muhammadayyoub") {
+                            audio = dataSurahById?.audio.muhammadayyoub;
+                          } else if (valueAudio === "muhammadjibreel") {
+                            audio = dataSurahById?.audio.muhammadjibreel;
+                          }
+                          onStartOneAudioHandler(
+                            dataSurahById?.number.inSurah,
+                            audio
+                          );
+                        }}
+                        className="text-2xl cursor-pointer"
+                        icon="radix-icons:resume"
+                      />
+                      <p
+                        className={`${style.tooltipAlertleft} bg-black text-white z-10`}
+                      >
+                        putar audio
+                      </p>
+                    </div>
                   )}
 
-                  <Icon
-                    onClick={(e) =>
-                      onTafsirHandler(e, dataSurahById.number.inSurah)
-                    }
-                    className="text-2xl my-4 cursor-pointer max-[800px]:mx-2"
-                    icon="ion:book-sharp"
-                  />
+                  <div className={`${style.tooltipOpsiHome}`}>
+                    <Icon
+                      onClick={(e) =>
+                        onTafsirHandler(e, dataSurahById.number.inSurah)
+                      }
+                      className="text-2xl my-4 cursor-pointer max-[800px]:mx-2"
+                      icon="ion:book-sharp"
+                    />
+                    <p
+                      className={`${style.tooltipAlertleft} bg-black -my-4 text-white z-10`}
+                    >
+                      lihat tafsir
+                    </p>
+                  </div>
 
-                  <Icon
-                    onClick={() => {
-                      onRemoveBookmarkHandler(dataSurahById.number.inQuran);
-                    }}
-                    className="text-2xl cursor-pointer"
-                    icon="mdi:bookmark-off"
-                  />
+                  <div className={`${style.tooltipOpsiHome} ${alertHapusBookmark && "blur-[2px]"}`}>
+                    <Icon
+                      onClick={() => {
+                        onRemoveBookmarkHandler(dataSurahById.number.inQuran);
+                      }}
+                      className="text-2xl cursor-pointer"
+                      icon="mdi:bookmark-off"
+                    />
+
+                    <p
+                      className={`${style.tooltipAlertleft} bg-black text-white z-10`}
+                    >
+                      hapus bookMark
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -277,7 +309,7 @@ const BookMarkPage = () => {
                     countFont === 2 && "w-2/5 max-[800px]:w-[85%]"
                   } ${countFont === 3 && "w-[45%] max-[800px]:w-[90%]"} ${
                     countFont === 4 && "w-[50%] max-[800px]:w-[95%]"
-                  } ${countFont === 5 && "w-[60%] max-[800px]:w-full"}`}
+                  } ${countFont === 5 && "w-[60%] max-[800px]:w-full"} my-8`}
                   src={dataSurahById?.image?.primary}
                   alt=""
                 />

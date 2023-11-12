@@ -74,19 +74,29 @@ const ApiSurahDetail = () => {
         opsiDarkmode && "text-white"
       } w-full flex justify-center mt-16 `}
     >
-      <div className=" flex justify-center flex-col w-[90%] max-[600px]:w-full">
+      <div className=" flex justify-center flex-col w-[90%] max-[600px]:w-[98%]">
         <div className={`${opsiTafsir && "hidden"} justify-between flex`}>
           <div
             className={`${
               opsiSetting && "blur-[2px]"
             } flex justify-start items-center`}
           >
-            <Link to={`/`}>
-              <Icon className="text-2xl" icon="uil:home" />{" "}
-            </Link>
-            <p onClick={onIconSurahHandler} className="mx-2 cursor-pointer">
-              &frasl;&nbsp;&nbsp; Halaman
-            </p>
+            <div className={`${style.tooltipOpsiHome} `}>
+              <Link to={`/`}>
+                <Icon className="text-2xl" icon="uil:home" />
+                <p className={`${style.tooltipAlertleft} bg-black text-white`}>
+                  pergi ke home
+                </p>
+              </Link>
+            </div>
+            <div className={`${style.tooltipOpsiHome} flex `}>
+              <p onClick={onIconSurahHandler} className="mx-2 cursor-pointer">
+                &frasl;&nbsp;&nbsp; Halaman
+              </p>
+              <p className={`${style.tooltipAlertleft} bg-black text-white`}>
+                cari surah
+              </p>
+            </div>
             <p>{data?.number}</p>
           </div>
 
@@ -227,34 +237,40 @@ const ApiSurahDetail = () => {
             </Button>
           </div>
           <div
-            className={`${
+            className={` ${
               dataSurahByIdSearch !== "" && "hidden"
             } w-3/5 h-12 flex justify-end items-center max-[800px]:w-2/5`}
           >
             {opsiAllAudio ? (
-              <div
-                onClick={onStopAudioAllHandler}
-                className={`${
-                  opsiDarkmode && "border-white"
-                } flex justify-around items-center border border-black w-2/6 h-full mx-1 max-[800px]:w-full  `}
-              >
-                <Icon className="text-2xl" icon="carbon:pause-outline" />
+              <div className={`${style.tooltipCenter} w-full h-full mx-1 min-[800px]:w-2/6`}>
+                <div
+                  onClick={onStopAudioAllHandler}
+                  className={`${
+                    opsiDarkmode && "border-white"
+                  } cursor-pointer flex justify-around items-center border h-full border-black `}
+                >
+                  <Icon className="text-2xl" icon="carbon:pause-outline" />
 
-                <p className="text-[1.2rem] font-bold max-[550px]:text-sm">
-                  Matikan Audio
-                </p>
+                  <p className="text-[1.2rem] font-bold max-[550px]:text-sm">
+                    Matikan Audio
+                  </p>
+                </div>
+                <p className={`${style.tooltipAlertcenter} bg-black text-white`}>hentikan audio</p>
               </div>
             ) : (
-              <div
-                onClick={onStartAudioAllHandler}
-                className={`${
-                  opsiDarkmode && "border-white"
-                } flex justify-around items-center border border-black w-2/6 h-full mx-1 max-[800px]:w-full`}
-              >
-                <Icon className="text-2xl" icon="radix-icons:resume" />
-                <p className="text-[1.2rem] font-bold max-[550px]:text-sm">
-                  Putar Audio
-                </p>
+              <div className={`${style.tooltipCenter} w-full h-full mx-1 min-[800px]:w-2/6`}>
+                <div
+                  onClick={onStartAudioAllHandler}
+                  className={`${
+                    opsiDarkmode && "border-white"
+                  } cursor-pointer flex justify-around items-center border border-black h-full `}
+                >
+                  <Icon className="text-2xl" icon="radix-icons:resume" />
+                  <p className="text-[1.2rem] font-bold max-[550px]:text-sm">
+                    Putar Audio
+                  </p>
+                </div>
+                <p className={`${style.tooltipAlertcenter} bg-black text-white`}>putar audio</p>
               </div>
             )}
           </div>

@@ -102,7 +102,7 @@ const Navbar = ({ type, typeHome }) => {
     <div
       className={`${opsiTafsir && "blur-[2px]"} ${
         opsiDarkmode && "border-b-2 text-white"
-      } w-full h-12 bg-black fixed z-40 max-[550px]:h-14 `}
+      } w-full h-14 p-1 bg-black fixed z-40 max-[550px]:h-16 `}
     >
       {type === "home" && (
         <div className="relative h-full">
@@ -207,104 +207,199 @@ const Navbar = ({ type, typeHome }) => {
           >
             {searchAlert && (
               <div
-                className={`${style.animatedSearch} fixed right-0 w-1/4 max-[750px]:w-4/5 max-[1100px]:w-1/2`}
+                className={`${style.animatedSearch} fixed right-0 p-1 w-1/4 max-[750px]:w-4/5 max-[1100px]:w-1/2`}
               >
-                {typeHome === "Quran" && (
-                  <form className={`flex items-center bg-black p-1`} action="">
-                    <Input
-                      inputClass={`${
-                        opsiDarkmode && "text-black"
-                      }   w-full outline-none bg-none p-2 placeholder:tracking-wider rounded-lg`}
-                      inputValue={valueSearchSurah}
-                      inputType="number"
-                      inputChange={(e) => setValueSearchSurah(e.target.value)}
-                      inputPlaceholder="cari surah"
-                    />
-                    <Icon
-                      onClick={onCloseSearchHandler}
-                      className="text-white text-2xl mx-2"
-                      icon="octicon:x-12"
-                    />
-                  </form>
-                )}
-                {typeHome === "asmaulhusna" && (
-                  <form className={`flex items-center bg-black p-1`} action="">
-                    <Input
-                      inputClass={`${
-                        opsiDarkmode && "text-black"
-                      }   w-full outline-none bg-none p-2 placeholder:tracking-wider rounded-lg`}
-                      inputValue={valueSearchAsmaulHusna}
-                      inputType="number"
-                      inputChange={(e) =>
-                        setValueSearchAsmaulHusna(e.target.value)
-                      }
-                      inputPlaceholder="cari asmaul husna"
-                    />
-                    <Icon
-                      onClick={onCloseSearchHandler}
-                      className="text-white text-2xl mx-2"
-                      icon="octicon:x-12"
-                    />
-                  </form>
-                )}
+                <div className="w-full h-full">
+                  {typeHome === "Quran" && (
+                    <form
+                      className={`flex justify-evenly h-full w-full items-center`}
+                      action=""
+                    >
+                      <Input
+                        inputClass={`${
+                          opsiDarkmode && "text-black"
+                        } w-3/4 p-2 outline-none rounded-lg`}
+                        inputValue={valueSearchSurah}
+                        inputType="number"
+                        inputChange={(e) => setValueSearchSurah(e.target.value)}
+                        inputPlaceholder="cari surah"
+                      />
+                      <Icon
+                        onClick={onCloseSearchHandler}
+                        className="text-white text-2xl mx-2 cursor-pointer"
+                        icon="octicon:x-12"
+                      />
+                    </form>
+                  )}
+                  {typeHome === "asmaulhusna" && (
+                    <form
+                      className={`flex justify-evenly h-full w-full items-center`}
+                      action=""
+                    >
+                      <Input
+                        inputClass={`${
+                          opsiDarkmode && "text-black"
+                        } w-3/4 p-2 outline-none rounded-lg`}
+                        inputValue={valueSearchAsmaulHusna}
+                        inputType="number"
+                        inputChange={(e) =>
+                          setValueSearchAsmaulHusna(e.target.value)
+                        }
+                        inputPlaceholder="cari asmaul husna"
+                      />
+                      <Icon
+                        onClick={onCloseSearchHandler}
+                        className="text-white text-2xl mx-2"
+                        icon="octicon:x-12"
+                      />
+                    </form>
+                  )}
+                </div>
               </div>
             )}
+
             <div className="h-12 w-1/4 flex justify-start items-center max-[800px]:w-1/2">
               {typeHome === "Quran" && (
-                <img
-                  onClick={onOpsiHomeHandler}
-                  className="h-full mx-4 max-[550px]:m-2"
-                  src={`/iconQuran.png`}
-                  alt=""
-                />
+                <div
+                  className={`${style.tooltipOpsiHome} ${
+                    searchAlert && "blur-[4px]"
+                  } bg-black text-white w-1/4 h-full `}
+                >
+                  <img
+                    onClick={onOpsiHomeHandler}
+                    className="h-full cursor-pointer max-[550px]:mx-2"
+                    src={`/iconQuran.png`}
+                    alt=""
+                  />
+                  <p className={`${style.tooltipAlertleft}`}>
+                    Halaman Home Al-Quran
+                  </p>
+                </div>
               )}
               {typeHome === "asmaulhusna" && (
-                <img
-                  onClick={onOpsiHomeHandler}
-                  className="h-4/5 mx-4 max-[550px]:m-2"
-                  src={`/iconasma.png`}
-                  alt=""
-                />
+                <div
+                  className={`${style.tooltipOpsiHome} ${
+                    searchAlert && "blur-[4px]"
+                  } bg-black text-white w-1/4 h-full `}
+                >
+                  <img
+                    onClick={onOpsiHomeHandler}
+                    className="h-full cursor-pointer max-[550px]:mx-2"
+                    src={`/iconasma.png`}
+                    alt=""
+                  />
+                  <p className={`${style.tooltipAlertleft}`}>
+                    Halaman Home AsmaulHusna
+                  </p>
+                </div>
               )}
               {typeHome === "doa" && (
-                <img
-                  onClick={onOpsiHomeHandler}
-                  className="h-4/5 mx-4 max-[550px]:m-2"
-                  src={`/icondoa.png`}
-                  alt=""
-                />
+                 <div
+                 className={`${style.tooltipOpsiHome} ${
+                   searchAlert && "blur-[4px]"
+                 } bg-black text-white w-1/4 h-full `}
+               >
+                 <img
+                   onClick={onOpsiHomeHandler}
+                   className="h-full cursor-pointer max-[550px]:mx-2"
+                   src={`/icondoa.png`}
+                   alt=""
+                 />
+                 <p className={`${style.tooltipAlertleft}`}>
+                   Halaman Home doa & dzikir
+                 </p>
+               </div>
               )}
               {typeHome === "sholat" && (
-                <img
-                  onClick={onOpsiHomeHandler}
-                  className="h-4/5 mx-4 max-[550px]:m-2"
-                  src={`/iconSholat.png`}
-                  alt=""
-                />
+                  <div
+                  className={`${style.tooltipOpsiHome} ${
+                    searchAlert && "blur-[4px]"
+                  } bg-black text-white w-1/4 h-full `}
+                >
+                  <img
+                    onClick={onOpsiHomeHandler}
+                    className="h-full cursor-pointer max-[550px]:mx-2"
+                    src={`/iconSholat.png`}
+                    alt=""
+                  />
+                  <p className={`${style.tooltipAlertleft}`}>
+                    Halaman Home Jadwal Sholat
+                  </p>
+                </div>
               )}
               {typeHome === "Quran" && (
-                <p className="text-white tracking-wide mx-4">al-Quran</p>
+                <p
+                  className={` ${
+                    searchAlert && "blur-[4px]"
+                  } text-white tracking-wide mx-4 max-[420px]:text-sm`}
+                >
+                  al-Quran
+                </p>
               )}
               {typeHome === "asmaulhusna" && (
-                <p className="text-white tracking-wide mx-4">asmaul husna</p>
+                <p
+                  className={`${
+                    searchAlert && "blur-[4px]"
+                  } text-white tracking-wide mx-4`}
+                >
+                  Asmaul Husna
+                </p>
               )}
               {typeHome === "doa" && (
-                <p className="text-white tracking-wide mx-4">doa & dzikir</p>
+                <p
+                  className={`${
+                    searchAlert && "blur-[4px]"
+                  } text-white tracking-wide mx-4`}
+                >
+                  doa & dzikir
+                </p>
               )}
               {typeHome === "sholat" && (
                 <p className="text-white tracking-wide mx-4">jadwal sholat</p>
               )}
             </div>
-            <div className="flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2">
-              <Icon onClick={onSettingHandler} icon="uiw:setting" />
-              <Link to={"/informasi"}>
-                <Icon className={`${typeHome === "doa" && "mr-10"}`} icon="fluent:info-12-filled" />
-              </Link>
-              <Icon
-                onClick={onSearchHandler}
-                className={`${typeHome ==="doa" && "hidden"} mr-10 max-[550px]:mr-2`}
-                icon="material-symbols:search"
-              />
+            <div
+              className={` flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2`}
+            >
+              <div
+                className={`${searchAlert && "hidden"} ${
+                  style.tooltipSettings
+                } ${opsiSetting && "hidden"}`}
+              >
+                <Icon
+                  onClick={onSettingHandler}
+                  className="cursor-pointer"
+                  icon="uiw:setting"
+                />
+                <p className={style.tooltipAlertright}>settings</p>
+              </div>
+              <div
+                className={`${searchAlert && "hidden"} ${
+                  style.tooltipSettings
+                }`}
+              >
+                <Link to={"/informasi"}>
+                  <Icon
+                    className={`${typeHome === "doa" && "mr-10"}`}
+                    icon="fluent:info-12-filled"
+                  />
+                </Link>
+                <p className={style.tooltipAlertright}>informasi</p>
+              </div>
+              <div
+                className={`${searchAlert && "hidden"} ${
+                  style.tooltipSettings
+                } `}
+              >
+                <Icon
+                  onClick={onSearchHandler}
+                  className={`${
+                    typeHome === "doa" && "hidden"
+                  } mr-10 max-[550px]:mr-2 cursor-pointer`}
+                  icon="material-symbols:search"
+                />
+                <p className={` ${style.tooltipAlertright}`}>cari surah</p>
+              </div>
             </div>
           </div>
         </div>
@@ -331,18 +426,23 @@ const Navbar = ({ type, typeHome }) => {
                   />
                   <Icon
                     onClick={onCloseSearchHandler}
-                    className="text-white text-2xl mx-2"
+                    className="text-white text-2xl mx-2 cursor-pointer"
                     icon="octicon:x-12"
                   />
                 </form>
               </div>
             )}
             <div className="h-12 w-1/4 flex justify-start items-center max-[800px]:w-1/2 ">
-              <img
-                className="h-full mx-4 max-[550px]:m-2"
-                src={`/iconQuran.png`}
-                alt=""
-              />
+              <div className={`${style.tooltipOpsiHome} w-1/4 h-full`}>
+                <img
+                  className="h-full cursor-pointer "
+                  src={`/iconQuran.png`}
+                  alt=""
+                />
+                <p className={`${style.tooltipAlertleft} bg-black text-white`}>
+                  halaman detail alquran
+                </p>
+              </div>
               <p className="text-white tracking-wide mx-4">al-Quran</p>
             </div>
             <div
@@ -350,22 +450,43 @@ const Navbar = ({ type, typeHome }) => {
                 !opsiSurah && ""
               } flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2`}
             >
-              <Icon
-                onClick={onSettingHandler}
-                className="cursor-pointer"
-                icon="uiw:setting"
-              />
-              <Icon
-                className={`${!opsiSurah && "mx-4"} cursor-pointer `}
-                icon="fluent:info-12-filled"
-              />
-              <Icon
-                onClick={onSearchHandler}
-                className={`${
-                  !opsiSurah && "hidden"
-                } mr-10 cursor-pointer max-[550px]:mr-2`}
-                icon="material-symbols:search"
-              />
+              <div
+                className={`${style.tooltipSettings} ${
+                  searchAlert && "hidden"
+                } ${opsiSetting && "hidden"}`}
+              >
+                <Icon
+                  onClick={onSettingHandler}
+                  className="cursor-pointer"
+                  icon="uiw:setting"
+                />
+                <p className={`${style.tooltipAlertright}`}>settings</p>
+              </div>
+              <div
+                className={`${style.tooltipSettings} ${
+                  searchAlert && "hidden"
+                } ${opsiSetting && "hidden"}`}
+              >
+                <Icon
+                  className={`${!opsiSurah && "mx-4"} cursor-pointer `}
+                  icon="fluent:info-12-filled"
+                />
+                <p className={`${style.tooltipAlertright}`}>informasi</p>
+              </div>
+              <div
+                className={`${style.tooltipSettings} ${
+                  searchAlert && "hidden"
+                } ${opsiSetting && "hidden"}`}
+              >
+                <Icon
+                  onClick={onSearchHandler}
+                  className={`${
+                    !opsiSurah && "hidden"
+                  } mr-10 cursor-pointer max-[550px]:mr-2`}
+                  icon="material-symbols:search"
+                />
+                <p className={`${style.tooltipAlertright}`}>cari ayat</p>
+              </div>
             </div>
           </div>
         </div>
@@ -397,11 +518,16 @@ const Navbar = ({ type, typeHome }) => {
               </div>
             )}
             <div className="h-12 w-1/4 flex justify-start items-center max-[800px]:w-1/2 ">
-              <img
-                className="h-full mx-4 max-[550px]:m-2"
-                src={`/iconQuran.png`}
-                alt=""
-              />
+              <div className={`${style.tooltipOpsiHome} w-1/4 h-full`}>
+                <img
+                  className="h-full cursor-pointer"
+                  src={`/iconQuran.png`}
+                  alt=""
+                />
+                <p className={`${style.tooltipAlertleft} bg-black text-white`}>
+                  bookMark Page
+                </p>
+              </div>
               <p className="text-white tracking-wide mx-4">al-Quran</p>
             </div>
             <div
@@ -414,10 +540,12 @@ const Navbar = ({ type, typeHome }) => {
                 className="cursor-pointer"
                 icon="uiw:setting"
               />
-              <Icon
-                className="cursor-pointer mx-4"
-                icon="fluent:info-12-filled"
-              />
+              <Link to={`/informasi`}>
+                <Icon
+                  className="cursor-pointer mx-4"
+                  icon="fluent:info-12-filled"
+                />
+              </Link>
             </div>
           </div>
         </div>

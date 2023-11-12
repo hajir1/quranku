@@ -18,7 +18,6 @@ const Settings = ({ type }) => {
     valueAudio,
     setValueAudio,
   } = useContext(OptionContext);
-  const [alertSetting, setAlertSetting] = useState(false);
   useEffect(() => {
     if (countFont.current === 1) {
       ukuranGambarRef.current.style.width = "70%";
@@ -56,9 +55,9 @@ const Settings = ({ type }) => {
   return (
     <div
       ref={settingModalRef}
-      className={`${
-        opsiSetting && style.animatedTrash
-      } ${opsiDarkmode && "border-l-[1px] border-l-white"} absolute text-white right-0 w-1/4 bg-black min-h-screen z-10 max-[700px]:w-4/5 max-[1000px]:w-3/5 max-[1400px]:w-2/6`}
+      className={`${opsiSetting && style.animatedTrash} ${
+        opsiDarkmode && "border-l-[1px] border-l-white"
+      } absolute text-white right-0 w-1/4 bg-black min-h-screen z-10 max-[700px]:w-4/5 max-[1000px]:w-3/5 max-[1400px]:w-2/6`}
     >
       {type === "home" && (
         <div className="p-2">
@@ -77,19 +76,23 @@ const Settings = ({ type }) => {
                 onClick={onDarkmodeHandler}
                 className={`${!opsiDarkmode && "bg-amber-700 "} ${
                   style.opsiSurah
-                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
+                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer max-[400px]:flex-col `}
               >
                 <Icon className="2xl" icon="ic:sharp-brightness-4" />
-                <h1 className="max-[450px]:text-sm">Mode Terang</h1>
+                <h1 className="max-[450px]:text-sm max-[450px]:text-center">
+                  Mode Terang
+                </h1>
               </div>
               <div
                 onClick={onNotDarkmodeHandler}
                 className={`${opsiDarkmode && "bg-amber-700"} ${
                   style.opsiSurah
-                } cursor-pointer w-1/2 border border-white p-2 flex items-center justify-evenly`}
+                } cursor-pointer w-1/2 border border-white p-2 flex items-center justify-evenly max-[400px]:flex-col`}
               >
                 <Icon icon="mdi:brightness-3" />
-                <h1 className="max-[450px]:text-sm">Mode Gelap</h1>
+                <h1 className="max-[450px]:text-sm max-[450px]:text-center">
+                  Mode Gelap
+                </h1>
               </div>
             </div>
           </div>
@@ -101,7 +104,7 @@ const Settings = ({ type }) => {
             <h1 className="text-2xl font-bold tracking-widest">Settings</h1>
             <Icon
               onClick={onCloseSearchHandler}
-              className="text-white text-2xl mx-2"
+              className="text-white text-2xl mx-2 cursor-pointer"
               icon="octicon:x-12"
             />
           </div>
@@ -112,7 +115,7 @@ const Settings = ({ type }) => {
                 onClick={onDarkmodeHandler}
                 className={`${!opsiDarkmode && "bg-amber-700"} ${
                   style.opsiSurah
-                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
+                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer max-[380px]:flex-col`}
               >
                 <Icon className="2xl" icon="ic:sharp-brightness-4" />
                 <h1 className="max-[450px]:text-sm">Mode Terang</h1>
@@ -121,7 +124,7 @@ const Settings = ({ type }) => {
                 onClick={onNotDarkmodeHandler}
                 className={`${opsiDarkmode && "bg-amber-700"} ${
                   style.opsiSurah
-                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer`}
+                } w-1/2 border border-white p-2 flex items-center justify-evenly cursor-pointer max-[380px]:flex-col`}
               >
                 <Icon icon="mdi:brightness-3" />
                 <h1 className="max-[450px]:text-sm">Mode Gelap</h1>
@@ -169,27 +172,18 @@ const Settings = ({ type }) => {
           </div>
           <div className="p-4 text-white">
             <div className=" flex justify-between">
-              {alertSetting && (
-                <AlertMessageNotP
-                  classContaint={`w-2/4 p-2 h-20 bg-white absolute right-0 text-black`}
-                  onCloseHandler={() => setAlertSetting(false)}
-                >
-                  <p className="text-xs text-center">
-                    hanya tersedia untuk ayat
-                  </p>
-                </AlertMessageNotP>
-              )}
               <h1 className="tracking-widest">Audio</h1>
-              <div className={`w-2`} onClick={() => setAlertSetting(true)}>
+              <div className={`${style.tooltipmiddle}  w-2 h-10`}>
                 <div
-                  className={`${sekeleton.iconSetting} ${
-                    alertSetting && "hidden"
-                  } w-3 h-3 absolute right-3 rounded-full bg-red-700`}
+                  className={` ${sekeleton.iconSetting} w-3 h-3 absolute rounded-full bg-red-700`}
                 ></div>
                 <Icon
                   className="cursor-pointer text-2xl"
                   icon="majesticons:bell-line"
                 />
+                <p className={`${style.tooltipAlertmiddle}`}>
+                  maaf hanya tersedia untuk ayat
+                </p>
               </div>
             </div>
             <div className="w-full grid justify-center">

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useAlQuranDataSurah } from "../../../query/data";
 import { OptionContext } from "../../../context/opsi";
-import {  getAlQuranSurahSearch } from "../../../services/service";
+import { getAlQuranSurahSearch } from "../../../services/service";
 import style from "../../../styles/animation.module.scss";
 import { Link } from "react-router-dom";
 const AllAlQuranApi = () => {
@@ -59,10 +59,11 @@ const AllAlQuranApi = () => {
             className={`${style.items} w-[30%] outline-none border rounded-md border-amber-400 flex h-20 items-center max-[650px]:w-[100%] max-[1050px]:w-[47%] mt-2`}
             key={data.number}
           >
-            <div
-              className={`${style.items__content} border border-amber-400 rotate-45 w-10 h-10 ml-4 rounded-md`}
-            >
-              <div className="-rotate-45 w-10 h-10 grid place-content-center">
+            <div className="relative ml-4">
+              <div
+                className={`${style.number} border border-amber-400 rotate-45 w-10 h-10 rounded-md`}
+              ></div>
+              <div className=" absolute top-1/4 -translate-x-1/2 left-1/2">
                 <h1>{data.number}</h1>
               </div>
             </div>

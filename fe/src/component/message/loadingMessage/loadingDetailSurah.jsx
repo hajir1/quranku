@@ -11,7 +11,7 @@ const LoadingDataSurah = () => {
       <div className="flex items-center w-full h-auto flex-col">
         <div className={`${sekeleton.sekeleton} w-2/4 h-12 mb-4`}></div>
       <div
-        className={`${sekeleton.sekeleton} w-4/5 h-96 border border-white`}
+        className={`${sekeleton.sekeleton} w-4/5 h-96 border border-white max-[650px]:w-full`}
       ></div>
       </div>
     </div>
