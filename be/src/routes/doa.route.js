@@ -1,8 +1,13 @@
-import express from "express"
-import {getDoaContoller} from "../controllers/doa.controller.js"
+import express from "express";
+import {
+  getDoaByIdContoller,
+  getDoaContoller,
+} from "../controllers/doa.controller.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/", getDoaContoller);
+router
+  .get("/", getDoaContoller)
+  .get("/:id",getDoaByIdContoller)
 
-export default router
+export default router;

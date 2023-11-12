@@ -28,6 +28,30 @@ const endpoints = [
     path: `${config.BASE_URL}/doa`,
     description: "get all doa doa",
   },
+  {
+    path: `${config.BASE_URL}/doa/1`,
+    description: "get spesifict doa by id /doa/{1}",
+  },
+  {
+    path: `${config.BASE_URL}/dzikir`,
+    description: "get all dzikir after shalat",
+  },
+  {
+    path: `${config.BASE_URL}/dzikir/dzikirsore`,
+    description: "get all dzikir sore",
+  },
+  {
+    path: `${config.BASE_URL}/dzikir/dzikirpagi`,
+    description: "get all dzikir pagi",
+  },
+  {
+    path: `${config.BASE_URL}/dzikir/asmaulHusna`,
+    description: "get all asmaul Husna",
+  },
+  {
+    path: `${config.BASE_URL}/dzikir/asmaulHusna/1`,
+    description: "get asmaul Husna by id /dzikir/asmaulHusna/{1}",
+  },
 ];
 
 export const HomeController = (req, res) => {

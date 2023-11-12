@@ -23,13 +23,11 @@ const AsmaulHusnaPage = () => {
       setDataAsmaulHusnaSearch("");
     } else {
       getAsmaulHusnaSearch(valueSearchAsmaulHusna, (data) => {
-        setDataAsmaulHusnaSearch(data.data.data);
+        setDataAsmaulHusnaSearch(data.data);
       });
     }
   }, [valueSearchAsmaulHusna]);
-  useEffect(() => {
-    console.log(dataAsmaulHusnaSearch);
-  }, [dataAsmaulHusnaSearch]);
+  useEffect(() => {}, [dataAsmaulHusnaSearch]);
   return (
     <div className="w-full">
       {isLoading ? (
@@ -41,7 +39,7 @@ const AsmaulHusnaPage = () => {
         {error ? (
           <Error408 />
         ) : isLoading ? (
-          < LoadingItems/>
+          <LoadingItems />
         ) : (
           data && (
             <div
@@ -79,7 +77,7 @@ const AsmaulHusnaPage = () => {
                     </div>
                   </div>
                 ) : (
-                  data.data.map((item) => (
+                  data.map((item) => (
                     <div
                       key={item.urutan}
                       className={`${style.items} w-[28%] min-h-28 border border-amber-400 p-2 flex justify-center max-[650px]:w-[90%] max-[1100px]:w-[45%]`}

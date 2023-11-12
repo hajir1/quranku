@@ -58,9 +58,9 @@ const Settings = ({ type }) => {
       ref={settingModalRef}
       className={`${
         opsiSetting && style.animatedTrash
-      } absolute text-white right-0 w-1/4 bg-black min-h-screen z-10 max-[700px]:w-4/5 max-[1000px]:w-3/5 max-[1400px]:w-2/6`}
+      } ${opsiDarkmode && "border-l-[1px] border-l-white"} absolute text-white right-0 w-1/4 bg-black min-h-screen z-10 max-[700px]:w-4/5 max-[1000px]:w-3/5 max-[1400px]:w-2/6`}
     >
-      {type === "homeQuran" && (
+      {type === "home" && (
         <div className="p-2">
           <div className="p-4 flex items-center justify-between">
             <h1 className="text-2xl font-bold tracking-widest">Settings</h1>

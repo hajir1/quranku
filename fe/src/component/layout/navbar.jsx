@@ -59,10 +59,7 @@ const Navbar = ({ type, typeHome }) => {
   }, [opsiSetting]);
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (
-        opsiHomeRef.current &&
-        !opsiHomeRef.current.contains(event.target)
-      ) {
+      if (opsiHomeRef.current && !opsiHomeRef.current.contains(event.target)) {
         setOpsiHome(false);
       }
     };
@@ -84,7 +81,7 @@ const Navbar = ({ type, typeHome }) => {
   }, []);
   const onSearchHandler = (e) => {
     setSearchAlert(!searchAlert);
-    setOpsiHome(false)
+    setOpsiHome(false);
   };
   const onCloseSearchHandler = () => {
     setSearchAlert(false);
@@ -109,7 +106,7 @@ const Navbar = ({ type, typeHome }) => {
     >
       {type === "home" && (
         <div className="relative h-full">
-          {opsiSetting && <Settings type="homeQuran" />}
+          {opsiSetting && <Settings type="home" />}
           {opsiHome && (
             <div
               ref={opsiHomeRef}
@@ -144,7 +141,7 @@ const Navbar = ({ type, typeHome }) => {
                       Asmaul Husna
                     </Link>
                     <Link to={"/doa"} className="my-1 p-2">
-                      doa doa
+                      doa & dzikir
                     </Link>
                     <Link to={"/sholat"} className="my-1 p-2">
                       jadwal sholat
@@ -162,16 +159,10 @@ const Navbar = ({ type, typeHome }) => {
                     >
                       Asmaul Husna
                     </Link>
-                    <Link
-                      to={"/doa"}
-                      className="my-1 p-2"
-                    >
-                      doa doa
+                    <Link to={"/doa"} className="my-1 p-2">
+                      doa & dzikir
                     </Link>
-                    <Link
-                      to={"/sholat"}
-                      className="my-1 p-2"
-                    >
+                    <Link to={"/sholat"} className="my-1 p-2">
                       jadwal sholat
                     </Link>
                   </div>
@@ -181,22 +172,13 @@ const Navbar = ({ type, typeHome }) => {
                     <Link to={"/"} className=" my-1 p-2">
                       Al-Qur'an
                     </Link>
-                    <Link
-                      to={"/asmaulhusna"}
-                      className="my-1 p-2"
-                    >
+                    <Link to={"/asmaulhusna"} className="my-1 p-2">
                       Asmaul Husna
                     </Link>
-                    <Link
-                      to={"/doa"}
-                      className="border-b-[1px] my-1 p-2"
-                    >
-                      doa doa
+                    <Link to={"/doa"} className="border-b-[1px] my-1 p-2">
+                      doa & dzikir
                     </Link>
-                    <Link
-                      to={"/sholat"}
-                      className="my-1 p-2"
-                    >
+                    <Link to={"/sholat"} className="my-1 p-2">
                       jadwal sholat
                     </Link>
                   </div>
@@ -206,22 +188,13 @@ const Navbar = ({ type, typeHome }) => {
                     <Link to={"/"} className=" my-1 p-2">
                       Al-Qur'an
                     </Link>
-                    <Link
-                      to={"/asmaulhusna"}
-                      className="my-1 p-2"
-                    >
+                    <Link to={"/asmaulhusna"} className="my-1 p-2">
                       Asmaul Husna
                     </Link>
-                    <Link
-                      to={"/doa"}
-                      className=" my-1 p-2"
-                    >
-                      doa doa
+                    <Link to={"/doa"} className=" my-1 p-2">
+                      doa & dzikir
                     </Link>
-                    <Link
-                      to={"/sholat"}
-                      className="border-b-[1px] my-1 p-2"
-                    >
+                    <Link to={"/sholat"} className="border-b-[1px] my-1 p-2">
                       jadwal sholat
                     </Link>
                   </div>
@@ -316,7 +289,7 @@ const Navbar = ({ type, typeHome }) => {
                 <p className="text-white tracking-wide mx-4">asmaul husna</p>
               )}
               {typeHome === "doa" && (
-                <p className="text-white tracking-wide mx-4">doa doa</p>
+                <p className="text-white tracking-wide mx-4">doa & dzikir</p>
               )}
               {typeHome === "sholat" && (
                 <p className="text-white tracking-wide mx-4">jadwal sholat</p>
@@ -324,10 +297,12 @@ const Navbar = ({ type, typeHome }) => {
             </div>
             <div className="flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2">
               <Icon onClick={onSettingHandler} icon="uiw:setting" />
-              <Link to={"/informasi"}><Icon icon="fluent:info-12-filled" /></Link>
+              <Link to={"/informasi"}>
+                <Icon className={`${typeHome === "doa" && "mr-10"}`} icon="fluent:info-12-filled" />
+              </Link>
               <Icon
                 onClick={onSearchHandler}
-                className="mr-10 max-[550px]:mr-2"
+                className={`${typeHome ==="doa" && "hidden"} mr-10 max-[550px]:mr-2`}
                 icon="material-symbols:search"
               />
             </div>
@@ -380,7 +355,10 @@ const Navbar = ({ type, typeHome }) => {
                 className="cursor-pointer"
                 icon="uiw:setting"
               />
-              <Icon className={`${!opsiSurah && "mx-4"} cursor-pointer `} icon="fluent:info-12-filled" />
+              <Icon
+                className={`${!opsiSurah && "mx-4"} cursor-pointer `}
+                icon="fluent:info-12-filled"
+              />
               <Icon
                 onClick={onSearchHandler}
                 className={`${

@@ -2,14 +2,14 @@ import { createContext, useRef, useState } from "react";
 
 export const OptionContext = createContext();
 const OptionProvider = ({ children }) => {
+  const audioRef = useRef(null);
+  const ukuranFontRef = useRef(null);
+  const settingModalRef = useRef(null);
   const [searchAlert, setSearchAlert] = useState(false);
   const [valueSearchSurah, setValueSearchSurah] = useState("");
   const [opsiSurah, setOpsiSurah] = useState(true);
   const [opsiAllAudio, setOpsiAllAudio] = useState(false);
   const [opsiOneAudio, setOpsiOneAudio] = useState(false);
-  const audioRef = useRef(null);
-  const ukuranFontRef = useRef(null);
-  const settingModalRef = useRef(null);
   const [audioOne, setAudioOne] = useState({ id: null, audioUrl: "" });
   const [opsiTafsir, setOpsitafsir] = useState(false);
   const [opsiBookmark, setOpsiBookmark] = useState([]);
@@ -23,6 +23,8 @@ const OptionProvider = ({ children }) => {
   const [countFont, setCountFont] = useState(3);
   const [valueAudio, setValueAudio] = useState("alafasy");
   const [valueSearchAsmaulHusna, setValueSearchAsmaulHusna] = useState("");
+  const [opsiDoa, setOpsiDoa] = useState(true);
+  const [valueOpsiDzikir, setValueOpsiDzikir] = useState("semuaDzikir");
   return (
     <OptionContext.Provider
       value={{
@@ -65,6 +67,10 @@ const OptionProvider = ({ children }) => {
         setValueAudio,
         valueSearchAsmaulHusna,
         setValueSearchAsmaulHusna,
+        opsiDoa,
+        setOpsiDoa,
+        valueOpsiDzikir,
+        setValueOpsiDzikir,
       }}
     >
       {children}

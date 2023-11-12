@@ -75,7 +75,7 @@ const ApiSurahDetail = () => {
       } w-full flex justify-center mt-16 `}
     >
       <div className=" flex justify-center flex-col w-[90%] max-[600px]:w-full">
-        <div className="justify-between flex">
+        <div className={`${opsiTafsir && "hidden"} justify-between flex`}>
           <div
             className={`${
               opsiSetting && "blur-[2px]"
@@ -126,7 +126,7 @@ const ApiSurahDetail = () => {
           )}
         </div>
         <div
-          className={`${opsiTafsir && "blur-[3px]"} ${
+          className={`${opsiTafsir && "hidden"} ${
             opsiSetting && "blur-[3px]"
           } w-full `}
         >
@@ -134,7 +134,7 @@ const ApiSurahDetail = () => {
           <p className="text-center">{data?.translation}</p>
         </div>
         <div
-          className={`${opsiTafsir && "blur-[3px]"} ${
+          className={`${opsiTafsir && "hidden"} ${
             opsiSetting && "blur-[3px]"
           } w-full mt-4`}
         >
@@ -196,7 +196,7 @@ const ApiSurahDetail = () => {
           </div>
         </div>
         <div
-          className={`${opsiTafsir && "blur-[3px]"} ${
+          className={`${opsiTafsir && "hidden"} ${
             opsiSetting && "blur-[3px]"
           } flex justify-between items-center mt-10 w-full`}
         >
@@ -208,7 +208,7 @@ const ApiSurahDetail = () => {
             <Button
               buttonClick={() => setOpsiSurah(true)}
               buttonClass={`${opsiSurah && "border-b-2 border-b-black"} ${
-                style.opsiSurah
+                style.options
               } ${opsiDarkmode && "border-b-white"} ${
                 dataSurahByIdSearch !== "" && "w-full"
               } w-1/2 h-full outline-none `}
@@ -218,7 +218,7 @@ const ApiSurahDetail = () => {
             <Button
               buttonClick={() => setOpsiSurah(false)}
               buttonClass={`${!opsiSurah && "border-b-2 border-b-black"}  ${
-                style.opsiSurah
+                style.options
               } ${opsiDarkmode && "border-b-white"} ${
                 dataSurahByIdSearch !== "" && "hidden"
               }  w-1/2 h-full outline-none`}
@@ -226,7 +226,11 @@ const ApiSurahDetail = () => {
               baca
             </Button>
           </div>
-          <div className={`${dataSurahByIdSearch !== "" && "hidden"} w-3/5 h-12 flex justify-end items-center max-[800px]:w-2/5`}>
+          <div
+            className={`${
+              dataSurahByIdSearch !== "" && "hidden"
+            } w-3/5 h-12 flex justify-end items-center max-[800px]:w-2/5`}
+          >
             {opsiAllAudio ? (
               <div
                 onClick={onStopAudioAllHandler}
@@ -255,7 +259,9 @@ const ApiSurahDetail = () => {
             )}
           </div>
         </div>
-        {opsiSurah ? <ApiTerjmah /> : <ApiRead />}
+        <div className={`${opsiTafsir ? "mt-48" : "0"}`}>
+          {opsiSurah ? <ApiTerjmah /> : <ApiRead />}
+        </div>
       </div>
       {opsiAllAudio && (
         <div className="w-full fixed bottom-0">

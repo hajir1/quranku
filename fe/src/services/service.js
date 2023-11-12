@@ -36,7 +36,7 @@ export const getAlQuranSurahByIdSearch = (idSurah, idAyah, callback) => {
 };
 
 export const getAllAsmaulHusna = async () => {
-  const response = await fetch(`https://asmaul-husna-api.vercel.app/api/all`);
+  const response = await fetch(`${API_BASE_URL}/dzikir/asmaulhusna`);
   if (!response.ok) {
     throw new Error("gagal mengambil data");
   }
@@ -44,14 +44,26 @@ export const getAllAsmaulHusna = async () => {
 };
 export const getAsmaulHusnaSearch = (id, callback) => {
   axios
-    .get(`https://asmaul-husna-api.vercel.app/api/${id}`)
+    .get(`${API_BASE_URL}/dzikir/asmaulhusna/${id}`)
     .then((res) => callback(res))
     .catch((err) => callback(err));
 };
-export const getAllDoaDoa = async () => {
+export const getAllDoa = async () => {
   const response = await fetch(`${API_BASE_URL}/doa`);
   if (!response.status === true) {
     throw new Error("gagal mengambil data");
   }
+  return response.json();
+};
+export const getDzikirAfterSholat = async () => {
+  const response = await fetch(`${API_BASE_URL}/dzikir`);
+  return response.json();
+};
+export const getDzikirpagi = async () => {
+  const response = await fetch(`${API_BASE_URL}/dzikir/dzikirpagi`);
+  return response.json();
+};
+export const getDzikirsore = async () => {
+  const response = await fetch(`${API_BASE_URL}/dzikir/dzikirsore`);
   return response.json();
 };

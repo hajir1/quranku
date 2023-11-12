@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import ApiSurahDetail from "../component/fragment/detailSurah/apiSurah";
+import ApiSurahDetail from "../component/fragment/detailSurah/mainReadTerjemah";
 import Navbar from "../component/layout/navbar";
 import { OptionContext } from "../context/opsi";
 import { useAlQuranDataSurahDetail } from "../query/data";

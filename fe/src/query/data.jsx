@@ -1,11 +1,13 @@
 import { useQuery } from "react-query";
 import {
   getAllAsmaulHusna,
-  getAllDoaDoa,
+  getAllDoa,
   getAlQuranSurah,
   getAlQuranSurahDetail,
+  getDzikirAfterSholat,
 } from "../services/service";
 import { useParams } from "react-router-dom";
+import { getDzikirPagi, getDzikirSore } from "../../../be/src/services/doa.service";
 
 export const useAlQuranDataSurah = () => {
   const { data, error, isLoading } = useQuery("alQuranData", getAlQuranSurah);
@@ -25,7 +27,19 @@ export const useAllAsmaulHusna = () => {
   return { data, error, isLoading };
 };
 
-export const useAllDoaDoa = () => {
-  const { data, isLoading, error } = useQuery("dataDoaDoa", getAllDoaDoa);
+export const useAllDoa = () => {
+  const { data, isLoading, error } = useQuery("dataDoaDoa", getAllDoa);
   return { data, isLoading, error };
+};
+export const useDzikirAfterSholat = () => {
+  const {data,error,isLoading} = useQuery("allDatDzikir", getDzikirAfterSholat);
+  return {data,error,isLoading}
+};
+export const useDzikirpagi = () => {
+  const {data,error,isLoading} = useQuery("allDatDzikir", getDzikirPagi);
+  return {data,error,isLoading}
+};
+export const useDzikirsore = () => {
+  const {data,error,isLoading} = useQuery("allDatDzikir", getDzikirSore);
+  return {data,error,isLoading}
 };

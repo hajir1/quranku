@@ -104,7 +104,7 @@ const ApiTerjemah = () => {
       setDataSurahById(data);
     });
     window.scrollTo({
-      top: 350,
+      top: 200,
       behavior: "smooth",
     });
     setSearchAlert(false);

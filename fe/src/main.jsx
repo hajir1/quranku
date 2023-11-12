@@ -10,7 +10,7 @@ import OptionProvider from "./context/opsi";
 import DetailAlQuranPAge from "./page/detailAlQuranPage";
 import BookMarkPage from "./page/bookMarkPage";
 import AsmaulHusnaPage from "./page/asmaulHusnaPage";
-import DoaPage from "./page/doaDoaPage";
+import DoaPage from "./page/doa&dzikirPage";
 import JadwalSholatPage from "./page/jadwalsholatPage";
 import Page404 from "./page/404";
 import Information from "./page/Information";

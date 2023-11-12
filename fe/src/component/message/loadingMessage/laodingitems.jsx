@@ -8,28 +8,28 @@ const LoadingItems = () => {
       </div>
       <div className="w-full flex flex-wrap h-auto justify-center gap-4 mt-10">
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
         <div
-          className={`${sekeleton.sekeleton} w-[28%] h-[4rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
+          className={`${sekeleton.sekeleton} w-[28%] h-[8rem] max-[650px]:w-[90%] max-[1100px]:w-[45%]`}
         ></div>
       </div>
     </div>
