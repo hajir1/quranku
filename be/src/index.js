@@ -2,8 +2,9 @@ import app from "./app.js"
 import config from "./config/config.js"
 import logger from "./config/logger.js"
 
-const server = app.listen(config.PORT, () => {
+const server = app.listen(config.PORT, (req,res) => {
   logger.info(`server is running on port ${config.PORT}`);
+  res.send("running")
 });
 
 const exitHandler = () => {
