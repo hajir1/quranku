@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://192.168.27.243:3005";
+const API_BASE_URL = "http://192.168.1.11:3005";
 export const getAlQuranSurah = async () => {
   const response = await fetch("https://api.alquran.cloud/v1/surah");
   if (!response.ok) {
