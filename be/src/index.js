@@ -1,33 +1,35 @@
-import app from "./app.js"
+import express from "express"
+import cors from "cors";
+import httpStatus from "http-status";
+import routes from "./routes/index.js"
 import config from "./config/config.js"
-import logger from "./config/logger.js"
+import morgan,{successHandler,errorHandler as morganError} from "./config/morgan.js"
+import ApiError from "./utils/ApiError.js"
+import { errorConverter, errorHandler } from "./middlewares/error.js"
+import logger from "./config/logger.js";
+const app = express();
 
-const server = app.listen(config.PORT, (req,res) => {
+if (config.NODE_ENV !== "test") {
+  app.use(successHandler);
+  app.use(morganError);
+}
+
+app.use(express.json());
+
+app.use(cors());
+
+app.disable("x-powered-by");
+
+app.use("/", routes);
+
+app.use((req, res, next) => {
+  next(new ApiError(httpStatus.NOT_FOUND, "Not found"));
+});
+
+app.use(errorConverter);
+
+app.use(errorHandler);
+app.listen(config.PORT, (req,res) => {
   logger.info(`server is running on port ${config.PORT}`);
 });
 
-const exitHandler = () => {
-  if (server) {
-    server.close(() => {
-      logger.info("server closed");
-      process.exit(1);
-    });
-  } else {
-    process.exit(1);
-  }
-};
-
-const unexpectedErrorHandler = (error) => {
-  logger.error(error);
-  exitHandler();
-};
-
-process.on("uncaughtException", unexpectedErrorHandler);
-process.on("unhandledRejection", unexpectedErrorHandler);
-
-process.on("SIGTERM", () => {
-  logger.info("SIGTERM received");
-  if (server) {
-    server.close();
-  }
-});
