@@ -9,13 +9,13 @@
   "routes": [
     {
       "src": "/(.*)",
-      "destination": "src/app.js"
+      "dest": "src/app.js"
     }
   ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "src/app.js"
+      "dest": "src/app.js"
     }
   ],
   "headers": [
