@@ -25,7 +25,7 @@ const Information = () => {
           begitu banyak fitur fitur yang belum tersedia di website ini dan
           mungkin bug bug yang tanpa saya sadari terjadi di website ini. dan
           saya meminta maaf apabila terjadi kesalahan di penulisan teks arab ,
-          penulisan arti , atau apapun itu apabila ada debugging yang belum saya
+          penulisan arti, atau apapun itu apabila ada debugging yang belum saya
           ketahui.
         </p>
         <p>
