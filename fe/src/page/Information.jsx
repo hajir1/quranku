@@ -38,9 +38,9 @@ const Information = () => {
           kunjungi lebih lanjut tentang{" "}
           <u>
             <i>
-              {/* <a href="https://hajir1.github.io/portofolio" target="_blank">
+              <a href="https://hajir1.github.io/portofolio" target="_blank">
                 developer
-              </a> */}
+              </a>
             </i>
           </u>
         </p>
