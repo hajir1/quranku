@@ -4,12 +4,10 @@
   "main": "./src/index.js",
   "license": "MIT",
   "type": "module",
-  "author": "R.M. Reza (renomureza@gmail.com)",
-  "homepage": "https://github.com/renomureza/quran-api-id#readme",
-  "url": "https://github.com/renomureza/quran-api-id/issues",
+  "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/renomureza/quran-api-id.git"
+    "url": "https://github.com/hajir1/quranku.git"
   },
   "scripts": {
     "dev": "nodemon index.js",
@@ -21,7 +19,6 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
-    "prepare": "husky install",
     "build:quran": "node ./src/data/scripts/quranBuilder",
     "scrape:surah": "node ./src/data/scripts/surahKemenagScraper",
     "scrape:tafsir": "node ./src/data/scripts/tafsirKemenagScraper"
