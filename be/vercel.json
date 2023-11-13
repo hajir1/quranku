@@ -1,3 +1,4 @@
+
 {
   "version": 2,
   "builds": [
@@ -15,7 +16,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "dest": "src/app.js"
+      "destination": "src/app.js"
     }
   ],
   "headers": [
