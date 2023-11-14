@@ -1,36 +1,30 @@
 {
-    "routes":[
+    "version": 2,
+    "buildCommand": "npm run build",
+    "devCommand": "npm run dev",
+    "headers": [
         {
-            "src": "/",
-            "dest": "/"
-          },
-          {
-            "src": "/",
-            "dest": "/"
-          },
-          {
-            "src": "/surah/:id",
-            "dest": "/"
-          },
-          {
-            "src": "/surah/:id/:page",
-            "dest":"/"
-          },
-          {
-            "src": "/asmaulhusna",
-            "dest":"/"
-          },
-          {
-            "src": "/doa",
-            "dest":"/"
-          },
-          {
-            "src": "/sholat",
-            "dest": "/"
-          },
-          {
-            "src": "/informasi",
-            "dest": "/"
-          }
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "X-Content-Type-Options",
+                    "value": "nosniff"
+                },
+                {
+                    "key": "X-Frame-Options",
+                    "value": "SAMEORIGIN"
+                },
+                {
+                    "key": "X-XSS-Protection",
+                    "value": "1; mode=block"
+                }
+            ]
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
     ]
 }

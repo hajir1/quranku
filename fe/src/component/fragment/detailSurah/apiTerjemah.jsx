@@ -201,7 +201,7 @@ const ApiTerjemah = () => {
                 onClick={() => {
                   setLihatDetail(!lihatDetail),
                     window.scrollTo({
-                      top: 400,
+                      top: 200,
                       behavior: "smooth",
                     });
                 }}

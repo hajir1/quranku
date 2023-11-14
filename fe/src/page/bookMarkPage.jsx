@@ -61,7 +61,7 @@ const BookMarkPage = () => {
       setDataSurahById(data);
     });
     window.scrollTo({
-      top: 350,
+      top: 500,
       behavior: "smooth",
     });
 
