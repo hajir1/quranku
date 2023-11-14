@@ -25,6 +25,7 @@ const OptionProvider = ({ children }) => {
   const [valueSearchAsmaulHusna, setValueSearchAsmaulHusna] = useState("");
   const [opsiDoa, setOpsiDoa] = useState(true);
   const [valueOpsiDzikir, setValueOpsiDzikir] = useState("semuaDzikir");
+  const [opsiBahasa, setOpsiBahasa] = useState(true);
   return (
     <OptionContext.Provider
       value={{
@@ -70,7 +71,7 @@ const OptionProvider = ({ children }) => {
         opsiDoa,
         setOpsiDoa,
         valueOpsiDzikir,
-        setValueOpsiDzikir,
+        setValueOpsiDzikir,opsiBahasa, setOpsiBahasa
       }}
     >
       {children}

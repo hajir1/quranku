@@ -17,6 +17,8 @@ const Settings = ({ type }) => {
     settingModalRef,
     valueAudio,
     setValueAudio,
+    opsiBahasa,
+    setOpsiBahasa,
   } = useContext(OptionContext);
   useEffect(() => {
     if (countFont.current === 1) {
@@ -94,6 +96,30 @@ const Settings = ({ type }) => {
                   Mode Gelap
                 </h1>
               </div>
+            </div>
+          </div>
+          <div className="p-4 relative">
+            <div className={`${style.tooltipCenter} text-white`}>
+              <h1>Opsi Bahasa</h1>
+              <p className={style.tooltipAlertcenter}>tersedia untuk asmaul husna</p>
+            </div>
+            <div className="flex justify-evenly">
+              <Button
+                buttonClick={() => setOpsiBahasa(true)}
+                buttonClass={`${
+                  opsiBahasa && "bg-amber-700"
+                } mt-4 w-[48%] border border-white p-2`}
+              >
+                Indonesia
+              </Button>
+              <Button
+                buttonClick={() => setOpsiBahasa(false)}
+                buttonClass={`${
+                  !opsiBahasa && "bg-amber-700"
+                } mt-4 w-[48%] border border-white p-2`}
+              >
+                Inggris
+              </Button>
             </div>
           </div>
         </div>

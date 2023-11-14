@@ -102,7 +102,7 @@ const Navbar = ({ type, typeHome }) => {
     <div
       className={`${opsiTafsir && "blur-[2px]"} ${
         opsiDarkmode && "border-b-2 text-white"
-      } w-full h-14 p-1 bg-black fixed z-40 max-[550px]:h-16 `}
+      } w-full h-14 p-1 bg-black fixed z-40 max-[550px]:h-16 max-[550px]:p-0 `}
     >
       {type === "home" && (
         <div className="relative h-full">
@@ -294,24 +294,24 @@ const Navbar = ({ type, typeHome }) => {
                 </div>
               )}
               {typeHome === "doa" && (
-                 <div
-                 className={`${style.tooltipOpsiHome} ${
-                   searchAlert && "blur-[4px]"
-                 } bg-black text-white w-1/4 h-full `}
-               >
-                 <img
-                   onClick={onOpsiHomeHandler}
-                   className="h-full cursor-pointer max-[550px]:mx-2"
-                   src={`/icondoa.png`}
-                   alt=""
-                 />
-                 <p className={`${style.tooltipAlertleft}`}>
-                   Halaman Home doa & dzikir
-                 </p>
-               </div>
+                <div
+                  className={`${style.tooltipOpsiHome} ${
+                    searchAlert && "blur-[4px]"
+                  } bg-black text-white w-1/4 h-full `}
+                >
+                  <img
+                    onClick={onOpsiHomeHandler}
+                    className="h-full cursor-pointer max-[550px]:mx-2"
+                    src={`/icondoa.png`}
+                    alt=""
+                  />
+                  <p className={`${style.tooltipAlertleft}`}>
+                    Halaman Home doa & dzikir
+                  </p>
+                </div>
               )}
               {typeHome === "sholat" && (
-                  <div
+                <div
                   className={`${style.tooltipOpsiHome} ${
                     searchAlert && "blur-[4px]"
                   } bg-black text-white w-1/4 h-full `}
@@ -414,7 +414,7 @@ const Navbar = ({ type, typeHome }) => {
               <div
                 className={`${style.animatedSearch} fixed right-0  p-1 h-full w-1/4 max-[750px]:w-2/5`}
               >
-                <form className={`flex items-center bg-black`} action="">
+                <form className={`flex p-2 items-center bg-black`} action="">
                   <Input
                     inputClass={`${
                       opsiDarkmode && "text-black"
@@ -451,28 +451,29 @@ const Navbar = ({ type, typeHome }) => {
               } flex w-3/4 text-white justify-end items-center gap-5 text-2xl max-[800px]:w-1/2`}
             >
               <div
-                className={`${style.tooltipSettings} ${
+                className={`${
                   searchAlert && "hidden"
-                } ${opsiSetting && "hidden"}`}
+                }`}
               >
                 <Icon
                   onClick={onSettingHandler}
                   className="cursor-pointer"
                   icon="uiw:setting"
                 />
-                <p className={`${style.tooltipAlertright}`}>settings</p>
               </div>
-              <div
-                className={`${style.tooltipSettings} ${
-                  searchAlert && "hidden"
-                } ${opsiSetting && "hidden"}`}
-              >
-                <Icon
-                  className={`${!opsiSurah && "mx-4"} cursor-pointer `}
-                  icon="fluent:info-12-filled"
-                />
-                <p className={`${style.tooltipAlertright}`}>informasi</p>
-              </div>
+              <Link to={`/informasi`}>
+                <div
+                  className={`${style.tooltipSettings} ${
+                    searchAlert && "hidden"
+                  } ${opsiSetting && "hidden"}`}
+                >
+                  <Icon
+                    className={`${!opsiSurah && "mx-4"} cursor-pointer `}
+                    icon="fluent:info-12-filled"
+                  />
+                  <p className={`${style.tooltipAlertright}`}>informasi</p>
+                </div>
+              </Link>
               <div
                 className={`${style.tooltipSettings} ${
                   searchAlert && "hidden"

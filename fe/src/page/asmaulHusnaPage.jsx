@@ -10,7 +10,7 @@ import { getAsmaulHusnaSearch } from "../services/service";
 import LoadingItems from "../component/message/loadingMessage/laodingitems";
 const AsmaulHusnaPage = () => {
   const { data, isLoading, error } = useAllAsmaulHusna();
-  const { valueSearchAsmaulHusna, opsiSetting, opsiDarkmode } =
+  const { valueSearchAsmaulHusna, opsiSetting, opsiDarkmode,opsiBahasa } =
     useContext(OptionContext);
   const [dataAsmaulHusnaSearch, setDataAsmaulHusnaSearch] = useState("");
   useEffect(() => {
@@ -95,7 +95,7 @@ const AsmaulHusnaPage = () => {
                       </div>
                       <div className="flex flex-col w-3/5 justify-center items-center p-1">
                         <p className="text-center font-bold">{item.latin}</p>
-                        <p className="text-sm text-center">{item.arti}</p>
+                        <p className="text-sm text-center">{opsiBahasa ?item.arti:item.meaning}</p>
                       </div>
                       <div className="flex items-center justify-center w-1/5">
                         <h1 className="text-2xl text-center">{item.arab}</h1>

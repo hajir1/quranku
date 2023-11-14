@@ -9,7 +9,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/src/app.js"
+      "destination": "/"
     }
   ],
   "headers": [
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "source": "/random(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
