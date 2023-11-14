@@ -1,7 +1,0 @@
-GET  http://localhost:3005/doa/1
-
-Content-Type: application/json
-
-{
-    "title":"Doa Sebelum Makan"
-}

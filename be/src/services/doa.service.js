@@ -4,7 +4,6 @@ import dzikirSore from "../data/dzikirsore.json" assert { type: "json" };
 import dzikirPagi from "../data/dzikirpagi.json" assert { type: "json" };
 import asmaulHusna from "../data/asmaulhusna.json" assert { type: "json" };
 import ApiError from "../utils/ApiError.js";
-import httpStatus from "http-status";
 
 export const getDoa = () => {
   return doaDoa.map((item) => item);
@@ -12,7 +11,7 @@ export const getDoa = () => {
 export const getDoaById = (doaNumber) => {
   const number = doaDoa[Number(doaNumber) - 1]
   if (!number) {
-    throw new ApiError(httpStatus.NOT_FOUND, "not found");
+    throw new ApiError(400, "not found");
   }
   return number
 };
