@@ -272,7 +272,7 @@ const Navbar = ({ type, typeHome }) => {
                     alt=""
                   />
                   <p className={`${style.tooltipAlertleft}`}>
-                    Halaman Home Al-Quran
+                    Home Al-Quran
                   </p>
                 </div>
               )}
@@ -289,7 +289,7 @@ const Navbar = ({ type, typeHome }) => {
                     alt=""
                   />
                   <p className={`${style.tooltipAlertleft}`}>
-                    Halaman Home AsmaulHusna
+                    Home AsmaulHusna
                   </p>
                 </div>
               )}
@@ -306,7 +306,7 @@ const Navbar = ({ type, typeHome }) => {
                     alt=""
                   />
                   <p className={`${style.tooltipAlertleft}`}>
-                    Halaman Home doa & dzikir
+                    Home doa & dzikir
                   </p>
                 </div>
               )}
@@ -323,7 +323,7 @@ const Navbar = ({ type, typeHome }) => {
                     alt=""
                   />
                   <p className={`${style.tooltipAlertleft}`}>
-                    Halaman Home Jadwal Sholat
+                    Home Jadwal Sholat
                   </p>
                 </div>
               )}

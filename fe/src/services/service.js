@@ -9,7 +9,7 @@ export const getAlQuranSurah = async () => {
 };
 export const getAlQuranSurahSearch = (id, callback) => {
   axios
-    .get(`http://api.alquran.cloud/v1/surah/${id}/en.asad`)
+    .get(`https://api.alquran.cloud/v1/surah/${id}/en.asad`)
     .then((res) => callback(res.data.data))
     .catch((err) => callback(err.code));
 };
