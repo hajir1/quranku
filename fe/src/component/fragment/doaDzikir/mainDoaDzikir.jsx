@@ -14,7 +14,7 @@ const ApiAllDoa = () => {
   } = useContext(OptionContext);
   useEffect(() => {}, [valueOpsiDzikir]);
   return (
-    <div className="mt-20 w-full mb-2 p-4">
+    <div className="mt-20 w-full mb-2 p-4 max-[650px]:p-2">
       <h1 className="text-center text-3xl">
         ِبِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْم
       </h1>

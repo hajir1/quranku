@@ -21,12 +21,19 @@ const Information = () => {
             <u>mas renoMuza</u>
           </a>{" "}
           yang telah memberikan data api Alquran dengan fromat Json secara open
-          sources , website ini dibangun selama -+ 10 hari dan saya menyadari
-          begitu banyak fitur fitur yang belum tersedia di website ini dan
-          mungkin bug bug yang tanpa saya sadari terjadi di website ini. dan
-          saya meminta maaf apabila terjadi kesalahan di penulisan teks arab ,
-          penulisan arti, atau apapun itu apabila ada debugging yang belum saya
-          ketahui.
+          sources dan saya ucapkan terima kasih kepada{" "}
+          <a href="https://github.com/AzharRivaldi/Kisah-25-Nabi/blob/master/Kisah25Nabi/app/src/main/assets/kisahnabi.json">
+            <u>
+              mas AzharRivaldi &nbsp;
+            </u>
+          </a>
+          yang telah memberikan data api json kisah kisah nabi secara open
+              sources
+          , website ini dibangun selama -+ 10 hari dan saya menyadari begitu
+          banyak fitur fitur yang belum tersedia di website ini dan mungkin bug
+          bug yang tanpa saya sadari terjadi di website ini. dan saya meminta
+          maaf apabila terjadi kesalahan di penulisan teks arab , penulisan
+          arti, atau apapun itu apabila ada debugging yang belum saya ketahui.
         </p>
         <p>
           website ini dibangun dengan technology expressJs sebagai BackEnd,

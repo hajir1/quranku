@@ -52,6 +52,14 @@ const endpoints = [
     path: `https://quranku-alpha.vercel.app/dzikir/asmaulHusna/1`,
     description: "get asmaul Husna by id /dzikir/asmaulHusna/{1}",
   },
+  {
+    path: `https://quranku-alpha.vercel.app/kisahnabi`,
+    description: "get all kisah nabi",
+  },
+  {
+    path: `https://quranku-alpha.vercel.app/kisahnabi/1`,
+    description: "get kisah nabi by id /kisahnabi/1",
+  },
 ];
 
 module.exports= HomeController = (req, res) => {

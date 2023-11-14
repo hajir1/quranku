@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../component/layout/navbar";
 
 const JadwalSholatPage = () => {
+  useEffect(() => {
+    const linkElement = document.querySelector("link[rel*='icon']");
+    linkElement.href = "/iconSholat.png";
+    window.document.title = "home Jadwal Sholat";
+  }, []);
   return (
     <div className="flex flex-col">
       <Navbar type="home" typeHome="sholat" />

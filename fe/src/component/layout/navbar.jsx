@@ -102,7 +102,7 @@ const Navbar = ({ type, typeHome }) => {
     <div
       className={`${opsiTafsir && "blur-[2px]"} ${
         opsiDarkmode && "border-b-2 text-white"
-      } w-full h-14 p-1 bg-black fixed z-40 max-[550px]:h-16 max-[550px]:p-0 `}
+      } w-full h-14 p-1 bg-black fixed z-40 max-[550px]:h-14 max-[550px]:p-0 `}
     >
       {type === "home" && (
         <div className="relative h-full">
@@ -125,6 +125,9 @@ const Navbar = ({ type, typeHome }) => {
                 {typeHome === "sholat" && (
                   <img className="w-10 h-10" src="/iconSholat.png" alt="" />
                 )}
+                {typeHome === "kisahnabi" && (
+                  <img className="w-10 h-10" src="/iconNabi.png" alt="" />
+                )}
                 <Icon
                   onClick={() => setOpsiHome(!opsiHome)}
                   className="text-white text-2xl"
@@ -146,6 +149,9 @@ const Navbar = ({ type, typeHome }) => {
                     <Link to={"/sholat"} className="my-1 p-2">
                       jadwal sholat
                     </Link>
+                    <Link to={"/kisahnabi"} className="my-1 p-2">
+                      Kisah Nabi
+                    </Link>
                   </div>
                 )}
                 {typeHome === "asmaulhusna" && (
@@ -165,6 +171,9 @@ const Navbar = ({ type, typeHome }) => {
                     <Link to={"/sholat"} className="my-1 p-2">
                       jadwal sholat
                     </Link>
+                    <Link to={"/kisahnabi"} className="my-1 p-2">
+                      Kisah Nabi
+                    </Link>
                   </div>
                 )}
                 {typeHome === "doa" && (
@@ -181,6 +190,9 @@ const Navbar = ({ type, typeHome }) => {
                     <Link to={"/sholat"} className="my-1 p-2">
                       jadwal sholat
                     </Link>
+                    <Link to={"/kisahnabi"} className="my-1 p-2">
+                      Kisah Nabi
+                    </Link>
                   </div>
                 )}
                 {typeHome === "sholat" && (
@@ -196,6 +208,28 @@ const Navbar = ({ type, typeHome }) => {
                     </Link>
                     <Link to={"/sholat"} className="border-b-[1px] my-1 p-2">
                       jadwal sholat
+                    </Link>
+                    <Link to={"/kisahnabi"} className="my-1 p-2">
+                      Kisah Nabi
+                    </Link>
+                  </div>
+                )}
+                {typeHome === "kisahnabi" && (
+                  <div className="flex flex-col">
+                    <Link to={"/"} className=" my-1 p-2">
+                      Al-Qur'an
+                    </Link>
+                    <Link to={"/asmaulhusna"} className="my-1 p-2">
+                      Asmaul Husna
+                    </Link>
+                    <Link to={"/doa"} className=" my-1 p-2">
+                      doa & dzikir
+                    </Link>
+                    <Link to={"/sholat"} className="my-1 p-2">
+                      jadwal sholat
+                    </Link>
+                    <Link to={"/kisahnabi"} className="my-1 p-2 border-b-[1px] ">
+                      Kisah Nabi
                     </Link>
                   </div>
                 )}
@@ -327,6 +361,23 @@ const Navbar = ({ type, typeHome }) => {
                   </p>
                 </div>
               )}
+              {typeHome === "kisahnabi" && (
+                <div
+                  className={`${style.tooltipOpsiHome} ${
+                    searchAlert && "blur-[4px]"
+                  } bg-black text-white w-1/4 h-full `}
+                >
+                  <img
+                    onClick={onOpsiHomeHandler}
+                    className="h-full cursor-pointer max-[550px]:mx-2"
+                    src={`/iconNabi.png`}
+                    alt=""
+                  />
+                  <p className={`${style.tooltipAlertleft}`}>
+                    Home Kisah Nabi
+                  </p>
+                </div>
+              )}
               {typeHome === "Quran" && (
                 <p
                   className={` ${
@@ -356,6 +407,9 @@ const Navbar = ({ type, typeHome }) => {
               )}
               {typeHome === "sholat" && (
                 <p className="text-white tracking-wide mx-4">jadwal sholat</p>
+              )}
+              {typeHome === "kisahnabi" && (
+                <p className="text-white tracking-wide mx-4">kisah nabi</p>
               )}
             </div>
             <div

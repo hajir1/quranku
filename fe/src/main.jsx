@@ -14,6 +14,7 @@ import DoaPage from "./page/doa&dzikirPage";
 import JadwalSholatPage from "./page/jadwalsholatPage";
 import Page404 from "./page/404";
 import Information from "./page/Information";
+import KisahNabiPage from "./page/kisahNabi";
 const router = createBrowserRouter([
   {
     path: "*",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/sholat",
     element: <JadwalSholatPage />,
+  },
+  {
+    path: "/kisahnabi",
+    element: <KisahNabiPage/>,
   },
   {
     path: "/informasi",

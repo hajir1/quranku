@@ -4,6 +4,7 @@ const randomRoute = require("./random.route");
 const surahsRoute = require("./surahs.route");
 const doaRoute = require("./doa.route");
 const dzikirRoute = require("./dzikir.route");
+const kisahNabiRoute = require("./kisah.route");
 
 const router = express.Router();
 
@@ -27,6 +28,10 @@ const routes = [
   {
     path: "/dzikir",
     route: dzikirRoute,
+  },
+  {
+    path: "/kisahnabi",
+    route: kisahNabiRoute,
   },
 ];
 
