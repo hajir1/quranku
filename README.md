@@ -10,14 +10,14 @@
 4.masuk ke folder fe
 
 5. npm install
-6. 
+ 
 6.npm run dev
 
 ## cara menggunakan repo ini untuk mengubah data json
 1.install git
 
 2. install teks editor
-3. 
+ 
 3.git clone
 https://github.com/hajir1/quranku.git {nama folder}
 
