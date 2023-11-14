@@ -71,7 +71,6 @@ const ApiTerjemah = () => {
         !tafsirModalRef.current.contains(event.target)
       ) {
         setOpsitafsir(false);
-        window.location.reload();
       }
     }
 

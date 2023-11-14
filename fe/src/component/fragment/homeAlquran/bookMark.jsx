@@ -107,14 +107,11 @@ const BookMark = () => {
               } m-1 w-1/6 h-12 bg-black opacity-90 rounded-md text-white flex items-center justify-evenly max-[750px]:w-[47%] max-[1100px]:w-[30%] min-[400px]:m-1 min-[1000px]:h-16 min-[900px]:mt-1`}
             >
               <div className="w-1/4 grid place-content-center h-full ">
-                <div className={`${style.tooltipCenter}`}>
                 <Icon
                   onClick={() => onRemoveBookmarkHandler(data.numberQuran)}
                   className="text-white text-2xl cursor-pointer"
                   icon="octicon:x-12"
                 />
-                <p className={`${style.tooltipAlertcenter}`}>hapus bookMark</p>
-                </div>
               </div>
               <Link
                 to={`/surah/${data.id}/${data.numberSurah}`}

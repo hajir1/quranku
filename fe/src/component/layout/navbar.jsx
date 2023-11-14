@@ -340,7 +340,7 @@ const Navbar = ({ type, typeHome }) => {
                 <p
                   className={`${
                     searchAlert && "blur-[4px]"
-                  } text-white tracking-wide mx-4`}
+                  } text-white tracking-wide mx-4 text-sm`}
                 >
                   Asmaul Husna
                 </p>
