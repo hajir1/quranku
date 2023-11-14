@@ -1,17 +1,10 @@
-import express from "express";
-import {
-  getAsmaulHusnaByIdController,
-  getAsmaulHusnaController,
-  getDzikirController,
-  getDzikirPagiController,
-  getDzikirSoreController,
-} from "../controllers/doa.controller.js";
-const router = express.Router();
+const router = require("express").Router();
+const doaController = require("../controllers/doa.controller");
 
-router
-  .get("/", getDzikirController)
-  .get("/dzikirsore", getDzikirSoreController).get("/dzikirpagi",getDzikirPagiController)
-  .get("/asmaulHusna", getAsmaulHusnaController)
-  .get("/asmaulHusna/:id", getAsmaulHusnaByIdController);
+router.get("/", doaController.getDzikirController);
+router.get("/dzikirsore", doaController.getDzikirSoreController);
+router.get("/dzikirpagi", doaController.getDzikirPagiController);
+router.get("/asmaulHusna", doaController.getAsmaulHusnaController);
+router.get("/asmaulHusna/:id", doaController.getAsmaulHusnaByIdController);
 
-export default router;
+module.exports = router;

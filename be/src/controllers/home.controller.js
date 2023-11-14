@@ -1,4 +1,4 @@
-import config from "../config/config.js";
+const config = require("../config/config");
 
 const endpoints = [
   {
@@ -54,8 +54,8 @@ const endpoints = [
   },
 ];
 
-export const HomeController = (req, res) => {
+module.exports= HomeController = (req, res) => {
   res.json({
-    endpoints
+    endpoints,
   });
 };

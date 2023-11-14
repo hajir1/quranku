@@ -1,15 +1,9 @@
-import express from "express";
-import {
-  getSurahsController,
-  getSurahController,
-  getAyahsController,
-  getAyahController,
-} from "../controllers/surahs.controller.js";
-const router = express.Router();
+const router = require("express").Router();
+const SurahsController = require("../controllers/surahs.controller");
 
-router.get("/", getSurahsController);
-router.get("/:surahNumber", getSurahController);
-router.get("/:surahNumber/ayahs", getAyahsController);
-router.get("/:surahNumber/ayahs/:ayahNumber", getAyahController);
+router.get("/", SurahsController.getSurahs);
+router.get("/:surahNumber", SurahsController.getSurah);
+router.get("/:surahNumber/ayahs", SurahsController.getAyahs);
+router.get("/:surahNumber/ayahs/:ayahNumber", SurahsController.getAyah);
 
-export default router;
+module.exports = router;

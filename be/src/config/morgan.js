@@ -1,6 +1,6 @@
-import morgan from "morgan"
-import config from "./config.js";
-import logger from "./logger.js";
+const morgan = require("morgan");
+const config = require("./config");
+const logger = require("./logger");
 
 morgan.token("message", (req, res) => res.locals.errorMessage || "");
 
@@ -19,8 +19,7 @@ const errorHandler = morgan(errorResponseFormat, {
   stream: { write: (message) => logger.error(message.trim()) },
 });
 
-export  {
+module.exports = {
   successHandler,
   errorHandler,
 };
-export default morgan

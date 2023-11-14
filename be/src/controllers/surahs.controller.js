@@ -1,31 +1,26 @@
-import {
-  getListSurahs,
-  getSurah,
-  getAyahs,
-  getAyah,
-} from "../services/quran.service.js";
+const { quranService } = require("../services");
 
-const getSurahsController = (req, res) => {
-  const listSurahs = getListSurahs();
+const getSurahs = (req, res) => {
+  const listSurahs = quranService.getListSurahs();
   return res.send(listSurahs);
 };
 
-const getSurahController = (req, res) => {
+const getSurah = (req, res) => {
   const { surahNumber } = req.params;
-  const surah = getSurah(surahNumber);
+  const surah = quranService.getSurah(surahNumber);
   return res.send(surah);
 };
 
-const getAyahsController = (req, res) => {
+const getAyahs = (req, res) => {
   const { surahNumber } = req.params;
-  const ayahs = getAyahs(surahNumber);
+  const ayahs = quranService.getAyahs(surahNumber);
   return res.send(ayahs);
 };
 
-const getAyahController = (req, res) => {
+const getAyah = (req, res) => {
   const { surahNumber, ayahNumber } = req.params;
-  const surah = getAyah(surahNumber, ayahNumber);
+  const surah = quranService.getAyah(surahNumber, ayahNumber);
   return res.send(surah);
 };
 
-export { getSurahsController, getSurahController, getAyahsController, getAyahController };
+module.exports = { getSurahs, getSurah, getAyahs, getAyah };

@@ -1,8 +1,6 @@
-import express from "express"
-import {RandomController} from "../controllers/random.controller.js"
-const router = express.Router()
+const router = require("express").Router();
+const RandomController = require("../controllers/random.controller");
 
+router.get("/", RandomController.random);
 
-router.get("/", RandomController);
-
-export default router
+module.exports = router;

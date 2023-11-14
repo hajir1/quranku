@@ -1,8 +1,7 @@
-import httpStatus from "http-status";
-import config from "../config/config.js"
-import logger from "../config/logger.js"
-
-import ApiError from "../utils/ApiError.js";
+const httpStatus = require("http-status");
+const config = require("../config/config");
+const logger = require("../config/logger");
+const ApiError = require("../utils/ApiError");
 
 const errorConverter = (err, req, res, next) => {
   let error = err;
@@ -39,7 +38,7 @@ const errorHandler = (err, req, res, next) => {
   res.status(statusCode).send(response);
 };
 
-export  {
+module.exports = {
   errorConverter,
   errorHandler,
 };

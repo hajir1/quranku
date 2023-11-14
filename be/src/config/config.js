@@ -1,6 +1,6 @@
-import dotenv from "dotenv"
-import path from "path"
-import yup from "yup"
+const dotenv = require("dotenv");
+const path = require("path");
+const yup = require("yup");
 
 dotenv.config({ path: path.resolve(".env") });
 
@@ -23,4 +23,4 @@ const getConfig = () => {
   }
 };
 
-export default getConfig();
+module.exports = getConfig();

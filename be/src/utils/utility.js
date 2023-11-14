@@ -1,5 +1,6 @@
-import path from "path"
-import logger from "../config/logger.js"
+const path = require("path");
+const logger = require("../config/logger");
+
 const delay = (second = 2) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -23,7 +24,7 @@ const responseJson = (data, message, success) => ({
   data,
 });
 
-export   {
+module.exports = {
   cleanHtmlTag,
   delay,
   logError,

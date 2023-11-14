@@ -1,9 +1,10 @@
-import express from "express";
-import homeRoute from "./home.route.js";
-import randomRoute from "./random.route.js";
-import surahsRoute from "./surahs.route.js";
-import doaRoute from "./doa.route.js";
-import dzikirRoute from "./dzikir.route.js";
+const express = require("express");
+const homeRoute = require("./home.route");
+const randomRoute = require("./random.route");
+const surahsRoute = require("./surahs.route");
+const doaRoute = require("./doa.route");
+const dzikirRoute = require("./dzikir.route");
+
 const router = express.Router();
 
 const routes = [
@@ -33,4 +34,4 @@ routes.forEach(({ path, route }) => {
   router.use(path, route);
 });
 
-export default router;
+module.exports = router;

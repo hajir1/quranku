@@ -23,7 +23,7 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/random(.*)",
       "headers": [
         {
           "key": "Cache-Control",

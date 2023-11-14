@@ -1,38 +1,47 @@
-import doaDoa from "../data/doa-doa.json" assert { type: "json" };
-import dzikirAfterSholat from "../data/dzikir.json" assert { type: "json" };
-import dzikirSore from "../data/dzikirsore.json" assert { type: "json" };
-import dzikirPagi from "../data/dzikirpagi.json" assert { type: "json" };
-import asmaulHusna from "../data/asmaulhusna.json" assert { type: "json" };
-import ApiError from "../utils/ApiError.js";
+const doaDoa = require("../data/doa-doa.json");
+const dzikirAfterSholat = require("../data/dzikir.json");
+const dzikirSore = require("../data/dzikirsore.json");
+const dzikirPagi = require("../data/dzikirpagi.json");
+const asmaulHusna = require("../data/asmaulhusna.json");
+const ApiError = require("../utils/ApiError");
 
-export const getDoa = () => {
+const getDoa = () => {
   return doaDoa.map((item) => item);
 };
-export const getDoaById = (doaNumber) => {
-  const number = doaDoa[Number(doaNumber) - 1]
+const getDoaById = (doaNumber) => {
+  const number = doaDoa[Number(doaNumber) - 1];
   if (!number) {
     throw new ApiError(400, "not found");
   }
-  return number
+  return number;
 };
 
-export const getDzikir = () => {
+const getDzikir = () => {
   return dzikirAfterSholat.map((item) => item);
 };
-export const getDzikirSore = () => {
+const getDzikirSore = () => {
   return dzikirSore.map((item) => item);
 };
-export const getDzikirPagi = () => {
+const getDzikirPagi = () => {
   return dzikirPagi.map((item) => item);
 };
-export const getAsmaulHusna = () => {
+const getAsmaulHusna = () => {
   return asmaulHusna.map((item) => item);
 };
 
-  export const getAsmaulHusnaById = (asmaNumber) => {
-    const number = asmaulHusna[Number(asmaNumber) - 1]
-    if (!number) {
-      throw new ApiError(httpStatus.NOT_FOUND, "not found");
-    }
-    return number
-  };
+const getAsmaulHusnaById = (asmaNumber) => {
+  const number = asmaulHusna[Number(asmaNumber) - 1];
+  if (!number) {
+    throw new ApiError(httpStatus.NOT_FOUND, "not found");
+  }
+  return number;
+};
+module.exports = {
+  getDoa,
+  getDoaById,
+  getDzikir,
+  getDzikirPagi,
+  getDzikirSore,
+  getAsmaulHusna,
+  getAsmaulHusnaById,
+};

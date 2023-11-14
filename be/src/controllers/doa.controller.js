@@ -1,41 +1,42 @@
-import {
-  getAsmaulHusna,
-  getAsmaulHusnaById,
-  getDoa,
-  getDoaById,
-  getDzikir,
-  getDzikirPagi,
-  getDzikirSore,
-} from "../services/doa.service.js";
+const { doaService } = require("../services");
 
-export const getDoaContoller = (req, res) => {
-  const result = getDoa();
+const getDoaContoller = (req, res) => {
+  const result = doaService.getDoa();
   return res.send(result);
 };
-export const getDoaByIdContoller = (req, res) => {
+const getDoaByIdContoller = (req, res) => {
   const number = req.params.id;
-  const result = getDoaById(number);
+  const result = doaService.getDoaById(number);
   return res.send(result);
 };
 
-export const getDzikirController = (req, res) => {
-  const result = getDzikir();
+const getDzikirController = (req, res) => {
+  const result = doaService.getDzikir();
   return res.send(result);
 };
-export const getDzikirSoreController = (req, res) => {
-  const result = getDzikirSore();
+const getDzikirSoreController = (req, res) => {
+  const result = doaService.getDzikirSore();
   return res.send(result);
 };
-export const getDzikirPagiController = (req, res) => {
-  const result = getDzikirPagi();
+const getDzikirPagiController = (req, res) => {
+  const result = doaService.getDzikirPagi();
   return res.send(result);
 };
-export const getAsmaulHusnaController = (req, res) => {
-  const result = getAsmaulHusna();
+const getAsmaulHusnaController = (req, res) => {
+  const result = doaService.getAsmaulHusna();
   return res.send(result);
 };
-export const getAsmaulHusnaByIdController = (req, res) => {
+const getAsmaulHusnaByIdController = (req, res) => {
   const number = req.params.id;
-  const result = getAsmaulHusnaById(number);
+  const result = doaService.getAsmaulHusnaById(number);
   return res.send(result);
+};
+module.exports = {
+  getAsmaulHusnaByIdController,
+  getAsmaulHusnaController,
+  getDzikirPagiController,
+  getDzikirSoreController,
+  getDzikirController,
+  getDoaContoller,
+  getDoaByIdContoller,
 };

@@ -1,7 +1,7 @@
-import httpStatus from "http-status";
-import quran from "../data/quran.json" assert {type :"json"}
-import ApiError from "../utils/ApiError.js";
-import { getRandomInt } from "../utils/utility.js";
+const httpStatus = require("http-status");
+const quran = require("../data/quran.json");
+const ApiError = require("../utils/ApiError");
+const { getRandomInt } = require("../utils/utility");
 
 const getListSurahs = () => {
   return quran.map(({ ayahs, bismillah, ...rest }) => rest);
@@ -42,4 +42,4 @@ const getRandomSurah = () => {
   return surah.ayahs[getRandomInt(1, surah.ayahs.length) - 1];
 };
 
-export { getListSurahs, getSurah, getAyahs, getAyah, getRandomSurah };
+module.exports = { getListSurahs, getSurah, getAyahs, getAyah, getRandomSurah };
