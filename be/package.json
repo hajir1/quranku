@@ -19,7 +19,6 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
-    "prepare": "husky install",
     "build:quran": "node ./src/data/scripts/quranBuilder",
     "scrape:surah": "node ./src/data/scripts/surahKemenagScraper",
     "scrape:tafsir": "node ./src/data/scripts/tafsirKemenagScraper"
