@@ -17,7 +17,6 @@
     "test:coverage": "jest -i --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare":"husky install",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
     "build:quran": "node ./src/data/scripts/quranBuilder",
