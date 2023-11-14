@@ -1,0 +1,36 @@
+{
+    "routes":[
+        {
+            "src": "/",
+            "dest": "/"
+          },
+          {
+            "src": "/",
+            "dest": "/"
+          },
+          {
+            "src": "/surah/:id",
+            "dest": "/"
+          },
+          {
+            "src": "/surah/:id/:page",
+            "dest":"/"
+          },
+          {
+            "src": "/asmaulhusna",
+            "dest":"/"
+          },
+          {
+            "src": "/doa",
+            "dest":"/"
+          },
+          {
+            "src": "/sholat",
+            "dest": "/"
+          },
+          {
+            "src": "/informasi",
+            "dest": "/"
+          }
+    ]
+}
